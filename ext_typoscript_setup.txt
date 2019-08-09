@@ -1,0 +1,33 @@
+
+config.tx_extbase {
+    persistence {
+        updateReferenceIndex = 1
+        classes {
+            Pmwebdesign\Cartproductreader\Domain\Model\FileReference {
+                    mapping {
+                            tableName = sys_file_reference
+                            columns {
+                                    uid_local.mapOnProperty = originalFileIdentifier
+                            }
+                    }
+            }
+            Extcode\CartProducts\Domain\Model\Product\Product {
+                subclasses {
+                    Tx_Cartproductreader_Product = Pmwebdesign\Cartproductreader\Domain\Model\Product
+					
+                }
+            }
+            Pmwebdesign\Cartproductreader\Domain\Model\Product {
+                mapping {
+                    tableName = tx_cartproducts_domain_model_product_product
+                    recordType >
+                    #recordType = Tx_Cartproductreader_Product
+                }
+            }
+    	}
+        objects {
+                TYPO3\CMS\Extbase\Domain\Model\FileReference.className = Vendor\Ext\Domain\Model\FileReference
+        }
+        updateReferenceIndex = 1
+    }
+}

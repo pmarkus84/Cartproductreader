@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" datatype="plaintext" original="messages" date="2019-08-01T13:03:26Z" product-name="cartproductreader">
+        <header/>
+        <body>
+            <trans-unit id="tx_cartproductreader_domain_model_product">
+                <source>Product</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_product.prize_rrp">
+                <source>RRP</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_product.prize_purchase_net_gp">
+                <source>Purchasing price GastPlus</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_product.prize_brut_gp">
+                <source>Gross price GastPlus</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_product.imagepaths">
+                <source>Image names</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_supplier">
+                <source>Supplier</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_supplier.name">
+                <source>Name</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_supplier.street">
+                <source>Street</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_supplier.zipcode">
+                <source>Zipcode</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_supplier.place">
+                <source>Place</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_supplier.country">
+                <source>Country</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_supplier.email">
+                <source>Email</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_supplier.telephone">
+                <source>Telephone</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_data">
+                <source>Data</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_data.file">
+                <source>Excel</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_data.supplier">
+                <source>Supplier</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_data.datetime_registered">
+                <source>Registered date time</source>
+            </trans-unit> 
+            <trans-unit id="tx_cartproductreader_domain_model_data.registered">
+                <source>Registered</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_data.images_assigned">
+                <source>Images assigned</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_controlling">
+                <source>Controlling</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_readexcel">
+                <source>Read Excel</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_measure">
+                <source>Measure</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_packagingUnit">
+                <source>Packaging Unit</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_colour">
+                <source>Colour</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_ean">
+                <source>EAN</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_size">
+                <source>Size</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_weight">
+                <source>Weight</source>
+            </trans-unit>  
+            <trans-unit id="tx_cartproductreader_bestBeforeDate">
+                <source>Best before date</source>
+            </trans-unit>  
+            <trans-unit id="tx_cartproductreader_deliveryTime">
+                <source>Delivery Time</source>
+            </trans-unit>    
+            <trans-unit id="tx_cartproductreader_no">
+                <source>No</source>
+            </trans-unit> 
+            <trans-unit id="tx_cartproductreader_yes">
+                <source>Yes</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_upload">
+                <source>Upload</source>
+            </trans-unit>  
+            <trans-unit id="tx_cartproductreader_suppliers">
+                <source>Suppliers</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_newsupplier">
+                <source>Create new supplier</source>
+            </trans-unit>  
+            <trans-unit id="tx_cartproductreader_back">
+                <source>Back</source>
+            </trans-unit>  
+            <trans-unit id="tx_cartproductreader_close">
+                <source>Close</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_edit">
+                <source>Edit</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_delete">
+                <source>Delete</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_insertExcel">
+                <source>Insert the Excel-File Data (without pictures)</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_assignImages">
+                <source>Link images</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_assignImagesDesc">
+                <source>Link the images to the supplier products</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_prozess1">
+                <source>1. Upload the Excel file (list) of an supplier. The registered status is on "No". Then click on "Edit" to go to the single view.</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_prozess2">
+                <source>2. Insert the Excel data into database by clicking on "Insert". The registered state just show "Yes".</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_prozess3">
+                <source>3. Upload the pictures of the supplier to "fileadmin/user_upload/suppliers/suppliername" under "Filelist".</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_prozess4">
+                <source>4. Go to the Cartproductreader again. Click to the "Edit" to go to the single view. Click to "Link images". The images are now assigned to the products.</source>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

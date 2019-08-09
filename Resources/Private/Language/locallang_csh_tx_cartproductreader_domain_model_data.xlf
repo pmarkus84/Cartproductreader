@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-08-01T13:03:26Z" product-name="cartproductreader">
+		<header/>
+		<body>
+			<trans-unit id="file.description">
+				<source>Excel</source>
+			</trans-unit>
+			<trans-unit id="supplier.description">
+				<source>Supplier</source>
+			</trans-unit>
+			<trans-unit id="registered.description">
+				<source>Registered</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

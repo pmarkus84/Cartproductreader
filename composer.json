@@ -1,0 +1,28 @@
+{
+    "name": "pmwebdesign/cartproductreader",
+    "type": "typo3-cms-extension",
+    "description": "Reads Excel file for inserting and updating products in cart_product.",
+    "authors": [
+        {
+            "name": "Markus Puffer",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "typo3/cms-core": "^8.7.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Pmwebdesign\\Cartproductreader\\": "Classes"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Pmwebdesign\\Cartproductreader\\Tests\\": "Tests"
+        }
+    },
+    "replace": {
+        "cartproductreader": "self.version",
+        "typo3-ter/cartproductreader": "self.version"
+    }
+}

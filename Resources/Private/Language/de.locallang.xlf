@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+    <file source-language="en" target-language="de" datatype="plaintext" original="messages" date="2019-08-01T13:03:26Z" product-name="cartproductreader">
+        <header/>
+        <body>
+            <trans-unit id="tx_cartproductreader_domain_model_product">
+                <source>Product</source>
+                <target state="translated">Produkt</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_product.prize_rrp">
+                <source>RRP</source>
+                <target state="translated">UVP</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_product.prize_purchase_net_gp">
+                <source>Purchasing price GastPlus</source>
+                <target state="translated">Einkaufspreis GastPlus</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_product.prize_brut_gp">
+                <source>Gross price GastPlus</source>
+                <target state="translated">Brutto-Preis Gastplus</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_product.imagepaths">
+                <source>Image names</source>
+                <target state="translated">Bilder Dateinamen</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_supplier">
+                <source>Supplier</source>
+                <target state="translated">Lieferant</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_supplier.name">
+                <source>Name</source>
+                <target state="translated">Name</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_supplier.street">
+                <source>Street</source>
+                <target state="translated">Straße</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_supplier.zipcode">
+                <source>Zipcode</source>
+                <target state="translated">PLZ</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_supplier.place">
+                <source>Place</source>
+                <target state="translated">Ort</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_supplier.country">
+                <source>Country</source>
+                <target state="translated">Land</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_supplier.email">
+                <source>Email</source>
+                <target state="translated">Email</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_supplier.telephone">
+                <source>Telephone</source>
+                <target state="translated">Telefon</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_data">
+                <source>Data</source>
+                <target state="translated">Daten</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_data.file">
+                <source>Excel</source>
+                <target state="translated">Excel</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_data.supplier">
+                <source>Supplier</source>
+                <target state="translated">Lieferant</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_data.datetime_registered">
+                <source>Registered date time</source>
+                <target state="translated">Registrier-Datum</target>
+            </trans-unit> 
+            <trans-unit id="tx_cartproductreader_domain_model_data.registered">
+                <source>Registered</source>
+                <target state="translated">Registriert</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_data.images_assigned">
+                <source>Images assigned</source>
+                <target state="translated">Bilder zugeordnet</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_controlling">
+                <source>Controlling</source>
+                <target state="translated">Steuerung</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_readexcel">
+                <source>Read Excel</source>
+                <target state="translated">Lese Excel</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_measure">
+                <source>Measure</source>
+                <target state="translated">Maße</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_packagingUnit">
+                <source>Packaging Unit</source>
+                <target state="translated">Verpackungseinheit</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_colour">
+                <source>Colour</source>
+                <target state="translated">Farbe</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_ean">
+                <source>EAN</source>
+                <target state="translated">EAN</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_size">
+                <source>Size</source>
+                <target state="translated">Größe</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_weight">
+                <source>Weight</source>
+                <target state="translated">Gewicht</target>
+            </trans-unit>  
+            <trans-unit id="tx_cartproductreader_bestBeforeDate">
+                <source>Best before date</source>
+                <target state="translated">Mindesthaltbarkeitsdatum</target>
+            </trans-unit>  
+            <trans-unit id="tx_cartproductreader_deliveryTime">
+                <source>Delivery Time</source>
+                <target state="translated">Lieferzeit</target>
+            </trans-unit>    
+            <trans-unit id="tx_cartproductreader_no">
+                <source>No</source>
+                <target state="translated">Nein</target>
+            </trans-unit> 
+            <trans-unit id="tx_cartproductreader_yes">
+                <source>Yes</source>
+                <target state="translated">Ja</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_upload">
+                <source>Upload</source>
+                <target state="translated">Hochladen</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_suppliers">
+                <source>Suppliers</source>
+                <target state="translated">Lieferanten</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_newsupplier">
+                <source>Create new supplier</source>
+                <target state="translated">Erstelle neuen Lieferanten</target>
+            </trans-unit> 
+            <trans-unit id="tx_cartproductreader_back">
+                <source>Back</source>
+                <target state="translated">Zurück</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_close">
+                <source>Close</source>
+                <target state="translated">Schließen</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_edit">
+                <source>Edit</source>
+                <target state="translated">Bearbeiten</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_delete">
+                <source>Delete</source>
+                <target state="translated">Löschen</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_insertExcel">
+                <source>Insert the Excel-File Data (without pictures)</source>
+                <target state="translated">Überträgt die Excel Daten (ohne Bilder)</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_assignImages">
+                <source>Link images</source>
+                <target state="translated">Bilder zuordnen</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_assignImagesDesc">
+                <source>Link the images to the supplier products</source>
+                <target state="translated">Ordnet die Bilder den Lieferanten Produkten zu</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_prozess1">
+                <source>1. Upload the Excel file (list) of an supplier. The registered status is on "No". Then click on "Edit" to go to the single view.</source>
+                <target state="translated">1. Excel-Datei vom Lieferanten hochladen. Der Registrier-Status zeigt nach dem Upload "Nein" an. Klicke nun auf "Bearbeiten" um zur Einzelansicht zu gelangen.</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_prozess2">
+                <source>2. Insert the Excel data into database by clicking on "Insert". The registered state just show "Yes".</source>
+                <target state="translated">2. Durch Klicken von "Eintragen" werden die Excel-Daten in die Datenbank übertragen. Der Registrier-Status zeigt dann "Ja" an.</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_prozess3">
+                <source>3. Upload the pictures of the supplier to "fileadmin/user_upload/suppliers/suppliername" under "Filelist".</source>
+                <target state="translated">3. Die Bilder vom Lieferanten in "fileadmin/user_upload/Lieferanten/Lieferantenname" unter "Dateiliste" hochladen.</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_prozess4">
+                <source>4. Go to the Cartproductreader again. Click to the "Edit" to go to the single view. Click to "Link images". The images are now assigned to the products.</source>
+                <target state="translated">4. Gehe zurück zum Cartproductreader Programm. Klicke auf "Bearbeiten" um wieder zur Einzelansicht zu gelangen. Klicke nun auf "Bilder zuordnen". Die Bilder sind nun den Produkten zugeordnet.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

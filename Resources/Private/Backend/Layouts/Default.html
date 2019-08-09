@@ -1,0 +1,70 @@
+<html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+	<f:be.container pageTitle="Cart Product Reader" 
+                        includeCssFiles="{0: '{f:uri.resource(path:\'Css/style.css\')}'}">
+		<div class="typo3-fullDoc">
+			<div id="typo3-docheader">
+				<div class="typo3-docheader-functions">
+					<div class="left">
+						<f:be.buttons.csh />
+						<f:be.menus.actionMenu>
+							<f:be.menus.actionMenuItem label="{f:translate(key='tx_cartproductreader_domain_model_data')} {f:translate(key='tx_cartproductreader_controlling')}" controller="" action="excel" />
+							<f:be.menus.actionMenuItem label="{f:translate(key='tx_cartproductreader_newsupplier')}" action="new" controller="Supplier" />
+						</f:be.menus.actionMenu>
+					</div>
+					<div class="right">
+						<f:be.pagePath />
+						<f:be.pageInfo />
+					</div>
+				</div>
+				<div class="typo3-docheader-buttons">
+					<div class="left">
+                                            
+					</div>
+					<div class="right">
+						<f:be.buttons.shortcut />
+					</div>
+				</div>
+
+			</div>
+			<div id="typo3-docbody">
+				<div id="typo3-inner-docbody">
+					<f:flashMessages />
+                                        <a class="btn btn-info" onclick="showInfo()" style="float:right">Info</a>
+                                        <div id="infobox" style="display: none;position: absolute;right: 70px;width: 300px;border: 1px solid;padding: 10px;background-color:#ffffff;z-index:99">
+                                            <p><f:translate key="tx_cartproductreader_prozess1" /></p>
+                                            <p><f:translate key="tx_cartproductreader_prozess2" /></p>
+                                            <p><f:translate key="tx_cartproductreader_prozess3" /></p>
+                                            <p><f:translate key="tx_cartproductreader_prozess4" /></p>
+                                            <a onclick="closeInfo()" class="btn btn-sm btn-danger"><f:translate key="tx_cartproductreader_close" /></a>
+                                        </div>
+					<f:render section="content" />
+				</div>
+			</div>
+		</div>
+            <script>
+                /**
+                 * Show/Hide the information box
+                 * 
+                 * @returns {undefined}
+                 */
+                function showInfo() {
+                    var infobox = document.getElementById('infobox');
+                    if(infobox.style.display == "none") {
+                        infobox.style.display = "";
+                    } else {
+                        infobox.style.display = "none";
+                    }
+                }
+                
+                /**
+                 * Hide the information box
+                 * 
+                 * @returns {undefined}
+                 */
+                function closeInfo() {
+                    var infobox = document.getElementById('infobox');
+                    infobox.style.display = "none";
+                }
+            </script>
+	</f:be.container>
+</html>

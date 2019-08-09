@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<xliff version="1.0">
+	<file source-language="en" datatype="plaintext" original="messages" date="2019-08-01T13:03:26Z" product-name="cartproductreader">
+		<header/>
+		<body>
+			<trans-unit id="tx_cartproductreader_domain_model_product">
+				<source>Product</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproductreader_domain_model_supplier">
+				<source>Supplier</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproductreader_domain_model_supplier.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproductreader_domain_model_supplier.street">
+				<source>Street</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproductreader_domain_model_supplier.zipcode">
+				<source>Zipcode</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproductreader_domain_model_supplier.place">
+				<source>Place</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproductreader_domain_model_supplier.country">
+				<source>Country</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproductreader_domain_model_supplier.email">
+				<source>Email</source>
+			</trans-unit>
+			<trans-unit id="tx_cartproductreader_domain_model_supplier.telephone">
+				<source>Telephone</source>
+			</trans-unit>
+                        <trans-unit id="tx_cartproductreader_domain_model_data">
+				<source>Data</source>
+			</trans-unit>
+                        <trans-unit id="tx_cartproductreader_domain_model_data.file">
+				<source>Excel</source>
+			</trans-unit>
+                        <trans-unit id="tx_cartproductreader_domain_model_data.supplier">
+				<source>Supplier</source>
+			</trans-unit>
+                        <trans-unit id="tx_cartproductreader_domain_model_data.registered">
+				<source>Registered</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>
