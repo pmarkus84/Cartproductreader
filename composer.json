@@ -1,28 +1,36 @@
 {
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://composer.typo3.org/"
+        }
+    ],
     "name": "pmwebdesign/cartproductreader",
     "type": "typo3-cms-extension",
-    "description": "Reads Excel file for inserting and updating products in cart_product.",
+    "description": "Extend the cart product extension with upload data in Excel file.",
+    "version": "1.0.0",
+    "keywords": [
+        "TYPO3",
+        "extension"
+    ],
+    "homepage": "https://www.pm-webdesign.eu",
     "authors": [
         {
             "name": "Markus Puffer",
-            "role": "Developer"
+            "role": "Developer",
+            "homepage": "https://www.pm-webdesign.eu"
         }
     ],
+    "license": [
+        "GPL-3.0+"
+    ],
     "require": {
-        "typo3/cms-core": "^8.7.1"
+        "typo3/cms-core": ">=8.7.0,<=9.5.99",
+        "typo3-ter/cart_products": ">=6.0.0,<=6.0.99"
     },
     "autoload": {
         "psr-4": {
             "Pmwebdesign\\Cartproductreader\\": "Classes"
         }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Pmwebdesign\\Cartproductreader\\Tests\\": "Tests"
-        }
-    },
-    "replace": {
-        "cartproductreader": "self.version",
-        "typo3-ter/cartproductreader": "self.version"
     }
 }
