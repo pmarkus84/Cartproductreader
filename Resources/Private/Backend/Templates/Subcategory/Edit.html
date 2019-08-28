@@ -1,0 +1,19 @@
+<html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+  <f:layout name="Default" />
+  <f:section name="content">
+    <h1><f:translate key="tx_cartproductreader_domain_model_subcategory" /> ({category.name}) <f:translate key="tx_cartproductreader_edit" /></h1>
+
+    <f:flashMessages />
+
+    <f:render partial="FormErrors" />
+
+    <f:form action="update" name="subcategory" object="{subcategory}" arguments="{subcategory:subcategory,category:category}" >
+        <f:render partial="Subcategory/FormFields" arguments="{subcategory:subcategory,category:category}" /><br />
+        <div class="btn-group">
+            <f:link.action action="edit" controller="Category" arguments="{category:category}" class="btn btn-default"><f:translate key="tx_cartproductreader_back" /></f:link.action>
+            <f:link.action action="new" controller="Subcategory" arguments="{category:category}" class="btn btn-default"><f:translate key="tx_cartproductreader_newsubcategory" /></f:link.action>
+            <f:form.submit class="btn btn-success" value="{f:translate(key:'tx_cartproductreader_save')}" />
+        </div>
+    </f:form>
+  </f:section>
+</html>

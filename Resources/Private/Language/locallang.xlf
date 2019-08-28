@@ -60,6 +60,21 @@
             <trans-unit id="tx_cartproductreader_domain_model_data.images_assigned">
                 <source>Images assigned</source>
             </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_category">
+                <source>Category</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_category.name">
+                <source>Name</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_category.folder_id">
+                <source>Folder Id</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_category.subcategories">
+                <source>Subcategories</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_subcategory">
+                <source>Subcategory</source>
+            </trans-unit>
             <trans-unit id="tx_cartproductreader_controlling">
                 <source>Controlling</source>
             </trans-unit>
@@ -105,6 +120,15 @@
             <trans-unit id="tx_cartproductreader_newsupplier">
                 <source>Create new supplier</source>
             </trans-unit>  
+            <trans-unit id="tx_cartproductreader_categories">
+                <source>Categories</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_newcategory">
+                <source>Create new category</source>
+            </trans-unit>  
+            <trans-unit id="tx_cartproductreader_newsubcategory">
+                <source>Create new subcategory</source>
+            </trans-unit>  
             <trans-unit id="tx_cartproductreader_back">
                 <source>Back</source>
             </trans-unit>  
@@ -116,6 +140,9 @@
             </trans-unit>
             <trans-unit id="tx_cartproductreader_delete">
                 <source>Delete</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_save">
+                <source>Save</source>
             </trans-unit>
             <trans-unit id="tx_cartproductreader_insertExcel">
                 <source>Insert the Excel-File Data (without pictures)</source>
@@ -137,6 +164,9 @@
             </trans-unit>
             <trans-unit id="tx_cartproductreader_prozess4">
                 <source>4. Go to the Cartproductreader again. Click to the "Edit" to go to the single view. Click to "Link images". The images are now assigned to the products.</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_list">
+                <source>List</source>
             </trans-unit>
         </body>
     </file>

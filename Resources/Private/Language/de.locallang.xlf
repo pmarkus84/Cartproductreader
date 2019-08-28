@@ -79,6 +79,26 @@
                 <source>Images assigned</source>
                 <target state="translated">Bilder zugeordnet</target>
             </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_category">
+                <source>Category</source>
+                <target state="translated">Kategorie</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_category.name">
+                <source>Name</source>
+                <target state="translated">Name</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_category.folder_id">
+                <source>Folder Id</source>
+                <target state="translated">Ordner ID</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_category.subcategories">
+                <source>Subcategories</source>
+                <target state="translated">Unterkategorien</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_subcategory">
+                <source>Subcategory</source>
+                <target state="translated">Unterkategorie</target>
+            </trans-unit>
             <trans-unit id="tx_cartproductreader_controlling">
                 <source>Controlling</source>
                 <target state="translated">Steuerung</target>
@@ -139,6 +159,18 @@
                 <source>Create new supplier</source>
                 <target state="translated">Erstelle neuen Lieferanten</target>
             </trans-unit> 
+            <trans-unit id="tx_cartproductreader_categories">
+                <source>Categories</source>
+                <target state="translated">Kategorien</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_newcategory">
+                <source>Create new category</source>
+                <target state="translated">Erstelle neue Kategorie</target>
+            </trans-unit>  
+            <trans-unit id="tx_cartproductreader_newsubcategory">
+                <source>Create new subcategory</source>
+                <target state="translated">Erstelle neue Unterkategorie</target>
+            </trans-unit>  
             <trans-unit id="tx_cartproductreader_back">
                 <source>Back</source>
                 <target state="translated">Zurück</target>
@@ -154,6 +186,10 @@
             <trans-unit id="tx_cartproductreader_delete">
                 <source>Delete</source>
                 <target state="translated">Löschen</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_save">
+                <source>Save</source>
+                <target state="translated">Speichern</target>
             </trans-unit>
             <trans-unit id="tx_cartproductreader_insertExcel">
                 <source>Insert the Excel-File Data (without pictures)</source>
@@ -182,6 +218,10 @@
             <trans-unit id="tx_cartproductreader_prozess4">
                 <source>4. Go to the Cartproductreader again. Click to the "Edit" to go to the single view. Click to "Link images". The images are now assigned to the products.</source>
                 <target state="translated">4. Gehe zurück zum Cartproductreader Programm. Klicke auf "Bearbeiten" um wieder zur Einzelansicht zu gelangen. Klicke nun auf "Bilder zuordnen". Die Bilder sind nun den Produkten zugeordnet.</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_list">
+                <source>List</source>
+                <target state="translated">Liste</target>
             </trans-unit>
         </body>
     </file>

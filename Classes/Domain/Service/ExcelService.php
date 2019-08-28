@@ -102,6 +102,12 @@ class ExcelService
         if($beforeProducts == null) {
             $beforeProducts = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         }
+        
+        // Get category repository
+        $categoryRepository = $objectManager->get(\Pmwebdesign\Cartproductreader\Domain\Repository\CategoryRepository::class);
+        
+        // Get subcategory repository
+        $subcategoryRepository = $objectManager->get(\Pmwebdesign\Cartproductreader\Domain\Repository\SubcategoryRepository::class);
 
         $excelProducts = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 
@@ -168,14 +174,23 @@ class ExcelService
             // Images
             $product->setImagepaths($worksheet->getCellByColumnAndRow( ++$col, $row)->getValue());
 
-//            // Main category
-//            $value = $worksheet->getCellByColumnAndRow(++$col, $row)->getValue();
-//            // Category
-//            $value = $worksheet->getCellByColumnAndRow(++$col, $row)->getValue();
-//            // Subcategory
-//            $value = $worksheet->getCellByColumnAndRow(++$col, $row)->getValue();
-            // TODO: PID
-            $product->setPid(78);
+            // Main Category
+            // Not needed 
+            $col++;
+            
+            // Category
+            $categoryString = $worksheet->getCellByColumnAndRow(++$col, $row)->getValue();
+            $category = $categoryRepository->findOneByName($categoryString);
+            
+            // Subcategory
+            $subcategoryString = $worksheet->getCellByColumnAndRow(++$col, $row)->getValue();
+            /* @var $subcategory \Pmwebdesign\Cartproductreader\Domain\Model\Subcategory */
+            $subcategory = $subcategoryRepository->findOneByName($subcategoryString);
+        
+            // PID
+            $product->setPid($subcategory->getFolderId());
+            $product->setCategory($category);
+            $product->setSubcategory($subcategory);
             $excelProducts->attach($product);
         }
 

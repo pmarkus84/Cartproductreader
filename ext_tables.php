@@ -29,12 +29,14 @@ call_user_func(
                 [
                     'Data' => 'excel, readExcel, uploadExcel, deleteExcel, insertExcelData, setFalPictures',
                     'Supplier' => 'list, show, new, create, edit, update, delete',
+                    'Category' => 'list, show, new, create, edit, update, delete',
+                    'Subcategory' => 'list, show, new, create, edit, update, delete'
                 ],
                 [
                     'access' => 'user,group',
                     'icon'   => 'EXT:cartproductreader/Resources/Public/Icons/module-cartproductreader.gif',
                     'labels' => 'LLL:EXT:cartproductreader/Resources/Private/Language/locallang_cartproductreader.xlf',
-                    //'navigationComponentId' => 'typo3-pagetree',
+                    'navigationComponentId' => 'typo3-pagetree',
                 ]
             );
 

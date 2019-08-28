@@ -1,5 +1,11 @@
 # Cart Product Reader Change Log
 
+## 
+
+Supports Typo3 8.7.0 - 9.5.99
+
+- [FEATURE] Add categories and subcategories for products.
+
 ## 1.0.1
 
 Supports Typo3 8.7.0 - 9.5.99

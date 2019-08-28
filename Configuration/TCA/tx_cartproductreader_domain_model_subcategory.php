@@ -2,7 +2,7 @@
 
 return [
     'ctrl' => [
-        'title' => 'LLL:EXT:cartproductreader/Resources/Private/Language/locallang_db.xlf:tx_cartproductreader_domain_model_supplier',
+        'title' => 'LLL:EXT:cartproductreader/Resources/Private/Language/locallang_db.xlf:tx_cartproductreader_domain_model_subcategory',
         'label' => 'name',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
@@ -17,14 +17,14 @@ return [
             'starttime' => 'starttime',
             'endtime' => 'endtime',
         ],
-        'searchFields' => 'name,street,zipcode,place,country,email,telephone,products',
-        'iconfile' => 'EXT:cartproductreader/Resources/Public/Icons/tx_cartproductreader_domain_model_supplier.ico'
+        'searchFields' => 'name',
+        'iconfile' => 'EXT:cartproductreader/Resources/Public/Icons/tx_cartproductreader_domain_model_category.ico'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, street, zipcode, place, country, email, telephone, products',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, folder_id',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, street, zipcode, place, country, email, telephone, products, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, name, folder_id, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -55,8 +55,8 @@ return [
                 'items' => [
                     ['', 0],
                 ],
-                'foreign_table' => 'tx_cartproductreader_domain_model_supplier',
-                'foreign_table_where' => 'AND tx_cartproductreader_domain_model_supplier.pid=###CURRENT_PID### AND tx_cartproductreader_domain_model_supplier.sys_language_uid IN (-1,0)',
+                'foreign_table' => 'tx_cartproductreader_domain_model_subcategory',
+                'foreign_table_where' => 'AND tx_cartproductreader_domain_model_subcategory.pid=###CURRENT_PID### AND tx_cartproductreader_domain_model_subcategory.sys_language_uid IN (-1,0)',
             ],
         ],
         'l10n_diffsource' => [
@@ -117,61 +117,7 @@ return [
         ],
         'name' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:cartproductreader/Resources/Private/Language/locallang_db.xlf:tx_cartproductreader_domain_model_supplier.name',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim'
-            ],
-        ],
-        'street' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:cartproductreader/Resources/Private/Language/locallang_db.xlf:tx_cartproductreader_domain_model_supplier.street',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim'
-            ],
-        ],
-        'zipcode' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:cartproductreader/Resources/Private/Language/locallang_db.xlf:tx_cartproductreader_domain_model_supplier.zipcode',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim'
-            ],
-        ],
-        'place' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:cartproductreader/Resources/Private/Language/locallang_db.xlf:tx_cartproductreader_domain_model_supplier.place',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim'
-            ],
-        ],
-        'country' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:cartproductreader/Resources/Private/Language/locallang_db.xlf:tx_cartproductreader_domain_model_supplier.country',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'trim'
-            ],
-        ],
-        'email' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:cartproductreader/Resources/Private/Language/locallang_db.xlf:tx_cartproductreader_domain_model_supplier.email',
-            'config' => [
-                'type' => 'input',
-                'size' => 30,
-                'eval' => 'nospace,email'
-            ]
-        ],
-        'telephone' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:cartproductreader/Resources/Private/Language/locallang_db.xlf:tx_cartproductreader_domain_model_supplier.telephone',
+            'label' => 'LLL:EXT:cartproductreader/Resources/Private/Language/locallang_db.xlf:tx_cartproductreader_domain_model_category.name',
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -183,7 +129,16 @@ return [
             'config' => [
                 'type' => 'inline',
                 'foreign_table' => 'tx_cartproducts_domain_model_product_product',
-                'foreign_field' => 'supplier'                
+                'foreign_field' => 'subcategory'                
+            ],
+        ],
+        'folder_id' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:cartproductreader/Resources/Private/Language/locallang_db.xlf:tx_cartproductreader_domain_model_category.folder_id',
+            'config' => [
+                'type' => 'input',
+                'size' => 10,
+                'eval' => 'trim'
             ],
         ],
     ],

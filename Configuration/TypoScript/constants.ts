@@ -10,6 +10,6 @@ module.tx_cartproductreader_cartproductreader {
     }
     persistence {
         # cat=module.tx_cartproductreader_cartproductreader//a; type=string; label=Default storage PID
-        storagePid = 76 
+        storagePid =  
     }
 }

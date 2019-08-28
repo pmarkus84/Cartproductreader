@@ -1,39 +1,38 @@
 <html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
     
-<f:layout name="Default" />
-<f:section name="content">
-<h1>Listing for Supplier</h1>
+    <f:layout name="Default" />
+    <f:section name="content">
+        <h1><f:translate key="tx_cartproductreader_suppliers" /> <f:translate key="tx_cartproductreader_list" /></h1>
 
-<f:flashMessages />
+        <f:flashMessages />
 
-<table  class="tx_cartproductreader" >
-	<tr>
-		<th><f:translate key="tx_cartproductreader_domain_model_supplier.name" /></th>
-		<th><f:translate key="tx_cartproductreader_domain_model_supplier.street" /></th>
-		<th><f:translate key="tx_cartproductreader_domain_model_supplier.zipcode" /></th>
-		<th><f:translate key="tx_cartproductreader_domain_model_supplier.place" /></th>
-		<th><f:translate key="tx_cartproductreader_domain_model_supplier.country" /></th>
-		<th><f:translate key="tx_cartproductreader_domain_model_supplier.email" /></th>
-		<th><f:translate key="tx_cartproductreader_domain_model_supplier.telephone" /></th>
-		<th> </th>
-		<th> </th>
-	</tr>
-
-	<f:for each="{suppliers}" as="supplier">
-		<tr>
-			<td><f:link.action action="show" arguments="{supplier : supplier}"> {supplier.name}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{supplier : supplier}"> {supplier.street}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{supplier : supplier}"> {supplier.zipcode}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{supplier : supplier}"> {supplier.place}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{supplier : supplier}"> {supplier.country}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{supplier : supplier}"> {supplier.email}</f:link.action></td>
-			<td><f:link.action action="show" arguments="{supplier : supplier}"> {supplier.telephone}</f:link.action></td>
-			<td><f:link.action action="edit" arguments="{supplier : supplier}">Edit</f:link.action></td>
-			<td><f:link.action action="delete" arguments="{supplier : supplier}">Delete</f:link.action></td>
-		</tr>
-		</f:for>
-</table>
-
-<f:link.action action="new">New Supplier</f:link.action>
-	</f:section>
+        <table  class="tablelist" >
+            <tr>
+                <th><f:translate key="tx_cartproductreader_domain_model_supplier.name" /></th>
+                <th><f:translate key="tx_cartproductreader_domain_model_supplier.street" /></th>
+                <th><f:translate key="tx_cartproductreader_domain_model_supplier.zipcode" /></th>
+                <th><f:translate key="tx_cartproductreader_domain_model_supplier.place" /></th>
+                <th><f:translate key="tx_cartproductreader_domain_model_supplier.country" /></th>
+                <th><f:translate key="tx_cartproductreader_domain_model_supplier.email" /></th>
+                <th><f:translate key="tx_cartproductreader_domain_model_supplier.telephone" /></th>		
+                <th></th>
+            </tr>
+            <f:for each="{suppliers}" as="supplier">
+                <tr>
+                    <td><f:link.action action="show" arguments="{supplier : supplier}"> {supplier.name}</f:link.action></td>
+                    <td><f:link.action action="show" arguments="{supplier : supplier}"> {supplier.street}</f:link.action></td>
+                    <td><f:link.action action="show" arguments="{supplier : supplier}"> {supplier.zipcode}</f:link.action></td>
+                    <td><f:link.action action="show" arguments="{supplier : supplier}"> {supplier.place}</f:link.action></td>
+                    <td><f:link.action action="show" arguments="{supplier : supplier}"> {supplier.country}</f:link.action></td>
+                    <td><f:link.action action="show" arguments="{supplier : supplier}"> {supplier.email}</f:link.action></td>
+                    <td><f:link.action action="show" arguments="{supplier : supplier}"> {supplier.telephone}</f:link.action></td>
+                    <td class="btn-group">
+                        <f:link.action class="btn btn-sm btn-default" action="edit" arguments="{supplier : supplier}"><f:translate key="tx_cartproductreader_edit" /></f:link.action>
+                        <f:link.action class="btn btn-sm btn-danger" action="delete" arguments="{supplier : supplier}"><f:translate key="tx_cartproductreader_delete" /></f:link.action>
+                    </td>
+                </tr>
+            </f:for>
+        </table><br />
+        <f:link.action class="btn btn-default" action="new"><f:translate key="tx_cartproductreader_newsupplier" /></f:link.action>
+    </f:section>
 </html>

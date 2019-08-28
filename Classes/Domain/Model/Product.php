@@ -57,7 +57,20 @@ class Product extends \Extcode\CartProducts\Domain\Model\Product\Product
      * @var string
      */
     protected $imagepaths = "";
-
+    
+    /**
+     * Category
+     *
+     * @var \Pmwebdesign\Cartproductreader\Domain\Model\Category
+     */
+    protected $category = NULL;
+    
+    /**
+     * Subcategory
+     *
+     * @var \Pmwebdesign\Cartproductreader\Domain\Model\Subcategory
+     */
+    protected $subcategory = NULL;
 
     /**
      * Return prize RRP
@@ -159,5 +172,45 @@ class Product extends \Extcode\CartProducts\Domain\Model\Product\Product
      */
     public function deleteImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $image) {
         $this->images->detach($image);
+    }
+    
+    /**
+     * Get the category
+     * 
+     * @return \Pmwebdesign\Cartproductreader\Domain\Model\Category
+     */
+    public function getCategory()
+    {
+        return $this->category;
+    }
+
+    /**
+     * Set the category
+     * 
+     * @param \Pmwebdesign\Cartproductreader\Domain\Model\Category $category
+     */
+    public function setCategory(\Pmwebdesign\Cartproductreader\Domain\Model\Category $category)
+    {
+        $this->category = $category;
+    }
+    
+    /**
+     * Get the subcategory
+     * 
+     * @return \Pmwebdesign\Cartproductreader\Domain\Model\Subcategory
+     */
+    public function getSubcategory()
+    {
+        return $this->subcategory;
+    }
+
+    /**
+     * Set the subcategory
+     * 
+     * @param \Pmwebdesign\Cartproductreader\Domain\Model\Subcategory $subcategory
+     */
+    public function setSubcategory(\Pmwebdesign\Cartproductreader\Domain\Model\Subcategory $subcategory)
+    {
+        $this->subcategory = $subcategory;
     }
 }
