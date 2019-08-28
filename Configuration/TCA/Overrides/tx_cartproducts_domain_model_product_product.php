@@ -87,7 +87,7 @@ $fields = [
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
         'tx_cartproducts_domain_model_product_product', // Table name
         //'--div--;LLL:EXT:cartproductreader/Resources/Private/Language/de.locallang.xlf:tx_cartproductreader_domain_model_supplier,supplier, prize_rrp, prize_purchase_net_gp, prize_brut_gp, category, subcategory;;;;1-1-1'
-        '--div--;Eigenes;;;1-1-1,--palette--;LLL:EXT:cartproductreader/Resources/Private/Language/de.locallang.xlf:tx_cartproductreader_domain_model_supplier;tx_addSupplierfields',
+        '--div--;Eigenes;;;1-1-1,--palette--;LLL:EXT:cartproductreader/Resources/Private/Language/locallang.xlf:tx_cartproductreader_domain_model_supplier;tx_addSupplierfields',
         '1', // List of specific types to add the field list to (If empty, all entries are affected)
         'after:nav_title' // Insert fields before (default) or after one, or replace a field
 );
@@ -105,7 +105,7 @@ $fields = [
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
         'tx_cartproducts_domain_model_product_product', // Table name
         //'--div--;LLL:EXT:cartproductreader/Resources/Private/Language/de.locallang.xlf:tx_cartproductreader_domain_model_supplier,supplier, prize_rrp, prize_purchase_net_gp, prize_brut_gp, category, subcategory;;;;1-1-1'
-        '--palette--;LLL:EXT:cartproductreader/Resources/Private/Language/de.locallang.xlf:tx_cartproductreader_domain_model_category;tx_addCategoryfields',
+        '--palette--;LLL:EXT:cartproductreader/Resources/Private/Language/locallang.xlf:tx_cartproductreader_domain_model_category;tx_addCategoryfields',
         '1', // List of specific types to add the field list to (If empty, all entries are affected)
         'after:nav_title' // Insert fields before (default) or after one, or replace a field
 );
