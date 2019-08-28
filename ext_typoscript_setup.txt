@@ -24,6 +24,13 @@ config.tx_extbase {
                     #recordType = Tx_Cartproductreader_Product
                 }
             }
+            Extcode\CartProducts\Domain\Model\Category {
+                mapping {
+                    tableName = tx_cartproductreader_domain_model_category
+                    recordType >
+                    #recordType = Tx_Cartproductreader_Product
+                }
+            }
     	}
         objects {
                 TYPO3\CMS\Extbase\Domain\Model\FileReference.className = Vendor\Ext\Domain\Model\FileReference

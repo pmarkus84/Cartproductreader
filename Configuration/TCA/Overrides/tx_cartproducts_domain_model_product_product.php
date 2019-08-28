@@ -117,7 +117,7 @@ $GLOBALS['TCA']['tx_cartproducts_domain_model_product_product']['palettes']['tx_
 
 // Add the new palette:
 $GLOBALS['TCA']['tx_cartproducts_domain_model_product_product']['palettes']['tx_addPricefields'] = [
-  'showitem' => 'prize_rrp, prize_purchase_net_gp, prize_brut_gp'
+  'showitem' => 'prize_rrp, prize_purchase_net_gp, price'
 ];
 
 // Add the new palette:

@@ -158,7 +158,7 @@ class ExcelService
             $product->setPrizePurchaseNetGp($worksheet->getCellByColumnAndRow( ++$col, $row)->getValue());
             // GastPlus Price gross
             $prizeBrutGp = $worksheet->getCellByColumnAndRow(++$col, $row)->getValue();
-            $product->setPrizeBrutGp($prizeBrutGp);
+//            $product->setPrizeBrutGp($prizeBrutGp);
             $product->setPrice($prizeBrutGp);
             // Best before date              
             $unixDate = $worksheet->getCellByColumnAndRow( ++$col, $row)->getValue();
