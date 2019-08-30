@@ -50,6 +50,8 @@ class Category extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * Subcategories
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Pmwebdesign\Cartproductreader\Domain\Model\Subcategory> $subcategories
+     * @lazy
+     * @cascade remove
      */
     protected $subcategories = NULL;
 

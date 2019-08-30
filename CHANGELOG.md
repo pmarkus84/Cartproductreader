@@ -1,9 +1,10 @@
 # Cart Product Reader Change Log
 
-## 
+## 1.1.0
 
 Supports Typo3 8.7.0 - 9.5.99
 
+- [UPDATE] Update headers in files.
 - [BUGFIX] Fix language files.
 - [BUGFIX] Fix category mapping from extension cart_products.
 - [FEATURE] Add categories and subcategories for products.

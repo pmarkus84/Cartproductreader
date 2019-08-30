@@ -84,13 +84,13 @@ class ExcelService
         }
 
         // Create FAL Images Folders
-        $pathsuppliers = $_SERVER['DOCUMENT_ROOT'] . "/fileadmin/user_upload/" . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_suppliers', 'Cartproductreader') . "/";
+        $pathsuppliers = $_SERVER['DOCUMENT_ROOT'] . "/fileadmin/user_upload/" . strtolower(\TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_suppliers', 'Cartproductreader')) . "/";
         if (is_dir($pathsuppliers)) {
             // Folder exist
         } else {
             mkdir($pathsuppliers);
         }
-        $pathsupplier = $pathsuppliers . $supplier->getName();
+        $pathsupplier = $pathsuppliers . strtolower($supplier->getName());
         if (is_dir($pathsupplier)) {
             // Folder exist
         } else {
@@ -172,7 +172,7 @@ class ExcelService
                 $product->setDescription($product->getDescription() . "<br /><br /><b>" . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_deliveryTime', 'Cartproductreader') . ":</b><br />" . $deliveryTime);
             }
             // Images
-            $product->setImagepaths($worksheet->getCellByColumnAndRow( ++$col, $row)->getValue());
+            $product->setImagepaths(strtolower($worksheet->getCellByColumnAndRow( ++$col, $row)->getValue()));
 
             // Main Category
             // Not needed 

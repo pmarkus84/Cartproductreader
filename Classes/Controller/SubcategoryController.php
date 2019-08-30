@@ -126,13 +126,15 @@ class SubcategoryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
     /**
      * action delete
      * 
+     * @param \Pmwebdesign\Cartproductreader\Domain\Model\Subcategory $subcategory
      * @param \Pmwebdesign\Cartproductreader\Domain\Model\Category $category
      * @return void
      */
-    public function deleteAction(\Pmwebdesign\Cartproductreader\Domain\Model\Category $category)
+    public function deleteAction(\Pmwebdesign\Cartproductreader\Domain\Model\Subcategory $subcategory, \Pmwebdesign\Cartproductreader\Domain\Model\Category $category)
     {
         $this->addFlashMessage('The object was deleted. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/typo3cms/extensions/extension_builder/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
-        $this->categoryRepository->remove($category);
-        $this->redirect('list');
+        $category->getSubcategories()->detach($subcategory);
+        $this->categoryRepository->update($category);
+        $this->redirect('edit', 'Category', null, ['category' => $category]);
     }
 }

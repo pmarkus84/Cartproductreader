@@ -81,6 +81,8 @@ class Supplier extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     /**
      *
      * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Pmwebdesign\Cartproductreader\Domain\Model\Product>
+     * @lazy
+     * @cascade remove
      */
     protected $products = NULL;
     

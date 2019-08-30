@@ -93,6 +93,7 @@ class DataController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      */
     public function deleteExcelAction(\Pmwebdesign\Cartproductreader\Domain\Model\Data $data)
     {
+        $this->addFlashMessage('The data was deleted.', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
         if ($data->getSupplier() != null) {
             $name = $data->getSupplier()->getName();
         } else {
@@ -104,15 +105,16 @@ class DataController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         } else {
             $file = "'No file'";
         }
-        $message = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Messaging\FlashMessage::class,
-        'Excel deleted from "'. $name .' with File '. $file .'"!',
-        'Message Header', // optional the header
-        \TYPO3\CMS\Core\Messaging\FlashMessage::WARNING, // [optional] the severity defaults to \TYPO3\CMS\Core\Messaging\FlashMessage::OK
-        true // [optional] whether the message should be stored in the session or only in the \TYPO3\CMS\Core\Messaging\FlashMessageQueue object (default is false)
-        );
-        $flashMessageService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Messaging\FlashMessageService::class);
-        $messageQueue = $flashMessageService->getMessageQueueByIdentifier();
-        $messageQueue->addMessage($message);
+       
+//        $message = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Messaging\FlashMessage::class,
+//        'Excel deleted from "'. $name .' with File '. $file .'"!',
+//        'Message Header', // optional the header
+//        \TYPO3\CMS\Core\Messaging\FlashMessage::WARNING, // [optional] the severity defaults to \TYPO3\CMS\Core\Messaging\FlashMessage::OK
+//        true // [optional] whether the message should be stored in the session or only in the \TYPO3\CMS\Core\Messaging\FlashMessageQueue object (default is false)
+//        );
+//        $flashMessageService = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(\TYPO3\CMS\Core\Messaging\FlashMessageService::class);
+//        $messageQueue = $flashMessageService->getMessageQueueByIdentifier();
+//        $messageQueue->addMessage($message);
 
         unlink($_SERVER['DOCUMENT_ROOT'] . "/uploads/tx_cartproductreader/" . $data->getFile());
         $this->dataRepository->remove($data);
