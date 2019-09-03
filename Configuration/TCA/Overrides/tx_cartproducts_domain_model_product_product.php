@@ -104,7 +104,7 @@ $fields = [
             'renderType' => 'selectSingle',
             'foreign_table' => 'tx_cartproductreader_domain_model_subcategory',
             'foreign_table_where' => ' AND category=###REC_FIELD_category### ORDER BY name ASC',
-            'minitems' => 1,
+            'minitems' => 0,
             'maxitems' => 1,
         ],
     ],

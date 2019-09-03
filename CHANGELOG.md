@@ -1,5 +1,11 @@
 # Cart Product Reader Change Log
 
+## 1.2.0
+
+Supports Typo3 8.7.0 - 9.5.99
+
+- [FEATURE] Added variants functionality for products.
+
 ## 1.1.0
 
 Supports Typo3 8.7.0 - 9.5.99

@@ -99,13 +99,13 @@ class ExcelService
 
         // Get products of supplier
         $beforeProducts = $supplier->getProducts();
-        if($beforeProducts == null) {
+        if ($beforeProducts == null) {
             $beforeProducts = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         }
-        
+
         // Get category repository
         $categoryRepository = $objectManager->get(\Pmwebdesign\Cartproductreader\Domain\Repository\CategoryRepository::class);
-        
+
         // Get subcategory repository
         $subcategoryRepository = $objectManager->get(\Pmwebdesign\Cartproductreader\Domain\Repository\SubcategoryRepository::class);
 
@@ -114,84 +114,160 @@ class ExcelService
         // For all Excel data
         for ($row = 2; $row <= $highestRow; ++$row) {
             $col = 2;
+            $feVariant = "none";
 
-            $product = new \Pmwebdesign\Cartproductreader\Domain\Model\Product();
-
-            // Product type
-            $product->setProductType("configurable");
             // Article number
-            $product->setSku($worksheet->getCellByColumnAndRow($col, $row)->getValue());
+            $articleNumber = $worksheet->getCellByColumnAndRow($col, $row)->getValue();
+
             // Product name
-            $product->setTitle($worksheet->getCellByColumnAndRow( ++$col, $row)->getValue());
+            $title = $worksheet->getCellByColumnAndRow(++$col, $row)->getValue();
+
             // Teaser
-            $product->setTeaser("<p>" . $worksheet->getCellByColumnAndRow( ++$col, $row)->getValue() . "</p>");
+            $teaser = "<p>" . $worksheet->getCellByColumnAndRow(++$col, $row)->getValue() . "</p>";
+
             // Description
-            $product->setDescription("<p>" . $worksheet->getCellByColumnAndRow( ++$col, $row)->getValue() . "</p>");
+            $description = "<p>" . $worksheet->getCellByColumnAndRow(++$col, $row)->getValue() . "</p>";
             // Colour
-            $colour = $worksheet->getCellByColumnAndRow( ++$col, $row)->getValue();
-            if ($colour != "") {
-                $product->setDescription($product->getDescription() . "<b>" . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_colour', 'Cartproductreader') . ":</b><br />" . $colour);
-            }
+            $colour = $worksheet->getCellByColumnAndRow(++$col, $row)->getValue();
             // EAN
-            $ean = $worksheet->getCellByColumnAndRow( ++$col, $row)->getValue();
-            if ($ean != "") {
-                $product->setDescription($product->getDescription() . "<br /><br /><b>" . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_ean', 'Cartproductreader') . ":</b><br />" . $ean);
-            }
+            $ean = $worksheet->getCellByColumnAndRow(++$col, $row)->getValue();
             // Size
-            $size = $worksheet->getCellByColumnAndRow( ++$col, $row)->getValue();
-            if ($size != "") {
-                $product->setDescription($product->getDescription() . "<br /><br /><b>" . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_size', 'Cartproductreader') . ":</b><br />" . $size);
-            }
+            $size = $worksheet->getCellByColumnAndRow(++$col, $row)->getValue();
             // Weight
-            $weight = $worksheet->getCellByColumnAndRow( ++$col, $row)->getValue();
-            if ($weight != "") {
-                $product->setDescription($product->getDescription() . "<br /><br /><b>" . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_weight', 'Cartproductreader') . ":</b><br />" . $weight);
-            }
+            $weight = $worksheet->getCellByColumnAndRow(++$col, $row)->getValue();
             // Packaging Unit     
-            $pU = $worksheet->getCellByColumnAndRow( ++$col, $row)->getValue();
-            if ($pU != "") {
-                $product->setDescription($product->getDescription() . "<br /><br /><b>" . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_packagingUnit', 'Cartproductreader') . ":</b><br />" . $pU);
-            }
+            $pU = $worksheet->getCellByColumnAndRow(++$col, $row)->getValue();
             // Supplier Price RRP net
-            $product->setPrizeRrp($worksheet->getCellByColumnAndRow( ++$col, $row)->getValue());
+            $prizeRrp = $worksheet->getCellByColumnAndRow(++$col, $row)->getValue();
             // GastPlus Price purchase
-            $product->setPrizePurchaseNetGp($worksheet->getCellByColumnAndRow( ++$col, $row)->getValue());
-            // GastPlus Price gross
-            $prizeBrutGp = $worksheet->getCellByColumnAndRow(++$col, $row)->getValue();
-//            $product->setPrizeBrutGp($prizeBrutGp);
-            $product->setPrice($prizeBrutGp);
+            $prizePurchaseNetGp = $worksheet->getCellByColumnAndRow(++$col, $row)->getValue();
+            // GastPlus Price gross            
+            $prizeBrutGp = $worksheet->getCellByColumnAndRow( ++$col, $row)->getValue();
+            //            $product->setPrizeBrutGp($prizeBrutGp);
             // Best before date              
-            $unixDate = $worksheet->getCellByColumnAndRow( ++$col, $row)->getValue();
+            $unixDate = $worksheet->getCellByColumnAndRow(++$col, $row)->getValue();
             $bestBeforeDate = \PHPOffice\PhpSpreadsheet\Style\NumberFormat::toFormattedString($unixDate, 'dd.MM.YYYY');
-            if ($bestBeforeDate != "") {
-                $product->setDescription($product->getDescription() . "<br /><br /><b>" . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_bestBeforeDate', 'Cartproductreader') . ":</b><br />" . $bestBeforeDate);
-            }
             // Delivery time
-            $deliveryTime = $worksheet->getCellByColumnAndRow( ++$col, $row)->getValue();
-            if ($deliveryTime != "") {
-                $product->setDescription($product->getDescription() . "<br /><br /><b>" . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_deliveryTime', 'Cartproductreader') . ":</b><br />" . $deliveryTime);
-            }
+            $deliveryTime = $worksheet->getCellByColumnAndRow(++$col, $row)->getValue();
             // Images
-            $product->setImagepaths(strtolower($worksheet->getCellByColumnAndRow( ++$col, $row)->getValue()));
+            $imagepaths = strtolower($worksheet->getCellByColumnAndRow(++$col, $row)->getValue());
 
             // Main Category
             // Not needed 
             $col++;
-            
+
             // Category
-            $categoryString = $worksheet->getCellByColumnAndRow(++$col, $row)->getValue();
+            $categoryString = $worksheet->getCellByColumnAndRow( ++$col, $row)->getValue();
             $category = $categoryRepository->findOneByName($categoryString);
-            
+
             // Subcategory
-            $subcategoryString = $worksheet->getCellByColumnAndRow(++$col, $row)->getValue();
+            $subcategoryString = $worksheet->getCellByColumnAndRow( ++$col, $row)->getValue();
             /* @var $subcategory \Pmwebdesign\Cartproductreader\Domain\Model\Subcategory */
             $subcategory = $subcategoryRepository->findOneByName($subcategoryString);
-        
-            // PID
-            $product->setPid($subcategory->getFolderId());
-            $product->setCategory($category);
-            $product->setSubcategory($subcategory);
-            $excelProducts->attach($product);
+
+            // Previous product name the same?
+            if ($row > 2 && $worksheet->getCellByColumnAndRow(3, $row - 1)->getValue() == $title && $worksheet->getCellByColumnAndRow($col, $row - 1)->getValue() != $colour) {
+                // Yes, create FeVariantProduct
+                $productVariant = new \Pmwebdesign\Cartproductreader\Domain\Model\ProductVariant();
+                $productVariant->setSku($articleNumber);
+                $productVariant->setTitle($colour);
+                $productVariant->setPid($subcategory->getFolderId());
+                // Images
+                $imagepaths = strtolower($worksheet->getCellByColumnAndRow(16, $row)->getValue());
+                if ($imagepaths != "") {
+                    $productVariant->setImagepaths($imagepaths);
+                }
+                $feVariant = "exist";
+
+                // Get Last item of excel array of products and add product variant
+                $sum = $excelProducts->count();
+                $counter = 1;
+                foreach ($excelProducts as $excelProduct) {
+                    if ($sum == $counter) {
+                        /* @var $lastExcelProduct \Pmwebdesign\Cartproductreader\Domain\Model\Product */
+                        $lastExcelProduct = $excelProduct;
+                        $lastExcelProduct->addFeVariant($productVariant);
+                    }
+                    $counter++;
+                }
+            } else {
+                $product = new \Pmwebdesign\Cartproductreader\Domain\Model\Product();
+                // Product type
+                $product->setProductType("configurable");
+                // Article number
+                $product->setSku($articleNumber);
+                // Product name
+                $product->setTitle($title);
+                // Teaser
+                $product->setTeaser($teaser);
+                // Description
+                $product->setDescription($description);
+
+                // Color?
+                if ($colour != "") {
+                    // Create FeVariantProduct
+                    $productVariant = new \Pmwebdesign\Cartproductreader\Domain\Model\ProductVariant();
+
+                    // Yes, set FeVariantProduct    
+                    $productVariant->setSku($articleNumber);
+                    $productVariant->setTitle($colour);
+                    $feVariant = "new";
+                }
+                
+                // EAN
+                if ($ean != "") {
+                    $product->setDescription($product->getDescription() . "<br /><br /><b>" . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_ean', 'Cartproductreader') . ":</b><br />" . $ean);
+                }
+                // Size
+                if ($size != "") {
+                    $product->setDescription($product->getDescription() . "<br /><br /><b>" . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_size', 'Cartproductreader') . ":</b><br />" . $size);
+                }
+                // Weight
+                if ($weight != "") {
+                    $product->setDescription($product->getDescription() . "<br /><br /><b>" . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_weight', 'Cartproductreader') . ":</b><br />" . $weight);
+                }
+                // Packaging Unit     
+                if ($pU != "") {
+                    $product->setDescription($product->getDescription() . "<br /><br /><b>" . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_packagingUnit', 'Cartproductreader') . ":</b><br />" . $pU);
+                }
+                // Supplier Price RRP net
+                $product->setPrizeRrp($prizeRrp);
+                // GastPlus Price purchase
+                $product->setPrizePurchaseNetGp($prizePurchaseNetGp);
+                // GastPlus Price gross            
+                $product->setPrice($prizeBrutGp);
+                // Best before date
+                if ($bestBeforeDate != "") {
+                    $product->setDescription($product->getDescription() . "<br /><br /><b>" . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_bestBeforeDate', 'Cartproductreader') . ":</b><br />" . $bestBeforeDate);
+                }
+                // Delivery time
+                if ($deliveryTime != "") {
+                    $product->setDescription($product->getDescription() . "<br /><br /><b>" . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_deliveryTime', 'Cartproductreader') . ":</b><br />" . $deliveryTime);
+                }
+                // Images
+                if ($imagepaths != "") {
+                    $product->setImagepaths($imagepaths);
+                    if ($feVariant == "new") {
+                        $productVariant->setImagepaths($imagepaths);
+                    }
+                }
+                
+                // PID
+                $product->setPid($subcategory->getFolderId());
+                $product->setCategory($category);
+                $product->setSubcategory($subcategory);
+
+                // Product Variant?
+                if ($feVariant == "new") {
+                    $feVariants = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+                    $productVariant->setPid($product->getPid());
+                    $feVariants->attach($productVariant);
+                    $product->setFeVariants($feVariants);
+                    //$product->addFeVariant($productVariant);
+                }
+
+                $excelProducts->attach($product);
+            }
         }
 
         // Get product repository
@@ -211,7 +287,26 @@ class ExcelService
                     $beforeProduct->setPrizePurchaseNetGp($excelProduct->getPrizePurchaseNetGp());
                     $beforeProduct->setPrice($excelProduct->getPrice());
                     $beforeProduct->setImagepaths($excelProduct->getImagepaths());
+                    $beforeProduct->setPid($excelProduct->getPid());
                     $found = true;
+
+                    // TODO: Check product variants                    
+                    foreach ($excelProduct->getFeVariants() as $excelFeVariant) {
+                        $foundFeVariant = false;
+                        foreach ($beforeProduct->getFeVariants() as $beforeFeVariant) {
+                            // Product Variant exist?
+                            if ($excelFeVariant->getSku() == $beforeFeVariant->getSku()) {
+                                // Yes, update product variant
+                                $beforeFeVariant->setTitle($excelFeVariant->getTitle());
+                                $beforeFeVariant->setPid($excelProduct->getPid());
+                                $foundFeVariant = true;
+                            }
+                        }
+                        if ($foundFeVariant == false) {
+                            $excelFeVariant->setPid($excelProduct->getPid());
+                            $beforeProduct->addFeVariant($excelFeVariant);
+                        }
+                    }
                 }
             }
             // Product founded?
@@ -224,7 +319,7 @@ class ExcelService
         // Set actually products
         $supplier->setProducts($beforeProducts);
         $supplierRepository->update($supplier);
-        
+
         // Set the supplier
         $data->setSupplier($supplier);
         $data->setRegistered(true);

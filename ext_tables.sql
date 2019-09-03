@@ -188,3 +188,11 @@ CREATE TABLE tx_cartproducts_domain_model_product_product (
     category int(11) unsigned DEFAULT NULL,
     subcategory int(11) unsigned DEFAULT NULL,
 );
+
+#
+# Table structure for table 'tx_cartproducts_domain_model_product_fevariant'
+#
+CREATE TABLE tx_cartproducts_domain_model_product_fevariant (
+	
+    imagepaths text NOT NULL,
+);

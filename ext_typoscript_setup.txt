@@ -31,6 +31,12 @@ config.tx_extbase {
                     #recordType = Tx_Cartproductreader_Product
                 }
             }
+            Pmwebdesign\Cartproductreader\Domain\Model\ProductVariant {
+                mapping {
+                    tableName = tx_cartproducts_domain_model_product_fevariant
+                    recordType >
+                }
+            }
     	}
         objects {
                 TYPO3\CMS\Extbase\Domain\Model\FileReference.className = Vendor\Ext\Domain\Model\FileReference
