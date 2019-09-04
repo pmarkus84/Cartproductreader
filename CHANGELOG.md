@@ -1,5 +1,11 @@
 # Cart Product Reader Change Log
 
+## 1.2.1
+
+Supports Typo3 8.7.0 - 9.5.99
+
+- [BUGFIX] Images from product variants are assigned to main product.
+
 ## 1.2.0
 
 Supports Typo3 8.7.0 - 9.5.99

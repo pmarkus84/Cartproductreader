@@ -51,36 +51,38 @@ class ImageService
         foreach ($products as $product) {
             
             if($product->getImagepaths() != "") {
-            
-                $strArrayPictures = explode("|", $product->getImagepaths());             
+                
+                // TODO: Get image paths of product and product variants
+                $strArrayPictures = [];
+                if($product->getFeVariants() != null) {                    
+                    $count = 0;
+                    /* @var $productVariant \Pmwebdesign\Cartproductreader\Domain\Model\ProductVariant */
+                    foreach ($product->getFeVariants() as $productVariant) {
+                        if($count == 0) {
+                            $productVariantImagepaths = $productVariant->getImagepaths();
+                        } else {
+                            $productVariantImagepaths .= "|" . $productVariant->getImagepaths();
+                        }
+                        $count++;
+                    }
+                    $strArrayPictures = explode("|", $productVariantImagepaths);                    
+                } else {
+                    $strArrayPictures = explode("|", $product->getImagepaths());             
+                }
                 $images = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();                        
-
-    //            foreach ($product->getImages() as $image) {
-    //                 if($image && $image->getOriginalResource()->getStorage()->getFile($image->getOriginalResource()->getIdentifier())->isMissing() == FALSE) {
-    //                    $image->getOriginalResource()->getStorage()->deleteFile($image->getOriginalResource());
-    //                }
-    //            }
-    //            
-    //            $product->setImages($images);            
-    //            $productRepository->update($product); // TODO: Image references doesn´t remove
-
-    //            \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($product);
-
-                //$objectManager->get('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\PersistenceManager')->persistAll();
 
                 /* @var $storageRepository \TYPO3\CMS\Core\Resource\StorageRepository */
                 $storageRepository = $objectManager->get('TYPO3\\CMS\\Core\\Resource\\StorageRepository');    
                 $storage = $storageRepository->findByUid('1');
 
                 $originalPath = $_SERVER['DOCUMENT_ROOT'] . "/fileadmin/user_upload/" . strtolower(\TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_suppliers', 'Cartproductreader')) . "/" . strtolower($data->getSupplier()->getName());
-                $pathToFalImages = "user_upload/" . strtolower(\TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_suppliers', 'Cartproductreader')) . "/" . strtolower($data->getSupplier()->getName());
                 // No absulute path, rather recursive path for createFolder in storage!
-    //            $targetFolder = $storage->createFolder($pathToFalImages."/FAL");
+                $pathToFalImages = "user_upload/" . strtolower(\TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_suppliers', 'Cartproductreader')) . "/" . strtolower($data->getSupplier()->getName());
+//                $targetFolder = $storage->createFolder($pathToFalImages."/FAL");
 
                 // All Excel images
                 foreach ($strArrayPictures as $strPicture) {
                     $foundExcelImage = false;
-    //                \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($product->getImages()->count());
                     if($product->getImages()->count() > 0) {
                         // All previous images of product
                         foreach ($product->getImages() as $image) {
@@ -155,6 +157,6 @@ class ImageService
             $data->setImagesAssigned(FALSE);
         }
         
-        return $data;
+//        return $data;
     }
 }
