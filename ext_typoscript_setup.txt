@@ -37,6 +37,12 @@ config.tx_extbase {
                     recordType >
                 }
             }
+            Pmwebdesign\Cartproductreader\Domain\Model\User {
+                mapping {
+                    tableName = fe_users
+                    recordType >
+                }
+            }
     	}
         objects {
                 TYPO3\CMS\Extbase\Domain\Model\FileReference.className = Vendor\Ext\Domain\Model\FileReference

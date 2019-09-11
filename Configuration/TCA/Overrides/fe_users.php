@@ -23,24 +23,38 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  */
 
-$EM_CONF[$_EXTKEY] = [
-    'title' => 'Cart product reader',
-    'description' => 'Reads Excel file for inserting and updating products in cart_product.',
-    'category' => 'module',
-    'author' => 'Markus Puffer',
-    'author_email' => 'm.puffer@pm-webdesign.eu',
-    'state' => 'stable',
-    'uploadfolder' => 1,
-    'createDirs' => '',
-    'clearCacheOnLoad' => 0,
-    'version' => '1.3.0',
-    'constraints' => [
-        'depends' => [
-            'typo3' => '8.7.0-9.5.99',
-            'cart' => '5.5.0-6.5.99',
-            'cart_products' => '1.0.2-2.0.99',
+if (!defined('TYPO3_MODE')) {
+    die('Access denied.');
+}
+
+// Configure new fields 
+$fields = [
+    'uid_number' => [
+        'exclude' => 1,
+        'label' => 'UID-Nummer',
+        'config' => [
+            'type' => 'input',
+            'size' => 30,
+            'eval' => 'trim'
         ],
-        'conflicts' => [],
-        'suggests' => [],
+    ],
+    'form_art' => [
+        'label' => 'Antragsart',
+        'config' => [
+            'type' => 'radio',
+            'items' => [
+                ['Gewerblich', 1], // 'foo' should be a LLL reference
+                ['Privat', 2],
+            ],
+        ],
     ],
 ];
+
+// Add new fields to fe_users
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTCAcolumns('fe_users', $fields, 1);
+
+// Make fields visible in the TCEforms:
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
+        'fe_users', // Table name
+        'uid_number, form_art;;;;1-1-1'
+);

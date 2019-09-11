@@ -1,5 +1,11 @@
 # Cart Product Reader Change Log
 
+## 1.3.0
+
+Supports Typo3 8.7.0 - 9.5.99
+
+- [FEATURE] Automatic filled data from frontenduser.
+
 ## 1.2.1
 
 Supports Typo3 8.7.0 - 9.5.99

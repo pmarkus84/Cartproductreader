@@ -196,3 +196,12 @@ CREATE TABLE tx_cartproducts_domain_model_product_fevariant (
 	
     imagepaths text NOT NULL,
 );
+
+#
+# Table structure for table 'fe_users'
+#
+CREATE TABLE fe_users (
+
+	uid_number varchar(255) DEFAULT '' NOT NULL,
+        form_art INT(11) DEFAULT '0' NOT NULL,
+);

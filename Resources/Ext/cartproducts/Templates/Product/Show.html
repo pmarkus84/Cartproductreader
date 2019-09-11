@@ -1,0 +1,81 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:cart="http://typo3.org/ns/Extcode/Cart/ViewHelpers"
+      xmlns:cartproducts="http://typo3.org/ns/Extcode/CartProducts/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:layout name="Default"/>
+
+<f:section name="main">
+    <cartproducts:canonicalTag product="{product}" />
+
+    <cart:format.nothing>
+        <cart:titleTag>
+            <f:format.htmlentitiesDecode>{product.title}</f:format.htmlentitiesDecode>
+        </cart:titleTag>
+    </cart:format.nothing>
+
+    <h1>{product.title}</h1>
+
+    <div id="carouselProductShow" class="carousel slide width400" data-ride="carousel">
+        <div class="carousel-inner">
+            <f:for each="{product.images}" as="image" iteration="iterator">
+                <div class="carousel-item{f:if(condition:'{iterator.isFirst}', then:' active')} flexCenter">
+                    <f:image class="d-block carouselProductImage" src="{image.originalResource.originalFile.uid}"
+                        title="{image.originalResource.title}"
+                        alt="{image.originalResource.title}"
+                        width="{settings.showAction.media.image.size.medium.maxWidth}"
+                        height="{settings.showAction.media.image.size.medium.maxHeight}" />
+                </div>
+            </f:for>
+        </div>
+        <a class="carousel-control-prev" href="#carouselProductShow" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon black50" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselProductShow" role="button" data-slide="next">
+            <span class="carousel-control-next-icon black50" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    <br />
+    <div>
+        <f:format.raw>
+            <b>{product.teaser -> f:format.html()}</b>
+        </f:format.raw>
+    </div>
+    <f:if condition="{product.tags}">
+        <div>
+            <f:for each="{product.tags}" as="tag">
+                <span>{tag.title}</span>
+            </f:for>
+        </div>
+    </f:if>
+    <div>
+        <f:format.raw>
+            {product.description -> f:format.html()}
+        </f:format.raw>
+    </div>
+
+    <f:if condition="{product.productContent}">
+        <f:for each="{product.productContent}" as="content" iteration="iterator">
+            <div id="content-{iterator.cycle}" class="content-element">
+                <f:cObject typoscriptObjectPath="lib.renderContent" data="{content.uid}" />
+            </div>
+        </f:for>
+    </f:if>
+
+    <f:cObject typoscriptObjectPath="lib.cartProduct.showForm" />
+
+    <f:if condition="{product.relatedProducts}">
+        <ul>
+        <f:for each="{product.relatedProducts}" as="relatedProduct">
+            <li>
+                <f:render partial="Product/RelatedProduct" arguments="{product: relatedProduct}"/>
+            </li>
+        </f:for>
+        </ul>
+    </f:if>
+    <br />
+    <f:link.external class="btn btn-default" uri="javascript:history.back();">{f:translate(key: 'tx_cartproducts.history_back')}</f:link.external>
+</f:section>
+</html>

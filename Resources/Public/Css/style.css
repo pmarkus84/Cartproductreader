@@ -25,7 +25,7 @@ This copyright notice MUST APPEAR in all copies of the script!
     Author     : Markus Puffer <m.puffer@pm-webdesign.eu>
 */
 
-th, td {
+.tablelist th, .tablelist td {
     padding: 5px;
     border: 1px solid;
 }
@@ -37,4 +37,35 @@ th, td {
 .tableshow td:first-child {
     font-weight: bold;
     background-color: #cccccc;
+}
+
+.width400 {
+    width: 400px;
+    height: 300px;
+}
+
+.black50 {
+    color: #000000;
+    font-size: 50px;
+}
+
+.flexCenter {
+    transition: 2s ease-in;
+}
+
+.active.flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+#carouselProductShow {
+    background-color: #c3c3c3;
+}
+#carouselProductShow .carousel-inner, #carouselProductShow .carousel-inner .carousel-item {
+    height: 100%;
+}
+.carouselProductImage {
+    margin-left: auto;
+    margin-right: auto;
 }

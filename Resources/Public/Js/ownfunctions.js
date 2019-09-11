@@ -1,6 +1,4 @@
-<?php
-
-/*
+/* 
  * Copyright (C) 2019 pm-webdesign.eu 
  * Markus Puffer <m.puffer@pm-webdesign.eu>
  *
@@ -23,24 +21,13 @@
  * This copyright notice MUST APPEAR in all copies of the script!
  */
 
-$EM_CONF[$_EXTKEY] = [
-    'title' => 'Cart product reader',
-    'description' => 'Reads Excel file for inserting and updating products in cart_product.',
-    'category' => 'module',
-    'author' => 'Markus Puffer',
-    'author_email' => 'm.puffer@pm-webdesign.eu',
-    'state' => 'stable',
-    'uploadfolder' => 1,
-    'createDirs' => '',
-    'clearCacheOnLoad' => 0,
-    'version' => '1.3.0',
-    'constraints' => [
-        'depends' => [
-            'typo3' => '8.7.0-9.5.99',
-            'cart' => '5.5.0-6.5.99',
-            'cart_products' => '1.0.2-2.0.99',
-        ],
-        'conflicts' => [],
-        'suggests' => [],
-    ],
-];
+/** Carousels */
+/* Carousel for Product single view */
+$('#carouselProductShow').carousel({    
+    /* Disable automatically start */
+    interval: 10000
+});
+
+//$(document).ready(function () {
+   
+//});

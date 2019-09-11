@@ -1,0 +1,161 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      xmlns:cart="http://typo3.org/ns/Extcode/Cart/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:section name="withoutVariant">
+    <tr class="{f:if(condition: product.quantityIsInRange, then: '', else: 'danger')}">
+        <td colspan="2" class="col-md-6">
+            <div class="product-name">
+                {product.title} {f:if(condition:'{product.feVariant.value}',then:'- {product.feVariant.value}')}
+            </div>
+            <p>
+                <f:translate key="tx_cart_domain_model_order_product.sku.short"/>
+                : {f:if(condition:'{product.feVariant.value}',then:'- {product.feVariant.sku}', else:'- {product.sku}')}
+            </p>
+        </td>
+        <td class="col-md-2 text-right">
+            <span class="price">
+                <cart:format.currency currencySign="{cart.currencySign}">{product.bestPrice}</cart:format.currency>
+            </span>
+        </td>
+        <td class="col-md-1 text-right">
+            <f:form.textfield class="form-control form-control-inline" type="text" value="{product.quantity}" name="quantities[{product.id}]"/>
+        </td>
+        <td class="col-md-2 text-right">
+            <f:if condition="{product.quantityIsInRange}">
+                <f:then>
+                    <cart:format.currency currencySign="{cart.currencySign}">{product.gross}</cart:format.currency>
+                </f:then>
+                <f:else>
+                    <f:if condition="{product.quantityBelowRange}">
+                        <f:translate key='tx_cart.quantityBelowRange'/>
+                    </f:if>
+                    <f:if condition="{product.quantityAboveRange}">
+                        <f:translate key='tx_cart.quantityAboveRange'/>
+                    </f:if>
+                </f:else>
+            </f:if>
+        </td>
+        <td class="last col-md-1 text-right">
+            <f:link.action controller="Cart\Product" action="remove" arguments="{product: product.id}">
+                <span class="delete-link btn btn-danger" title="<f:translate key='tx_cart.remove_product'/>">x</span>
+            </f:link.action>
+        </td>
+    </tr>
+</f:section>
+
+<f:section name="variant">
+    <f:if condition="{variant.beVariants}">
+        <f:then>
+            <f:for each="{variant.beVariants}" as="variantVariant">
+                <f:render section="variant" arguments="{variant:variantVariant, product:product}"/>
+            </f:for>
+        </f:then>
+        <f:else>
+            <tr class="{f:if(condition: product.quantityIsInRange, then: '', else: 'danger')}">
+                <td class="col-md-1">&nbsp;</td>
+                <td class="col-md-5">
+                    <div class="product-name">{variant.title}</div>
+                    <p>
+                        <f:translate key="tx_cart_domain_model_order_product.sku.short"/>
+                        : {variant.completeSku}
+                    </p>
+                </td>
+                <td class="col-md-2 text-right">
+                    <cart:format.currency currencySign="{cart.currencySign}">{variant.bestPriceCalculated}</cart:format.currency>
+                </td>
+                <td class="col-md-1">
+                    <div class="qty-wrapper">
+                        <f:form.textfield
+                                class="form-control form-control-inline"
+                                type="text"
+                                value="{variant.quantity}"
+                                name="quantities{cart:fieldName(variant:variant)}"/>
+                    </div>
+                </td>
+                <td class="col-md-2 text-right">
+                    <f:if condition="{product.quantityIsInRange}">
+                        <f:then>
+                            <cart:format.currency currencySign="{cart.currencySign}">{variant.gross}</cart:format.currency>
+                        </f:then>
+                        <f:else>
+                            <f:if condition="{product.quantityBelowRange}">
+                                <f:translate key='tx_cart.quantityBelowRange'/>
+                            </f:if>
+                            <f:if condition="{product.quantityAboveRange}">
+                                <f:translate key='tx_cart.quantityAboveRange'/>
+                            </f:if>
+                        </f:else>
+                    </f:if>
+                </td>
+                <td class="last col-md-1 text-right">
+                    <cart:link.action controller="Cart\Product" action="remove" product="{variant.product}" beVariant="{variant}">
+                        <span class="delete-link btn btn-danger" title="<f:translate key='tx_cart.remove_product'/>">x</span>
+                    </cart:link.action>
+                </td>
+            </tr>
+        </f:else>
+    </f:if>
+</f:section>
+
+<f:section name="withVariant">
+    <tr class="{f:if(condition: product.quantityIsInRange, then: '', else: 'danger')}">
+        <td colspan="2">
+            <div class="product-name">
+                {product.title} {f:if(condition:'{product.feVariant.value}',then:'- {product.feVariant.value}')}
+            </div>
+        </td>
+        <td class="text-right">
+            &nbsp;
+        </td>
+        <td class="a-center">
+            &nbsp;
+        </td>
+        <td class="text-right">
+            &nbsp;
+        </td>
+        <td class="last">
+            &nbsp;
+        </td>
+    </tr>
+
+    <f:for each="{product.beVariants}" as="variant">
+        <f:render section="variant" arguments="{cart:cart, variant:variant, product:product}"/>
+    </f:for>
+
+    <tr class="{f:if(condition: product.quantityIsInRange, then: '', else: 'danger')}">
+        <td colspan="2">
+            &nbsp;
+        </td>
+        <td class="text-right">
+            &nbsp;
+        </td>
+        <td class="a-center">
+            <div class="qty-wrapper">
+                {product.quantity}
+            </div>
+        </td>
+        <td class="text-right">
+            <f:if condition="{product.quantityIsInRange}">
+                <f:then>
+                    <cart:format.currency currencySign="{cart.currencySign}">{product.gross}</cart:format.currency>
+                </f:then>
+            </f:if>
+        </td>
+        <td class="last">
+            &nbsp;
+        </td>
+    </tr>
+</f:section>
+
+<f:for each="{products}" as="product">
+    <f:if condition="{product.beVariants}">
+        <f:then>
+            <f:render section="withVariant" arguments="{cart:cart, product:product}"/>
+        </f:then>
+        <f:else>
+            <f:render section="withoutVariant" arguments="{cart:cart, product:product}"/>
+        </f:else>
+    </f:if>
+</f:for>
+</html>
