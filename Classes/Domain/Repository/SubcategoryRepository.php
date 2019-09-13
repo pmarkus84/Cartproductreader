@@ -32,6 +32,6 @@ class SubcategoryRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
     // Order
     protected $defaultOrderings = array(
-        'name' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
+        'title' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
     );
 }

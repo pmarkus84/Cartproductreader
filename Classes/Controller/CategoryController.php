@@ -25,6 +25,8 @@
 
 namespace Pmwebdesign\Cartproductreader\Controller;
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
 /**
  * CategoryController
  */
@@ -45,7 +47,7 @@ class CategoryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
      */
     public function listAction()
     {
-        $categories = $this->categoryRepository->findAll();
+        $categories = $this->categoryRepository->findByThisExtension();
         $this->view->assign('categories', $categories);
     }
 
@@ -79,6 +81,12 @@ class CategoryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     public function createAction(\Pmwebdesign\Cartproductreader\Domain\Model\Category $newCategory)
     {
         $this->addFlashMessage('The object was created. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/typo3cms/extensions/extension_builder/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
+        
+        /* @var $settingsUtility \Pmwebdesign\Cartproductreader\Utility\SettingsUtility */
+        $settingsUtility = GeneralUtility::makeInstance(\Pmwebdesign\Cartproductreader\Utility\SettingsUtility::class);
+        $storagePid = $settingsUtility->getStoragePid();
+        $newCategory->setPid($storagePid);
+        
         $this->categoryRepository->add($newCategory);
         $this->redirect('list');
     }

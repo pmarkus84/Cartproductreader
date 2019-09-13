@@ -25,6 +25,8 @@
 
 namespace Pmwebdesign\Cartproductreader\Controller;
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
 /**
  * SubcategoryController
  */
@@ -90,6 +92,12 @@ class SubcategoryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
     public function createAction(\Pmwebdesign\Cartproductreader\Domain\Model\Subcategory $newSubcategory, \Pmwebdesign\Cartproductreader\Domain\Model\Category $category)
     {
         $this->addFlashMessage('The object was created. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/typo3cms/extensions/extension_builder/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
+        
+        /* @var $settingsUtility \Pmwebdesign\Cartproductreader\Utility\SettingsUtility */
+        $settingsUtility = GeneralUtility::makeInstance(\Pmwebdesign\Cartproductreader\Utility\SettingsUtility::class);
+        $storagePid = $settingsUtility->getStoragePid();
+        $newSubcategory->setPid($storagePid);
+        
         $category->addSubcategory($newSubcategory);
         $this->categoryRepository->update($category);
         $this->redirect('edit', 'Category', null, ['category' => $category]);

@@ -1,5 +1,10 @@
 
 config.tx_extbase {
+    objects {
+            Extcode\CartProducts\Domain\Model\Product\Product.className = Pmwebdesign\Cartproductreader\Domain\Model\Product
+            Extcode\CartProducts\Domain\Model\Category.className = Pmwebdesign\Cartproductreader\Domain\Model\Category
+            TYPO3\CMS\Extbase\Domain\Model\FileReference.className = Pmwebdesign\Cartproductreader\Domain\Model\FileReference
+    }
     persistence {
         updateReferenceIndex = 1
         classes {
@@ -11,24 +16,14 @@ config.tx_extbase {
                             }
                     }
             }
-            Extcode\CartProducts\Domain\Model\Product\Product {
-                subclasses {
-                    Tx_Cartproductreader_Product = Pmwebdesign\Cartproductreader\Domain\Model\Product
-					
-                }
-            }
             Pmwebdesign\Cartproductreader\Domain\Model\Product {
                 mapping {
                     tableName = tx_cartproducts_domain_model_product_product
-                    recordType >
-                    #recordType = Tx_Cartproductreader_Product
                 }
             }
-            Extcode\CartProducts\Domain\Model\Category {
+            Pmwebdesign\Cartproductreader\Domain\Model\Category {
                 mapping {
-                    tableName = tx_cartproductreader_domain_model_category
-                    recordType >
-                    #recordType = Tx_Cartproductreader_Product
+                    tableName = sys_category
                 }
             }
             Pmwebdesign\Cartproductreader\Domain\Model\ProductVariant {
@@ -44,8 +39,5 @@ config.tx_extbase {
                 }
             }
     	}
-        objects {
-                TYPO3\CMS\Extbase\Domain\Model\FileReference.className = Vendor\Ext\Domain\Model\FileReference
-        }
     }
 }

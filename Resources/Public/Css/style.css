@@ -40,8 +40,8 @@ This copyright notice MUST APPEAR in all copies of the script!
 }
 
 .width400 {
-    width: 400px;
-    height: 300px;
+    width: auto;
+    height: 250px;
 }
 
 .black50 {
@@ -68,4 +68,11 @@ This copyright notice MUST APPEAR in all copies of the script!
 .carouselProductImage {
     margin-left: auto;
     margin-right: auto;
+}
+
+@media (min-width: 576px) {
+    .width400 {
+        width: 400px;
+        height: 300px;
+    }
 }

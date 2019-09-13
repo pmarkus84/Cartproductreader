@@ -8,14 +8,14 @@
 
         <table class="tablelist" >
             <tr>
-                <th><f:translate key="tx_cartproductreader_domain_model_category.name" /></th>
+                <th><f:translate key="tx_cartproductreader_domain_model_category.title" /></th>
                 <th><f:translate key="tx_cartproductreader_domain_model_category.folder_id" /></th>
                 <th><f:translate key="tx_cartproductreader_domain_model_category.subcategories" /></th>
                 <th></th>
             </tr>
             <f:for each="{categories}" as="category">
                 <tr>
-                    <td><f:link.action action="show" arguments="{category : category}"> {category.name}</f:link.action></td>
+                    <td><f:link.action action="show" arguments="{category : category}"> {category.title}</f:link.action></td>
                     <td><f:link.action action="show" arguments="{category : category}"> {category.folderId}</f:link.action></td>
                     <td>
                         <f:link.action action="show" arguments="{category : category}"> {category.subcategories -> f:count()}</f:link.action>

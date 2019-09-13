@@ -97,7 +97,7 @@ CREATE TABLE tx_cartproductreader_domain_model_category (
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
 
-	name varchar(255) DEFAULT '' NOT NULL,
+	title varchar(255) DEFAULT '' NOT NULL,
         folder_id int(11) DEFAULT '0' NOT NULL,
         products int(11) unsigned DEFAULT '0' NOT NULL,
         subcategories int(11) unsigned DEFAULT '0' NOT NULL,
@@ -140,7 +140,7 @@ CREATE TABLE tx_cartproductreader_domain_model_subcategory (
 	uid int(11) NOT NULL auto_increment,
 	pid int(11) DEFAULT '0' NOT NULL,
 
-	name varchar(255) DEFAULT '' NOT NULL,
+	title varchar(255) DEFAULT '' NOT NULL,
         folder_id int(11) DEFAULT '0' NOT NULL,        
         products int(11) unsigned DEFAULT '0' NOT NULL,
         category int(11) unsigned DEFAULT '0' NOT NULL,
@@ -204,4 +204,13 @@ CREATE TABLE fe_users (
 
 	uid_number varchar(255) DEFAULT '' NOT NULL,
         form_art INT(11) DEFAULT '0' NOT NULL,
+);
+
+#
+# Table structure for table 'sys_category'
+#
+CREATE TABLE sys_category (
+        folder_id int(11) DEFAULT '0' NOT NULL,
+        products int(11) unsigned DEFAULT '0' NOT NULL,
+        subcategories int(11) unsigned DEFAULT '0' NOT NULL,
 );

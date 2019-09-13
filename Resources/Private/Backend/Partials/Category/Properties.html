@@ -2,10 +2,10 @@
     <table class="tx-cartproductreader" >
         <tr>
             <td>
-                <b><f:translate key="tx_cartproductreader_domain_model_category.name" /></b>
+                <b><f:translate key="tx_cartproductreader_domain_model_category.title" /></b>
             </td>
             <td>
-                {category.name}
+                {category.title}
             </td>
         </tr>
         <tr>
@@ -20,13 +20,13 @@
     <h2><f:translate key="tx_cartproductreader_domain_model_category.subcategories" /></h2>
     <table class="tablelist">
         <tr>
-            <th><f:translate key="tx_cartproductreader_domain_model_category.name" /></th>
+            <th><f:translate key="tx_cartproductreader_domain_model_category.title" /></th>
             <th><f:translate key="tx_cartproductreader_domain_model_category.folder_id" /></th>
             <th>
         </tr>
         <f:for each="{category.subcategories}" as="subcategory">
             <tr>
-                <td>{subcategory.name}</td>
+                <td>{subcategory.title}</td>
                 <td>{subcategory.folderId}</td>
                 <td></td>
             </tr>

@@ -83,7 +83,7 @@
                 <source>Category</source>
                 <target state="translated">Kategorie</target>
             </trans-unit>
-            <trans-unit id="tx_cartproductreader_domain_model_category.name">
+            <trans-unit id="tx_cartproductreader_domain_model_category.title">
                 <source>Name</source>
                 <target state="translated">Name</target>
             </trans-unit>

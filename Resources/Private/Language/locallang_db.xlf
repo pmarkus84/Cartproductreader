@@ -63,7 +63,7 @@
             <trans-unit id="tx_cartproductreader_domain_model_category">
                 <source>Category</source>
             </trans-unit>
-            <trans-unit id="tx_cartproductreader_domain_model_category.name">
+            <trans-unit id="tx_cartproductreader_domain_model_category.title">
                 <source>Name</source>
             </trans-unit>
             <trans-unit id="tx_cartproductreader_domain_model_category.folder_id">

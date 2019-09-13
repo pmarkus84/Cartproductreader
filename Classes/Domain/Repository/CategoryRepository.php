@@ -25,13 +25,40 @@
 
 namespace Pmwebdesign\Cartproductreader\Domain\Repository;
 
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
 /**
  * The repository for Data
  */
-class CategoryRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
+class CategoryRepository extends \TYPO3\CMS\Extbase\Domain\Repository\CategoryRepository
+//class CategoryRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
+
     // Order
     protected $defaultOrderings = array(
-        'name' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
+        'title' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
     );
+
+    public function findByThisExtension()
+    {
+        /* @var $settingsUtility \Pmwebdesign\Cartproductreader\Utility\SettingsUtility */
+        $settingsUtility = GeneralUtility::makeInstance(\Pmwebdesign\Cartproductreader\Utility\SettingsUtility::class);
+        $storagePid = $settingsUtility->getStoragePid();
+        
+//        $storagePid = 77;
+
+        $query = $this->createQuery();
+
+        $query->matching(
+                $query->logicalAnd(
+                        $query->logicalOr(
+                                $query->like('pid', $storagePid)
+                        )
+                )
+        );
+        
+        $query->setOrderings(array('title' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING));
+        
+        return $query->execute();
+    }
 }

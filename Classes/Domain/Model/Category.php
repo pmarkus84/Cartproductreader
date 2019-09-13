@@ -30,14 +30,14 @@ namespace Pmwebdesign\Cartproductreader\Domain\Model;
  *
  * @author Markus Puffer <m.puffer@pm-webdesign.eu>
  */
-class Category extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
+class Category extends \Extcode\CartProducts\Domain\Model\Category
 {
     /**
-     * Category name
+     * Category title
      *
      * @var string 
      */
-    protected $name = "";
+    protected $title = "";
     
     /**
      * Folder id for products
@@ -57,24 +57,24 @@ class Category extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
 
 
     /**
-     * Get the category name
+     * Get the category title
      * 
      * @return string
      */
-    public function getName()
+    public function getTitle()
     {
-        return $this->name;
+        return $this->title;
     }
 
     /**
-     * Set the category name
+     * Set the category title
      * 
-     * @param string $name
+     * @param string $title
      * @return void
      */
-    public function setName($name)
+    public function setTitle($title)
     {
-        $this->name = $name;
+        $this->title = $title;
     }
     
     /**

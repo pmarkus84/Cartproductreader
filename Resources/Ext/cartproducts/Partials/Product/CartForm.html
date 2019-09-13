@@ -21,10 +21,10 @@
         <f:if condition="{product.beVariants}">
             <cartproducts:form.variantSelect id="be-variants-select" class="form-control" name="tx_cart_cart[beVariants][1]" product="{product}" blank="{f:translate(key: 'tx_cartproducts.variants-select.choose')}"/>
         </f:if>
-        <f:comment><!-- TODO: Frontend Variants --></f:comment>
+        <f:comment><!-- Frontend Variants --></f:comment>
         <f:if condition="{product.feVariants}">
             <f:form.select id="variantSelect" class="form-control" name="feVariants" additionalAttributes="{onchange:'setSku()'}">
-                <f:for each="{product.feVariants}" as="feVariant" iteration="iterator">
+                <f:for each="{product.feVariants}" as="feVariant">
                     <option name="tx_cart_cart[feVariants][{feVariant.sku}]" value="{feVariant.title}|tx_cart_cart[feVariants][{feVariant.sku}]">{feVariant.title}</option>
                 </f:for>
             </f:form.select>
