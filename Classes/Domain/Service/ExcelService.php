@@ -158,12 +158,12 @@ class ExcelService
 
             // Category
             $categoryString = $worksheet->getCellByColumnAndRow( ++$col, $row)->getValue();
-            $category = $categoryRepository->findOneByName($categoryString);
+            $category = $categoryRepository->findOneByTitle($categoryString);
 
             // Subcategory
             $subcategoryString = $worksheet->getCellByColumnAndRow( ++$col, $row)->getValue();
             /* @var $subcategory \Pmwebdesign\Cartproductreader\Domain\Model\Subcategory */
-            $subcategory = $subcategoryRepository->findOneByName($subcategoryString);
+            $subcategory = $subcategoryRepository->findOneByTitle($subcategoryString);
 
             // Previous product name the same?
             if ($row > 2 && $worksheet->getCellByColumnAndRow(3, $row - 1)->getValue() == $title && $worksheet->getCellByColumnAndRow($col, $row - 1)->getValue() != $colour) {

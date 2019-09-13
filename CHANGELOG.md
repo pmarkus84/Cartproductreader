@@ -1,5 +1,11 @@
 # Cart Product Reader Change Log
 
+## 
+
+Supports Typo3 8.7.0 - 9.5.99
+
+- [BUGFIX] Fix repository query for categories.
+
 ## 1.4.0
 
 Supports Typo3 8.7.0 - 9.5.99
