@@ -31,6 +31,12 @@ namespace Pmwebdesign\Cartproductreader\Domain\Model;
 class Product extends \Extcode\CartProducts\Domain\Model\Product\Product
 {
     /**
+     *
+     * @var integer
+     */
+    protected $pid = 0;
+
+    /**
      * Prize RRP (UVP)
      *
      * @var double 
@@ -79,7 +85,25 @@ class Product extends \Extcode\CartProducts\Domain\Model\Product\Product
      * @cascade remove
      */
     protected $feVariants = null;
+    
+    /**
+     * 
+     * @return integer
+     */
+    public function getPid()
+    {
+        return $this->pid;
+    }
 
+    /**
+     * 
+     * @param type $pid
+     */
+    public function setPid($pid)
+    {
+        $this->pid = $pid;
+    }
+        
     /**
      * Return prize RRP
      * 

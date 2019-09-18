@@ -26,6 +26,8 @@ if (!defined('TYPO3_MODE')) {
     die('Access denied.');
 }
 
+// TODO: Remove deleted field and function!
+
 // Configure new fields 
 $fields = [
     'products' => [

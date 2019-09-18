@@ -34,6 +34,15 @@ $fields = [
 //            'type' => 'check',
 //        ],
     ],
+    'pid' => [
+        'exclude' => true,
+        'label' => 'PID',
+        'config' => [
+            'type' => 'input',
+            'size' => 10,
+            'eval' => 'trim'
+        ],
+    ],
     'supplier' => [
         'exclude' => true,
         'label' => 'LLL:EXT:cartproductreader/Resources/Private/Language/locallang.xlf:tx_cartproductreader_domain_model_supplier',
@@ -81,7 +90,7 @@ $fields = [
             'cols' => 40,
             'rows' => 15,
             'eval' => 'trim'
-        ],        
+        ],
     ],
     'category' => [
         'exclude' => true,
@@ -143,15 +152,15 @@ $fields = [
 
 // Add the new palette:
 $GLOBALS['TCA']['tx_cartproducts_domain_model_product_product']['palettes']['tx_addSupplierfields'] = [
-  'showitem' => 'supplier'
+    'showitem' => 'supplier'
 ];
 
 // Add the new palette:
 $GLOBALS['TCA']['tx_cartproducts_domain_model_product_product']['palettes']['tx_addPricefields'] = [
-  'showitem' => 'prize_rrp, prize_purchase_net_gp, price'
+    'showitem' => 'prize_rrp, prize_purchase_net_gp, price'
 ];
 
 // Add the new palette:
 $GLOBALS['TCA']['tx_cartproducts_domain_model_product_product']['palettes']['tx_addCategoryfields'] = [
-  'showitem' => 'category, subcategory'
+    'showitem' => 'category, subcategory'
 ];

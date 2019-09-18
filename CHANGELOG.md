@@ -4,6 +4,7 @@
 
 Supports Typo3 8.7.0 - 9.5.99
 
+- [BUGFIX] Sets the correct PID from subcategory if an update is done.
 - [BUGFIX] Fix repository query for categories.
 
 ## 1.4.0

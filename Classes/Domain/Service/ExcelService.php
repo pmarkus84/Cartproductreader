@@ -263,7 +263,6 @@ class ExcelService
                     $productVariant->setPid($product->getPid());
                     $feVariants->attach($productVariant);
                     $product->setFeVariants($feVariants);
-                    //$product->addFeVariant($productVariant);
                 }
 
                 $excelProducts->attach($product);
@@ -287,7 +286,9 @@ class ExcelService
                     $beforeProduct->setPrizePurchaseNetGp($excelProduct->getPrizePurchaseNetGp());
                     $beforeProduct->setPrice($excelProduct->getPrice());
                     $beforeProduct->setImagepaths($excelProduct->getImagepaths());
-                    $beforeProduct->setPid($excelProduct->getPid());
+                    $beforeProduct->setPid($excelProduct->getPid()); 
+                    $beforeProduct->setCategory($excelProduct->getCategory());
+                    $beforeProduct->setSubcategory($excelProduct->getSubcategory());
                     $found = true;
 
                     // TODO: Check product variants                    
@@ -315,7 +316,6 @@ class ExcelService
                 $beforeProducts->attach($excelProduct);
             }
         }
-
         // Set actually products
         $supplier->setProducts($beforeProducts);
         $supplierRepository->update($supplier);
