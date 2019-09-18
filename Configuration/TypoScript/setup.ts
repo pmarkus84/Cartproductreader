@@ -38,7 +38,7 @@ page {
     #config.cache.16 = tx_staffm_domain_model_mitarbeiter:42,tx_staffm_domain_model_kostenstelle:53
 
     includeCSS {        
-        staffm1 = EXT:cartproductreader/Resources/Public/Css/style.css
+        cartproductreader = EXT:cartproductreader/Resources/Public/Css/style.css
     }
 
     includeJSFooter {
