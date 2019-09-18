@@ -16,27 +16,29 @@
 
     <h1>{product.title}</h1>
    
-    <div id="carouselProductShow" class="carousel slide width400" data-ride="carousel">
-        <div class="carousel-inner">
-            <f:for each="{product.images}" as="image" iteration="iterator">
-                <div class="carousel-item{f:if(condition:'{iterator.isFirst}', then:' active')} flexCenter">
-                    <f:image class="d-block carouselProductImage" src="{image.originalResource.originalFile.uid}"
-                        title="{image.originalResource.title}"
-                        alt="{image.originalResource.title}"
-                        width="{settings.showAction.media.image.size.medium.maxWidth}"
-                        height="{settings.showAction.media.image.size.medium.maxHeight}" />
-                </div>
-            </f:for>
+    <f:if condition="{product.images}">
+        <div id="carouselProductShow" class="carousel slide width400" data-ride="carousel">
+            <div class="carousel-inner">
+                <f:for each="{product.images}" as="image" iteration="iterator">
+                    <div class="carousel-item{f:if(condition:'{iterator.isFirst}', then:' active')} flexCenter">
+                        <f:image class="d-block carouselProductImage" src="{image.originalResource.originalFile.uid}"
+                            title="{image.originalResource.title}"
+                            alt="{image.originalResource.title}"
+                            width="{settings.showAction.media.image.size.medium.maxWidth}"
+                            height="{settings.showAction.media.image.size.medium.maxHeight}" />
+                    </div>
+                </f:for>
+            </div>
+            <a class="carousel-control-prev" href="#carouselProductShow" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon black50" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselProductShow" role="button" data-slide="next">
+                <span class="carousel-control-next-icon black50" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
-        <a class="carousel-control-prev" href="#carouselProductShow" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon black50" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselProductShow" role="button" data-slide="next">
-            <span class="carousel-control-next-icon black50" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
-    </div>
+    </f:if>
     <br />
     <div>
         <f:format.raw>

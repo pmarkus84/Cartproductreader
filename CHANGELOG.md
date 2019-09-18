@@ -4,6 +4,8 @@
 
 Supports Typo3 8.7.0 - 9.5.99
 
+- [UPDATE] Added image logic for display.
+- [COMMENT] Add/Change comments.
 - [BUGFIX] Sets the correct PID from subcategory if an update is done.
 - [BUGFIX] Fix repository query for categories.
 
