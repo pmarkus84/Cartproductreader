@@ -1,9 +1,10 @@
 # Cart Product Reader Change Log
 
-## 
+## 1.4.1
 
 Supports Typo3 8.7.0 - 9.5.99
 
+- [UPDATE] Changed name variable of included css.
 - [UPDATE] Expanded language files.
 - [UPDATE] Added image logic for display.
 - [COMMENT] Add/Change comments.
