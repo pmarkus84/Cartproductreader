@@ -49,10 +49,9 @@ class ImageService
         
         /* @var $product \Pmwebdesign\Cartproductreader\Domain\Model\Product */
         foreach ($products as $product) {
-            
+            // Images?
             if($product->getImagepaths() != "") {
-                
-                // TODO: Get image paths of product and product variants
+                // Get image paths of product and product variants
                 $strArrayPictures = [];
                 if($product->getFeVariants() != null) {                    
                     $count = 0;
