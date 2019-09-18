@@ -42,6 +42,9 @@
             <trans-unit id="tx_cartproductreader_domain_model_supplier.telephone">
                 <source>Telephone</source>
             </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_supplier.products">
+                <source>Products</source>
+            </trans-unit>
             <trans-unit id="tx_cartproductreader_domain_model_data">
                 <source>Data</source>
             </trans-unit>

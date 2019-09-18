@@ -55,6 +55,10 @@
                 <source>Telephone</source>
                 <target state="translated">Telefon</target>
             </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_supplier.products">
+                <source>Products</source>
+                <target state="translated">Produkte</target>
+            </trans-unit>
             <trans-unit id="tx_cartproductreader_domain_model_data">
                 <source>Data</source>
                 <target state="translated">Daten</target>
