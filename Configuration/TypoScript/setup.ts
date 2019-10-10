@@ -20,6 +20,7 @@ plugin.tx_cartproducts {
 module.tx_cartproductreader_cart_cartproductreadercartproductreader {
     persistence {
         storagePid = {$module.tx_cartproductreader_cartproductreader.persistence.storagePid}
+        feVariantOption = {$module.tx_cartproductreader_cartproductreader.persistence.feVariantOption}
     }
     view {
         templateRootPaths.0 = EXT:cartproductreader/Resources/Private/Backend/Templates/
