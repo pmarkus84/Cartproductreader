@@ -1,5 +1,11 @@
 # Cart Product Reader Change Log
 
+##
+
+Supports Typo3 8.7.0 - 9.5.99
+
+- [FEATURE] Config for FrontendVariants.
+
 ## 1.4.1
 
 Supports Typo3 8.7.0 - 9.5.99

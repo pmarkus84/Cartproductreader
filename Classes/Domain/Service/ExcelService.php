@@ -25,6 +25,8 @@
 
 namespace Pmwebdesign\Cartproductreader\Domain\Service;
 
+//require $_SERVER['DOCUMENT_ROOT'] . "../vendor/autoload.php";
+
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use PHPOffice\PhpSpreadsheet\Spreadsheet;
 use PHPOffice\PhpSpreadsheet\Worksheet\Worksheet;
@@ -103,6 +105,12 @@ class ExcelService
             $beforeProducts = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         }
 
+        /* @var $settingsUtility \Pmwebdesign\Cartproductreader\Utility\SettingsUtility */
+        $settingsUtility = GeneralUtility::makeInstance(\Pmwebdesign\Cartproductreader\Utility\SettingsUtility::class);
+        $feVariantOption = $settingsUtility->getFeVariantOption();
+        
+        \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($feVariantOption);
+
         // Get category repository
         $categoryRepository = $objectManager->get(\Pmwebdesign\Cartproductreader\Domain\Repository\CategoryRepository::class);
 
@@ -166,7 +174,9 @@ class ExcelService
             $subcategory = $subcategoryRepository->findOneByTitle($subcategoryString);
 
             // Previous product name the same?
-            if ($row > 2 && $worksheet->getCellByColumnAndRow(3, $row - 1)->getValue() == $title && $worksheet->getCellByColumnAndRow($col, $row - 1)->getValue() != $colour) {
+            if ($row > 2 && $worksheet->getCellByColumnAndRow(3, $row - 1)->getValue() == $title && 
+                    $worksheet->getCellByColumnAndRow($col, $row - 1)->getValue() != $colour &&
+                    $feVariantOption == true) {
                 // Yes, create FeVariantProduct
                 $productVariant = new \Pmwebdesign\Cartproductreader\Domain\Model\ProductVariant();
                 $productVariant->setSku($articleNumber);
@@ -203,17 +213,22 @@ class ExcelService
                 // Description
                 $product->setDescription($description);
 
-                // Color?
+                // TODO: Color?
                 if ($colour != "") {
-                    // Create FeVariantProduct
-                    $productVariant = new \Pmwebdesign\Cartproductreader\Domain\Model\ProductVariant();
+                    // FeVariant Option?
+                    if ($feVariantOption == true) {
+                        // Create FeVariantProduct
+                        $productVariant = new \Pmwebdesign\Cartproductreader\Domain\Model\ProductVariant();
 
-                    // Yes, set FeVariantProduct    
-                    $productVariant->setSku($articleNumber);
-                    $productVariant->setTitle($colour);
-                    $feVariant = "new";
+                        // Yes, set FeVariantProduct    
+                        $productVariant->setSku($articleNumber);
+                        $productVariant->setTitle($colour);
+                        $feVariant = "new";
+                    } else {
+                        $product->setDescription($product->getDescription() . "<br /><br /><b>" . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_colour', 'Cartproductreader') . ":</b><br />" . $colour);
+                    }
                 }
-                
+
                 // EAN
                 if ($ean != "") {
                     $product->setDescription($product->getDescription() . "<br /><br /><b>" . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_ean', 'Cartproductreader') . ":</b><br />" . $ean);
@@ -251,14 +266,14 @@ class ExcelService
                         $productVariant->setImagepaths($imagepaths);
                     }
                 }
-                
+
                 // PID
                 $product->setPid($subcategory->getFolderId());
                 $product->setCategory($category);
                 $product->setSubcategory($subcategory);
 
                 // Product Variant?
-                if ($feVariant == "new") {
+                if ($feVariant == "new" && $feVariantOption == true) {
                     $feVariants = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
                     $productVariant->setPid($product->getPid());
                     $feVariants->attach($productVariant);
@@ -286,26 +301,28 @@ class ExcelService
                     $beforeProduct->setPrizePurchaseNetGp($excelProduct->getPrizePurchaseNetGp());
                     $beforeProduct->setPrice($excelProduct->getPrice());
                     $beforeProduct->setImagepaths($excelProduct->getImagepaths());
-                    $beforeProduct->setPid($excelProduct->getPid()); 
+                    $beforeProduct->setPid($excelProduct->getPid());
                     $beforeProduct->setCategory($excelProduct->getCategory());
                     $beforeProduct->setSubcategory($excelProduct->getSubcategory());
                     $found = true;
 
-                    // TODO: Check product variants                    
-                    foreach ($excelProduct->getFeVariants() as $excelFeVariant) {
-                        $foundFeVariant = false;
-                        foreach ($beforeProduct->getFeVariants() as $beforeFeVariant) {
-                            // Product Variant exist?
-                            if ($excelFeVariant->getSku() == $beforeFeVariant->getSku()) {
-                                // Yes, update product variant
-                                $beforeFeVariant->setTitle($excelFeVariant->getTitle());
-                                $beforeFeVariant->setPid($excelProduct->getPid());
-                                $foundFeVariant = true;
+                    // Check product variants   
+                    if ($feVariantOption == true) {
+                        foreach ($excelProduct->getFeVariants() as $excelFeVariant) {
+                            $foundFeVariant = false;
+                            foreach ($beforeProduct->getFeVariants() as $beforeFeVariant) {
+                                // Product Variant exist?
+                                if ($excelFeVariant->getSku() == $beforeFeVariant->getSku()) {
+                                    // Yes, update product variant
+                                    $beforeFeVariant->setTitle($excelFeVariant->getTitle());
+                                    $beforeFeVariant->setPid($excelProduct->getPid());
+                                    $foundFeVariant = true;
+                                }
                             }
-                        }
-                        if ($foundFeVariant == false) {
-                            $excelFeVariant->setPid($excelProduct->getPid());
-                            $beforeProduct->addFeVariant($excelFeVariant);
+                            if ($foundFeVariant == false) {
+                                $excelFeVariant->setPid($excelProduct->getPid());
+                                $beforeProduct->addFeVariant($excelFeVariant);
+                            }
                         }
                     }
                 }
@@ -341,4 +358,5 @@ class ExcelService
 
         return $data;
     }
+
 }

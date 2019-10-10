@@ -11,5 +11,8 @@ module.tx_cartproductreader_cartproductreader {
     persistence {
         # cat=module.tx_cartproductreader_cartproductreader//a; type=string; label=Default storage PID
         storagePid =
+
+        # cat=module.tx_cartproductreader_cartproductreader//a; type=boolean; label=FeVariant activated
+        feVariantOption =
     }
 }

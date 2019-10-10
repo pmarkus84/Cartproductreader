@@ -47,13 +47,17 @@ class ImageService
         
         $products = $data->getSupplier()->getProducts();
         
+        /* @var $settingsUtility \Pmwebdesign\Cartproductreader\Utility\SettingsUtility */
+        $settingsUtility = GeneralUtility::makeInstance(\Pmwebdesign\Cartproductreader\Utility\SettingsUtility::class);
+        $feVariantOption = $settingsUtility->getFeVariantOption();
+        
         /* @var $product \Pmwebdesign\Cartproductreader\Domain\Model\Product */
         foreach ($products as $product) {
             // Images?
             if($product->getImagepaths() != "") {
                 // Get image paths of product and product variants
                 $strArrayPictures = [];
-                if($product->getFeVariants() != null) {                    
+                if($product->getFeVariants() != null && $feVariantOption == true) {                    
                     $count = 0;
                     /* @var $productVariant \Pmwebdesign\Cartproductreader\Domain\Model\ProductVariant */
                     foreach ($product->getFeVariants() as $productVariant) {
