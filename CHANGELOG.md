@@ -1,5 +1,11 @@
 # Cart Product Reader Change Log
 
+## 1.4.3
+
+Supports Typo3 8.7.0 - 9.5.99
+
+- [FEATURE] Filter out products of supplier.
+
 ## 1.4.2
 
 Supports Typo3 8.7.0 - 9.5.99
