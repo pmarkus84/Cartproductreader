@@ -103,7 +103,7 @@ class ExcelService
         if ($beforeProducts == null) {
             $beforeProducts = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         }
-        
+
         // FeVariant Option
         $feVariantOption = SettingsUtility::getFeVariantOption();
 
@@ -146,8 +146,8 @@ class ExcelService
             // GastPlus Price purchase
             $prizePurchaseNetGp = $worksheet->getCellByColumnAndRow(++$col, $row)->getValue();
             // GastPlus Price gross            
-            $prizeBrutGp = $worksheet->getCellByColumnAndRow( ++$col, $row)->getValue();
-            //            $product->setPrizeBrutGp($prizeBrutGp);
+            $prizeBrutGp = $worksheet->getCellByColumnAndRow(++$col, $row)->getValue();
+            // $product->setPrizeBrutGp($prizeBrutGp);
             // Best before date              
             $unixDate = $worksheet->getCellByColumnAndRow(++$col, $row)->getValue();
             $bestBeforeDate = \PHPOffice\PhpSpreadsheet\Style\NumberFormat::toFormattedString($unixDate, 'dd.MM.YYYY');
@@ -179,7 +179,7 @@ class ExcelService
                 $productVariant->setPid($subcategory->getFolderId());
                 // Images
                 $imagepaths = StringUtility::setCharakter($worksheet->getCellByColumnAndRow(16, $row)->getValue());
-                
+
                 if ($imagepaths != "") {
                     $productVariant->setImagepaths($imagepaths);
                 }

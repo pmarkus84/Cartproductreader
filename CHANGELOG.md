@@ -4,6 +4,7 @@
 
 Supports Typo3 8.7.0 - 9.5.99
 
+- [BUFIX] Fix Charakter set.
 - [UPDATE] Add Flash Messages.
 - [UPDATE] Charakter set (utf8, lowercase).
 

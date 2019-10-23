@@ -35,7 +35,7 @@ class StringUtility extends \TYPO3\CMS\Core\Utility\StringUtility
             $modifiedString = $param;
         } else {
             // Normally, without umlauts
-            $modifiedString = $this->changeUmlauts($param);
+            $modifiedString = StringUtility::changeUmlauts($param);
         }        
         return $modifiedString;
     }
@@ -48,7 +48,7 @@ class StringUtility extends \TYPO3\CMS\Core\Utility\StringUtility
      */
     public static function changeUmlauts($param): string
     {
-        $tempstr = Array("Ä" => "AE", "Ö" => "OE", "Ü" => "UE", "ä" => "ae", "ö" => "oe", "ü" => "ue");
-        return strstr($param, $tempstr);
+        $tempstr = ["Ä" => "AE", "Ö" => "OE", "Ü" => "UE", "ä" => "ae", "ö" => "oe", "ü" => "ue"];
+        return strtr($param, $tempstr);
     }
 }
