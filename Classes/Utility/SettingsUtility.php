@@ -54,7 +54,7 @@ class SettingsUtility
      * 
      * @return string
      */
-    public function getStoragePid()
+    public static function getStoragePid()
     {   
         $objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\Extbase\\Object\\ObjectManager');
         $configurationManager = $objectManager->get('TYPO3\\CMS\\Extbase\\Configuration\\ConfigurationManager');
@@ -73,7 +73,7 @@ class SettingsUtility
      * 
      * @return bool
      */
-    public function getFeVariantOption()
+    public static function getFeVariantOption()
     {   
         $objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\Extbase\\Object\\ObjectManager');
         $configurationManager = $objectManager->get('TYPO3\\CMS\\Extbase\\Configuration\\ConfigurationManager');
@@ -92,7 +92,7 @@ class SettingsUtility
      * 
      * @return int
      */
-    public function getFileUploadCharakter()
+    public static function getFileUploadCharakter()
     {   
         $objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\Extbase\\Object\\ObjectManager');
         $configurationManager = $objectManager->get('TYPO3\\CMS\\Extbase\\Configuration\\ConfigurationManager');

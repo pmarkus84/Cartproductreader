@@ -164,6 +164,6 @@ class DataController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
         $data = $imageService->setFalImagesToSupplierProducts($data);
         $this->dataRepository->update($data);
         
-//        $this->redirect('readExcel', 'Data', null, ['data' => $data]);
+        $this->redirect('readExcel', 'Data', null, ['data' => $data]);
     }
 }

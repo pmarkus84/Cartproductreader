@@ -21,6 +21,7 @@ module.tx_cartproductreader_cart_cartproductreadercartproductreader {
     persistence {
         storagePid = {$module.tx_cartproductreader_cartproductreader.persistence.storagePid}
         feVariantOption = {$module.tx_cartproductreader_cartproductreader.persistence.feVariantOption}
+        fileUploadCharakter = {$module.tx_cartproductreader_cartproductreader.persistence.fileUploadCharakter}
     }
     view {
         templateRootPaths.0 = EXT:cartproductreader/Resources/Private/Backend/Templates/

@@ -15,9 +15,8 @@ use Pmwebdesign\Cartproductreader\Utility\SettingsUtility;
  *
  * @author Markus Puffer <m.puffer@pm-webdesign.eu>
  */
-class StringUtility
+class StringUtility extends \TYPO3\CMS\Core\Utility\StringUtility
 {
-
     /**
      * Set charakter
      * (Lower case, Utf-8)
@@ -25,18 +24,31 @@ class StringUtility
      * @param string $param
      * @return string
      */
-    public static function setCharakter($param)
+    public static function setCharakter($param): string
     {
+        $fileUploadCharakter = SettingsUtility::getFileUploadCharakter();
         // LowerCase Charakter set?
         if ($fileUploadCharakter == 1) {
-            $imagename = strtolower($image->getOriginalResource()->getOriginalFile()->getName());
+            $modifiedString = strtolower($param);
         } elseif ($fileUploadCharakter == 2) {
             // Utf-8
-            $imagename = $image->getOriginalResource()->getOriginalFile()->getName();
+            $modifiedString = $param;
         } else {
-            // TODO: Normally, without umlaut
-            $imagename = $image->getOriginalResource()->getOriginalFile()->getName();
-        }
+            // Normally, without umlauts
+            $modifiedString = $this->changeUmlauts($param);
+        }        
+        return $modifiedString;
     }
 
+    /**
+     * Change umlauts
+     * 
+     * @param string $param
+     * @return string
+     */
+    public static function changeUmlauts($param): string
+    {
+        $tempstr = Array("Ä" => "AE", "Ö" => "OE", "Ü" => "UE", "ä" => "ae", "ö" => "oe", "ü" => "ue");
+        return strstr($param, $tempstr);
+    }
 }

@@ -28,6 +28,8 @@ namespace Pmwebdesign\Cartproductreader\Domain\Service;
 //require $_SERVER['DOCUMENT_ROOT'] . "../vendor/autoload.php";
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use Pmwebdesign\Cartproductreader\Utility\SettingsUtility;
+use Pmwebdesign\Cartproductreader\Utility\StringUtility;
 use PHPOffice\PhpSpreadsheet\IOFactory;
 
 /**
@@ -101,11 +103,9 @@ class ExcelService
         if ($beforeProducts == null) {
             $beforeProducts = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
         }
-
-        /* @var $settingsUtility \Pmwebdesign\Cartproductreader\Utility\SettingsUtility */
-        $settingsUtility = GeneralUtility::makeInstance(\Pmwebdesign\Cartproductreader\Utility\SettingsUtility::class);
-        $feVariantOption = $settingsUtility->getFeVariantOption();
-        $fileUploadCharakter = $settingsUtility->getFileUploadCharakter();
+        
+        // FeVariant Option
+        $feVariantOption = SettingsUtility::getFeVariantOption();
 
         // Get category repository
         $categoryRepository = $objectManager->get(\Pmwebdesign\Cartproductreader\Domain\Repository\CategoryRepository::class);
@@ -154,17 +154,7 @@ class ExcelService
             // Delivery time
             $deliveryTime = $worksheet->getCellByColumnAndRow(++$col, $row)->getValue();
             // Images
-            // LowerCase Charakter set?
-            if ($fileUploadCharakter == 1) {
-                $imagepaths = strtolower($worksheet->getCellByColumnAndRow( ++$col, $row)->getValue());
-            } elseif ($fileUploadCharakter == 2) {
-                // Utf-8
-                $imagepaths = $worksheet->getCellByColumnAndRow(++$col, $row)->getValue();
-            } else {
-                // TODO: Normally, without umlaut
-                $imagepaths = $worksheet->getCellByColumnAndRow(++$col, $row)->getValue();
-            }
-
+            $imagepaths = StringUtility::setCharakter($worksheet->getCellByColumnAndRow(++$col, $row)->getValue());
             // Main Category
             // Not needed 
             $col++;
@@ -188,16 +178,8 @@ class ExcelService
                 $productVariant->setTitle($colour);
                 $productVariant->setPid($subcategory->getFolderId());
                 // Images
-                // LowerCase Charakter set?
-                if ($fileUploadCharakter == 1) {
-                    $imagepaths = strtolower($worksheet->getCellByColumnAndRow(16, $row)->getValue());
-                } elseif ($fileUploadCharakter == 2) {
-                    // Utf-8
-                    $imagepaths = $worksheet->getCellByColumnAndRow(16, $row)->getValue();
-                } else {
-                    // TODO: Normally, without umlaut
-                    $imagepaths = $worksheet->getCellByColumnAndRow(16, $row)->getValue();
-                }
+                $imagepaths = StringUtility::setCharakter($worksheet->getCellByColumnAndRow(16, $row)->getValue());
+                
                 if ($imagepaths != "") {
                     $productVariant->setImagepaths($imagepaths);
                 }

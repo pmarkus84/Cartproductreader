@@ -26,6 +26,8 @@
 namespace Pmwebdesign\Cartproductreader\Domain\Service;
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
+use Pmwebdesign\Cartproductreader\Utility\SettingsUtility;
+use Pmwebdesign\Cartproductreader\Utility\StringUtility;
 
 /**
  * Description of ImageService
@@ -48,9 +50,7 @@ class ImageService
 
         $products = $data->getSupplier()->getProducts();
 
-        /* @var $settingsUtility \Pmwebdesign\Cartproductreader\Utility\SettingsUtility */
-        $settingsUtility = GeneralUtility::makeInstance(\Pmwebdesign\Cartproductreader\Utility\SettingsUtility::class);
-        $feVariantOption = $settingsUtility->getFeVariantOption();
+        $feVariantOption = SettingsUtility::getFeVariantOption();
 
         /* @var $product \Pmwebdesign\Cartproductreader\Domain\Model\Product */
         foreach ($products as $product) {
@@ -91,17 +91,9 @@ class ImageService
                         foreach ($product->getImages() as $image) {
                             // Image exists? 
                             if ($image->getOriginalResource() != null) {
-                                // LowerCase Charakter set?
-                                if ($fileUploadCharakter == 1) {
-                                    $imagename = strtolower($image->getOriginalResource()->getOriginalFile()->getName());
-                                } elseif ($fileUploadCharakter == 2) {
-                                    // Utf-8
-                                    $imagename = $image->getOriginalResource()->getOriginalFile()->getName();
-                                } else {
-                                    // TODO: Normally, without umlaut
-                                    $imagename = $image->getOriginalResource()->getOriginalFile()->getName();
-                                }
-                                if ($imagename == strtolower($strPicture)) {
+                                $imagename = StringUtility::setCharakter($image->getOriginalResource()->getOriginalFile()->getName());
+                                $strPictureModified = StringUtility::setCharakter($strPicture);
+                                if ($imagename == $strPictureModified) {
                                     $foundExcelImage = true;
                                 }
                             }
@@ -110,14 +102,11 @@ class ImageService
                     // Previous Image not found?
                     if ($foundExcelImage == false) {
                         // Add Image to product
-                        //$originalFilePath = $originalPath . "/" . strtolower($strPicture);
                         $originalFilePath = $originalPath . "/" . $strPicture;
-                        \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($originalFilePath);
                         //$movedNewFile = $_SERVER['DOCUMENT_ROOT'] . "/fileadmin/user_upload/" . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_suppliers', 'Cartproductreader') . "/" . $data->getSupplier()->getName()  . "/" . $strPicture;
-                        if (file_exists($originalFilePath)) { // TODO-Error: Why File not exist?
-                            \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump("Image exists");
+                        if (file_exists($originalFilePath)) {
                             //$movedNewFile = $storage->addFile($originalFilePath, $targetFolder, $strPicture);
-                            $movedNewFile = $storage->getFile($pathToFalImages . "/" . strtolower($strPicture));
+                            $movedNewFile = $storage->getFile($pathToFalImages . "/" . StringUtility::setCharakter($strPicture));
                             $newFileReference = $objectManager->get('Pmwebdesign\\Cartproductreader\\Domain\\Model\\FileReference');
                             $newFileReference->setFile($movedNewFile);
                             $product->addImage($newFileReference);
@@ -134,7 +123,7 @@ class ImageService
                         foreach ($strArrayPictures as $strPicture) {
                             // Image exists?
                             if ($image->getOriginalResource() != null) {
-                                if (strtolower($image->getOriginalResource()->getOriginalFile()->getName()) == strtolower($strPicture)) {
+                                if (StringUtility::setCharakter($image->getOriginalResource()->getOriginalFile()->getName()) == StringUtility::setCharakter($strPicture)) {
                                     $neededPicture = true;
                                 }
                             }
@@ -171,7 +160,6 @@ class ImageService
         } else {
             $data->setImagesAssigned(FALSE);
         }
-        \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($data);
         return $data;
     }
 }
