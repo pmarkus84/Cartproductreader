@@ -150,6 +150,14 @@ $fields = [
         'after:nav_title' // Insert fields before (default) or after one, or replace a field
 );
 
+// Make fields visible in the TCEforms:
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
+        'tx_cartproducts_domain_model_product_product', // Table name
+        '--palette--;Bilder;tx_addImagefields',
+        '1', // List of specific types to add the field list to (If empty, all entries are affected)
+        'after:nav_title' // Insert fields before (default) or after one, or replace a field
+);
+
 // Add the new palette:
 $GLOBALS['TCA']['tx_cartproducts_domain_model_product_product']['palettes']['tx_addSupplierfields'] = [
     'showitem' => 'supplier'
@@ -163,4 +171,9 @@ $GLOBALS['TCA']['tx_cartproducts_domain_model_product_product']['palettes']['tx_
 // Add the new palette:
 $GLOBALS['TCA']['tx_cartproducts_domain_model_product_product']['palettes']['tx_addCategoryfields'] = [
     'showitem' => 'category, subcategory'
+];
+
+// Add the new palette:
+$GLOBALS['TCA']['tx_cartproducts_domain_model_product_product']['palettes']['tx_addImagefields'] = [
+    'showitem' => 'imagepaths'
 ];

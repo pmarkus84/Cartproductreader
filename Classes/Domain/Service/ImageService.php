@@ -34,6 +34,7 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class ImageService
 {
+
     /**
      * Set the uploaded Images to the products of supplier
      * 
@@ -44,66 +45,77 @@ class ImageService
     {
         $objectManager = GeneralUtility::makeInstance('TYPO3\\CMS\Extbase\\Object\\ObjectManager');
         $productRepository = $objectManager->get(\Pmwebdesign\Cartproductreader\Domain\Repository\ProductRepository::class);
-        
+
         $products = $data->getSupplier()->getProducts();
-        
+
         /* @var $settingsUtility \Pmwebdesign\Cartproductreader\Utility\SettingsUtility */
         $settingsUtility = GeneralUtility::makeInstance(\Pmwebdesign\Cartproductreader\Utility\SettingsUtility::class);
         $feVariantOption = $settingsUtility->getFeVariantOption();
-        
+
         /* @var $product \Pmwebdesign\Cartproductreader\Domain\Model\Product */
         foreach ($products as $product) {
             // Images?
-            if($product->getImagepaths() != "") {
+            if ($product->getImagepaths() != "") {
                 // Get image paths of product and product variants
                 $strArrayPictures = [];
-                if($product->getFeVariants() != null && $feVariantOption == true) {                    
+                if ($product->getFeVariants() != null && $feVariantOption == true) {
                     $count = 0;
                     /* @var $productVariant \Pmwebdesign\Cartproductreader\Domain\Model\ProductVariant */
                     foreach ($product->getFeVariants() as $productVariant) {
-                        if($count == 0) {
+                        if ($count == 0) {
                             $productVariantImagepaths = $productVariant->getImagepaths();
                         } else {
                             $productVariantImagepaths .= "|" . $productVariant->getImagepaths();
                         }
                         $count++;
                     }
-                    $strArrayPictures = explode("|", $productVariantImagepaths);                    
+                    $strArrayPictures = explode("|", $productVariantImagepaths);
                 } else {
-                    $strArrayPictures = explode("|", $product->getImagepaths());             
+                    $strArrayPictures = explode("|", $product->getImagepaths());
                 }
-                $images = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();                        
+                $images = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
 
                 /* @var $storageRepository \TYPO3\CMS\Core\Resource\StorageRepository */
-                $storageRepository = $objectManager->get('TYPO3\\CMS\\Core\\Resource\\StorageRepository');    
+                $storageRepository = $objectManager->get('TYPO3\\CMS\\Core\\Resource\\StorageRepository');
                 $storage = $storageRepository->findByUid('1');
 
                 $originalPath = $_SERVER['DOCUMENT_ROOT'] . "/fileadmin/user_upload/" . strtolower(\TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_suppliers', 'Cartproductreader')) . "/" . strtolower($data->getSupplier()->getName());
                 // No absulute path, rather recursive path for createFolder in storage!
                 $pathToFalImages = "user_upload/" . strtolower(\TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_suppliers', 'Cartproductreader')) . "/" . strtolower($data->getSupplier()->getName());
 //                $targetFolder = $storage->createFolder($pathToFalImages."/FAL");
-
                 // All Excel images
                 foreach ($strArrayPictures as $strPicture) {
                     $foundExcelImage = false;
-                    if($product->getImages()->count() > 0) {
+                    if ($product->getImages()->count() > 0) {
                         // All previous images of product
                         foreach ($product->getImages() as $image) {
                             // Image exists? 
-                            if($image->getOriginalResource() != null) {
-                                if (strtolower($image->getOriginalResource()->getOriginalFile()->getName()) == strtolower($strPicture)) {
+                            if ($image->getOriginalResource() != null) {
+                                // LowerCase Charakter set?
+                                if ($fileUploadCharakter == 1) {
+                                    $imagename = strtolower($image->getOriginalResource()->getOriginalFile()->getName());
+                                } elseif ($fileUploadCharakter == 2) {
+                                    // Utf-8
+                                    $imagename = $image->getOriginalResource()->getOriginalFile()->getName();
+                                } else {
+                                    // TODO: Normally, without umlaut
+                                    $imagename = $image->getOriginalResource()->getOriginalFile()->getName();
+                                }
+                                if ($imagename == strtolower($strPicture)) {
                                     $foundExcelImage = true;
                                 }
                             }
                         }
-                    } 
+                    }
                     // Previous Image not found?
-                    if($foundExcelImage == false) {
+                    if ($foundExcelImage == false) {
                         // Add Image to product
-
-                        $originalFilePath = $originalPath . "/" . strtolower($strPicture);                    
+                        //$originalFilePath = $originalPath . "/" . strtolower($strPicture);
+                        $originalFilePath = $originalPath . "/" . $strPicture;
+                        \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($originalFilePath);
                         //$movedNewFile = $_SERVER['DOCUMENT_ROOT'] . "/fileadmin/user_upload/" . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_suppliers', 'Cartproductreader') . "/" . $data->getSupplier()->getName()  . "/" . $strPicture;
-                        if (file_exists($originalFilePath)) {
+                        if (file_exists($originalFilePath)) { // TODO-Error: Why File not exist?
+                            \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump("Image exists");
                             //$movedNewFile = $storage->addFile($originalFilePath, $targetFolder, $strPicture);
                             $movedNewFile = $storage->getFile($pathToFalImages . "/" . strtolower($strPicture));
                             $newFileReference = $objectManager->get('Pmwebdesign\\Cartproductreader\\Domain\\Model\\FileReference');
@@ -116,50 +128,50 @@ class ImageService
                 }
 
                 // Check not needed pictures
-                if($product->getImages()->count() > 0) {
+                if ($product->getImages()->count() > 0) {
                     foreach ($product->getImages() as $image) {
                         $neededPicture = false;
                         foreach ($strArrayPictures as $strPicture) {
                             // Image exists?
-                            if($image->getOriginalResource() != null) {
+                            if ($image->getOriginalResource() != null) {
                                 if (strtolower($image->getOriginalResource()->getOriginalFile()->getName()) == strtolower($strPicture)) {
                                     $neededPicture = true;
                                 }
                             }
                         }
                         // Delete picture and reference
-                        if($neededPicture == false) {
-                            if($image && $image->getOriginalResource()->getStorage()->getFile($image->getOriginalResource()->getIdentifier())->isMissing() == FALSE) {
+                        if ($neededPicture == false) {
+                            if ($image && $image->getOriginalResource()->getStorage()->getFile($image->getOriginalResource()->getIdentifier())->isMissing() == FALSE) {
                                 $image->getOriginalResource()->getStorage()->deleteFile($image->getOriginalResource());
-                            }                        
-                            $product->deleteImage($image);                        
+                            }
+                            $product->deleteImage($image);
                         }
                     }
                     $productRepository->update($product);
                 }
             } else {
-                 // Set no pictures
-                if($product->getImages()->count() > 0) {
+                // Set no pictures
+                if ($product->getImages()->count() > 0) {
                     $images = $product->getImages();
                     $product->setImages(new \TYPO3\CMS\Extbase\Persistence\ObjectStorage());
                     $productRepository->update($product);
                     foreach ($images as $image) {
                         // Delete picture and reference                        
-                        if($image && $image->getOriginalResource()->getStorage()->getFile($image->getOriginalResource()->getIdentifier())->isMissing() == FALSE) {
+                        if ($image && $image->getOriginalResource()->getStorage()->getFile($image->getOriginalResource()->getIdentifier())->isMissing() == FALSE) {
                             $image->getOriginalResource()->getStorage()->deleteFile($image->getOriginalResource());
-                        }                        
+                        }
                     }
                 }
-            } 
+            }
         }
-        
+
         // Pictures assigned?
-        if($product->getImages()->count() > 0) {
+        if ($product->getImages()->count() > 0) {
             $data->setImagesAssigned(TRUE);
         } else {
             $data->setImagesAssigned(FALSE);
         }
-        
-//        return $data;
+        \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($data);
+        return $data;
     }
 }

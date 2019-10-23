@@ -86,4 +86,23 @@ class SettingsUtility
         
         return $feVariantOption;
     }
+    
+    /**
+     * Get option for FileUpload charakter
+     * 
+     * @return int
+     */
+    public function getFileUploadCharakter()
+    {   
+        $objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\Extbase\\Object\\ObjectManager');
+        $configurationManager = $objectManager->get('TYPO3\\CMS\\Extbase\\Configuration\\ConfigurationManager');
+        $settings = $configurationManager->getConfiguration(
+           \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT,
+             'Pmwebdesign.Cartproductreader',
+             'cartproductreader'
+           );
+        $fileUploadCharakter = $settings['module.']['tx_cartproductreader_cart_cartproductreadercartproductreader.']['persistence.']['fileUploadCharakter'];
+        
+        return $fileUploadCharakter;
+    }
 }

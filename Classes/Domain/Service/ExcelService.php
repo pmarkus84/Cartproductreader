@@ -28,9 +28,6 @@ namespace Pmwebdesign\Cartproductreader\Domain\Service;
 //require $_SERVER['DOCUMENT_ROOT'] . "../vendor/autoload.php";
 
 use TYPO3\CMS\Core\Utility\GeneralUtility;
-use PHPOffice\PhpSpreadsheet\Spreadsheet;
-use PHPOffice\PhpSpreadsheet\Worksheet\Worksheet;
-use PHPOffice\PhpSpreadsheet\Writer\Xlsx;
 use PHPOffice\PhpSpreadsheet\IOFactory;
 
 /**
@@ -108,8 +105,7 @@ class ExcelService
         /* @var $settingsUtility \Pmwebdesign\Cartproductreader\Utility\SettingsUtility */
         $settingsUtility = GeneralUtility::makeInstance(\Pmwebdesign\Cartproductreader\Utility\SettingsUtility::class);
         $feVariantOption = $settingsUtility->getFeVariantOption();
-        
-        \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($feVariantOption);
+        $fileUploadCharakter = $settingsUtility->getFileUploadCharakter();
 
         // Get category repository
         $categoryRepository = $objectManager->get(\Pmwebdesign\Cartproductreader\Domain\Repository\CategoryRepository::class);
@@ -158,7 +154,16 @@ class ExcelService
             // Delivery time
             $deliveryTime = $worksheet->getCellByColumnAndRow(++$col, $row)->getValue();
             // Images
-            $imagepaths = strtolower($worksheet->getCellByColumnAndRow(++$col, $row)->getValue());
+            // LowerCase Charakter set?
+            if ($fileUploadCharakter == 1) {
+                $imagepaths = strtolower($worksheet->getCellByColumnAndRow( ++$col, $row)->getValue());
+            } elseif ($fileUploadCharakter == 2) {
+                // Utf-8
+                $imagepaths = $worksheet->getCellByColumnAndRow(++$col, $row)->getValue();
+            } else {
+                // TODO: Normally, without umlaut
+                $imagepaths = $worksheet->getCellByColumnAndRow(++$col, $row)->getValue();
+            }
 
             // Main Category
             // Not needed 
@@ -174,7 +179,7 @@ class ExcelService
             $subcategory = $subcategoryRepository->findOneByTitle($subcategoryString);
 
             // Previous product name the same?
-            if ($row > 2 && $worksheet->getCellByColumnAndRow(3, $row - 1)->getValue() == $title && 
+            if ($row > 2 && $worksheet->getCellByColumnAndRow(3, $row - 1)->getValue() == $title &&
                     $worksheet->getCellByColumnAndRow($col, $row - 1)->getValue() != $colour &&
                     $feVariantOption == true) {
                 // Yes, create FeVariantProduct
@@ -183,7 +188,16 @@ class ExcelService
                 $productVariant->setTitle($colour);
                 $productVariant->setPid($subcategory->getFolderId());
                 // Images
-                $imagepaths = strtolower($worksheet->getCellByColumnAndRow(16, $row)->getValue());
+                // LowerCase Charakter set?
+                if ($fileUploadCharakter == 1) {
+                    $imagepaths = strtolower($worksheet->getCellByColumnAndRow(16, $row)->getValue());
+                } elseif ($fileUploadCharakter == 2) {
+                    // Utf-8
+                    $imagepaths = $worksheet->getCellByColumnAndRow(16, $row)->getValue();
+                } else {
+                    // TODO: Normally, without umlaut
+                    $imagepaths = $worksheet->getCellByColumnAndRow(16, $row)->getValue();
+                }
                 if ($imagepaths != "") {
                     $productVariant->setImagepaths($imagepaths);
                 }

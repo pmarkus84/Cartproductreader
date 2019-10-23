@@ -1,5 +1,11 @@
 # Cart Product Reader Change Log
 
+##
+
+Supports Typo3 8.7.0 - 9.5.99
+
+- [UPDATE] Charakter set (utf8, lowercase).
+
 ## 1.4.3
 
 Supports Typo3 8.7.0 - 9.5.99
