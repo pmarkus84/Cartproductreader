@@ -227,6 +227,34 @@
                 <source>List</source>
                 <target state="translated">Liste</target>
             </trans-unit>
+            <trans-unit id="tx_cartproductreader_data">
+                <source>Data</source>
+                <target state="translated">Daten</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_read">
+                <source>read</source>
+                <target state="translated">eingelesen</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_images">
+                <source>Images</source>
+                <target state="translated">Bilder</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_deleted">
+                <source>deleted</source>
+                <target state="translated">gelöscht</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_uploaded">
+                <source>uploaded</source>
+                <target state="translated">hochgeladen</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_created">
+                <source>created</source>
+                <target state="translated">erstellt</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_updated">
+                <source>updated</source>
+                <target state="translated">aktualisiert</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

@@ -78,7 +78,10 @@ class SupplierController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
      */
     public function createAction(\Pmwebdesign\Cartproductreader\Domain\Model\Supplier $newSupplier)
     {
-        $this->addFlashMessage('The object was created. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/typo3cms/extensions/extension_builder/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
+        $this->addFlashMessage(\TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_domain_model_supplier', 'Cartproductreader') . 
+                ' ' . $newSupplier->getName() .
+                ' ' . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_created', 'Cartproductreader') . '!', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::OK);
+        
         $this->supplierRepository->add($newSupplier);
         $this->redirect('list');
     }
@@ -103,7 +106,10 @@ class SupplierController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
      */
     public function updateAction(\Pmwebdesign\Cartproductreader\Domain\Model\Supplier $supplier)
     {
-        $this->addFlashMessage('The object was updated. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/typo3cms/extensions/extension_builder/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
+        $this->addFlashMessage(\TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_domain_model_supplier', 'Cartproductreader') . 
+                ' ' . $supplier->getName() .
+                ' ' . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_updated', 'Cartproductreader') . '!', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::OK);
+        
         $this->supplierRepository->update($supplier);
         $this->redirect('list');
     }
@@ -116,7 +122,10 @@ class SupplierController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
      */
     public function deleteAction(\Pmwebdesign\Cartproductreader\Domain\Model\Supplier $supplier)
     {
-        $this->addFlashMessage('The object was deleted. Please be aware that this action is publicly accessible unless you implement an access check. See https://docs.typo3.org/typo3cms/extensions/extension_builder/User/Index.html', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
+        $this->addFlashMessage(\TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_domain_model_supplier', 'Cartproductreader') . 
+                ' ' . $supplier->getName() .
+                ' ' . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_deleted', 'Cartproductreader') . '!', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
+        
         $this->supplierRepository->remove($supplier);
         $this->redirect('list');
     }

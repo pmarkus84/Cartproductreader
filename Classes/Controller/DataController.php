@@ -80,6 +80,9 @@ class DataController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      */
     public function uploadExcelAction(\Pmwebdesign\Cartproductreader\Domain\Model\Data $data)
     {
+        $this->addFlashMessage('Excel ' .
+                \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_uploaded', 'Cartproductreader') . '!', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
+        
         $this->dataRepository->add($data);
         $this->objectManager->get('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\PersistenceManager')->persistAll();
 
@@ -93,7 +96,13 @@ class DataController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      */
     public function deleteExcelAction(\Pmwebdesign\Cartproductreader\Domain\Model\Data $data)
     {
-        $this->addFlashMessage('The data was deleted.', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::WARNING);
+        $this->addFlashMessage('Excel ' . 
+                \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_data', 'Cartproductreader') . ' (' . 
+                \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_domain_model_supplier', 'Cartproductreader') 
+                .') "'. $data->getSupplier()->getName() .'" ' . 
+                \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_deleted', 'Cartproductreader') .
+                '!', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
+        
         if ($data->getSupplier() != null) {
             $name = $data->getSupplier()->getName();
         } else {
@@ -139,6 +148,13 @@ class DataController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      */
     public function insertExcelDataAction(\Pmwebdesign\Cartproductreader\Domain\Model\Data $data)
     {
+        $this->addFlashMessage('Excel ' . 
+                \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_data', 'Cartproductreader') . ' (' . 
+                \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_domain_model_supplier', 'Cartproductreader') 
+                .') "'. $data->getSupplier()->getName() .'" ' . 
+                \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_read', 'Cartproductreader') .
+                '!', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::OK);
+        
         /* @var $excelService \Pmwebdesign\Cartproductreader\Domain\Service\ExcelService */
         $excelService = GeneralUtility::makeInstance(\Pmwebdesign\Cartproductreader\Domain\Service\ExcelService::class);
 
@@ -158,6 +174,13 @@ class DataController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      */
     public function setFalPicturesAction(\Pmwebdesign\Cartproductreader\Domain\Model\Data $data)
     {
+        $this->addFlashMessage(' ' . 
+                \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_images', 'Cartproductreader') . ' (' . 
+                \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_domain_model_supplier', 'Cartproductreader') 
+                .') "'. $data->getSupplier()->getName() .'" ' . 
+                \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_read', 'Cartproductreader') .
+                '!', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::OK);
+        
         /* @var $imageService \Pmwebdesign\Cartproductreader\Domain\Service\ImageService */
         $imageService = GeneralUtility::makeInstance(\Pmwebdesign\Cartproductreader\Domain\Service\ImageService::class);
         

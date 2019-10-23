@@ -171,6 +171,27 @@
             <trans-unit id="tx_cartproductreader_list">
                 <source>List</source>
             </trans-unit>
+            <trans-unit id="tx_cartproductreader_data">
+                <source>Data</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_read">
+                <source>read</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_images">
+                <source>Images</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_deleted">
+                <source>deleted</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_uploaded">
+                <source>uploaded</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_created">
+                <source>created</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_updated">
+                <source>updated</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>
