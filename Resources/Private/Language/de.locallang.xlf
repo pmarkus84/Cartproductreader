@@ -255,6 +255,10 @@
                 <source>updated</source>
                 <target state="translated">aktualisiert</target>
             </trans-unit>
+            <trans-unit id="tx_cartproductreader_not">
+                <source>not</source>
+                <target state="translated">nicht</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

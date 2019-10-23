@@ -192,6 +192,9 @@
             <trans-unit id="tx_cartproductreader_updated">
                 <source>updated</source>
             </trans-unit>
+            <trans-unit id="tx_cartproductreader_not">
+                <source>not</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

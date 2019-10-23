@@ -1,10 +1,11 @@
 # Cart Product Reader Change Log
 
-## 
+## 1.4.4
 
 Supports Typo3 8.7.0 - 9.5.99
 
-- [BUFIX] Fix Charakter set.
+- [BUGFIX] Fix Image assignment.
+- [BUGFIX] Fix Charakter set.
 - [UPDATE] Add Flash Messages.
 - [UPDATE] Charakter set (utf8, lowercase).
 

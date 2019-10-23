@@ -35,7 +35,7 @@ class FileReference extends \TYPO3\CMS\Extbase\Domain\Model\FileReference {
     /**
      * uid of a sys_file
      *
-     * @var integer
+     * @var int
      */
     protected $originalFileIdentifier;
 
@@ -58,5 +58,24 @@ class FileReference extends \TYPO3\CMS\Extbase\Domain\Model\FileReference {
      */
     public function setFile(\TYPO3\CMS\Core\Resource\File $falFile) {
         $this->originalFileIdentifier = (int)$falFile->getUid();
+    }
+    
+    /**
+     * @return \TYPO3\CMS\Core\Resource\FileReference
+     */
+    public function getOriginalResource()
+    {
+        if ($this->originalResource === null) {
+            $uid = $this->getUid();
+            if ($this->configurationManager->isFeatureEnabled('consistentTranslationOverlayHandling')) {
+                $uid = $this->_localizedUid;
+            }
+            if($uid == NULL) {
+                return NULL;
+            }
+            $this->originalResource = \TYPO3\CMS\Core\Resource\ResourceFactory::getInstance()->getFileReferenceObject($uid);
+        }
+
+        return $this->originalResource;
     }
 }

@@ -90,11 +90,13 @@ class ImageService
                         // All previous images of product
                         foreach ($product->getImages() as $image) {
                             // Image exists? 
-                            if ($image->getOriginalResource() != null) {
-                                $imagename = StringUtility::setCharakter($image->getOriginalResource()->getOriginalFile()->getName());
-                                $strPictureModified = StringUtility::setCharakter($strPicture);
-                                if ($imagename == $strPictureModified) {
-                                    $foundExcelImage = true;
+                            if($image != NULL) {
+                                if ($image->getOriginalResource() != NULL) { // TODO: Error with uid
+                                    $imagename = StringUtility::setCharakter($image->getOriginalResource()->getOriginalFile()->getName());
+                                    $strPictureModified = StringUtility::setCharakter($strPicture);
+                                    if ($imagename == $strPictureModified) {
+                                        $foundExcelImage = true;
+                                    }
                                 }
                             }
                         }
@@ -107,11 +109,11 @@ class ImageService
                         if (file_exists($originalFilePath)) {
                             //$movedNewFile = $storage->addFile($originalFilePath, $targetFolder, $strPicture);
                             $movedNewFile = $storage->getFile($pathToFalImages . "/" . StringUtility::setCharakter($strPicture));
-                            $newFileReference = $objectManager->get('Pmwebdesign\\Cartproductreader\\Domain\\Model\\FileReference');
+                            $newFileReference = $objectManager->get(\Pmwebdesign\Cartproductreader\Domain\Model\FileReference::class);
                             $newFileReference->setFile($movedNewFile);
                             $product->addImage($newFileReference);
                             $productRepository->update($product);
-                            $objectManager->get('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\PersistenceManager')->persistAll();
+                            $objectManager->get(\TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager::class)->persistAll();
                         }
                     }
                 }
@@ -122,18 +124,22 @@ class ImageService
                         $neededPicture = false;
                         foreach ($strArrayPictures as $strPicture) {
                             // Image exists?
-                            if ($image->getOriginalResource() != null) {
-                                if (StringUtility::setCharakter($image->getOriginalResource()->getOriginalFile()->getName()) == StringUtility::setCharakter($strPicture)) {
-                                    $neededPicture = true;
+                            if($image != NULL) {
+                                if ($image->getOriginalResource() != NULL) { // TODO: Error with uid
+                                    if (StringUtility::setCharakter($image->getOriginalResource()->getOriginalFile()->getName()) == StringUtility::setCharakter($strPicture)) {
+                                        $neededPicture = true;
+                                    }
                                 }
                             }
                         }
                         // Delete picture and reference
                         if ($neededPicture == false) {
-                            if ($image && $image->getOriginalResource()->getStorage()->getFile($image->getOriginalResource()->getIdentifier())->isMissing() == FALSE) {
-                                $image->getOriginalResource()->getStorage()->deleteFile($image->getOriginalResource());
+                            if ($image->getOriginalResource() != NULL) {
+                                if ($image && $image->getOriginalResource()->getStorage()->getFile($image->getOriginalResource()->getIdentifier())->isMissing() == FALSE) {
+                                    $image->getOriginalResource()->getStorage()->deleteFile($image->getOriginalResource());
+                                }
+                                $product->deleteImage($image);
                             }
-                            $product->deleteImage($image);
                         }
                     }
                     $productRepository->update($product);
@@ -156,9 +162,9 @@ class ImageService
 
         // Pictures assigned?
         if ($product->getImages()->count() > 0) {
-            $data->setImagesAssigned(TRUE);
+            $data->setImagesAssigned(true);
         } else {
-            $data->setImagesAssigned(FALSE);
+            $data->setImagesAssigned(false);
         }
         return $data;
     }
