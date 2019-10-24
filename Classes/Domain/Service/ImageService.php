@@ -91,7 +91,7 @@ class ImageService
                         foreach ($product->getImages() as $image) {
                             // Image exists? 
                             if($image != NULL) {
-                                if ($image->getOriginalResource() != NULL) { // TODO: Error with uid
+                                if ($image->getOriginalResource() != NULL) {
                                     $imagename = StringUtility::setCharakter($image->getOriginalResource()->getOriginalFile()->getName());
                                     $strPictureModified = StringUtility::setCharakter($strPicture);
                                     if ($imagename == $strPictureModified) {
@@ -125,7 +125,7 @@ class ImageService
                         foreach ($strArrayPictures as $strPicture) {
                             // Image exists?
                             if($image != NULL) {
-                                if ($image->getOriginalResource() != NULL) { // TODO: Error with uid
+                                if ($image->getOriginalResource() != NULL) {
                                     if (StringUtility::setCharakter($image->getOriginalResource()->getOriginalFile()->getName()) == StringUtility::setCharakter($strPicture)) {
                                         $neededPicture = true;
                                     }

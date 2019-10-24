@@ -49,9 +49,6 @@ class FrontendUserHook
         $objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(
             \TYPO3\CMS\Extbase\Object\ObjectManager::class
         );
-//        $frontendUserRepository = $objectManager->get(
-//            \TYPO3\CMS\Extbase\Domain\Repository\FrontendUserRepository::class
-//        );
         $frontendUserRepository = $objectManager->get(
                 \Pmwebdesign\Cartproductreader\Domain\Repository\UserRepository::class);
         
@@ -69,7 +66,7 @@ class FrontendUserHook
             $billingAddress->setStreet($frontenUser->getAddress());
             $billingAddress->setZip($frontenUser->getZip());
             $billingAddress->setCity($frontenUser->getCity());
-            $billingAddress->setTaxIdentificationNumber($frontenUser->getUidNumber()); // TODO: Extend FrontEndUser
+            $billingAddress->setTaxIdentificationNumber($frontenUser->getUidNumber());
         }
         $parameters['billingAddress'] = $billingAddress;
     }

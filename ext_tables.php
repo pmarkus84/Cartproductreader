@@ -30,7 +30,7 @@ call_user_func(
     {        
     
         if (TYPO3_MODE === 'BE') {
-            // Add module 'parat' after 'Web', TODO: Content and CSS are not displayed in poolhandy
+            // Add module
             if (!isset($GLOBALS['TBE_MODULES']['Cart'])) {
                 $temp_TBE_MODULES = [];
                 foreach ($GLOBALS['TBE_MODULES'] as $key => $val) {
