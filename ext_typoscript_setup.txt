@@ -4,7 +4,7 @@ config.tx_extbase {
             Extcode\CartProducts\Domain\Model\Product\Product.className = Pmwebdesign\Cartproductreader\Domain\Model\Product
             Extcode\CartProducts\Domain\Model\Product\Product\FeVariant.className = Pmwebdesign\Cartproductreader\Domain\Model\ProductVariant
             Extcode\CartProducts\Domain\Model\Category.className = Pmwebdesign\Cartproductreader\Domain\Model\Category
-            TYPO3\CMS\Extbase\Domain\Model\FileReference.className = Pmwebdesign\Cartproductreader\Domain\Model\FileReference
+#            TYPO3\CMS\Extbase\Domain\Model\FileReference.className = Pmwebdesign\Cartproductreader\Domain\Model\FileReference
     }
     persistence {
         updateReferenceIndex = 1
