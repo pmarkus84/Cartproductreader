@@ -34,7 +34,6 @@
                 </f:if>
             </f:for>
         </f:if>
-        <!--<input type="hidden" id="productsku" name="tx_cart_cart[product][sku]" value="{product.sku}">-->
         <input type="submit" class="btn btn-default" value="{f:translate(key:'tx_cartproducts.add_product')}">
 
         <div class="form-message" data-ajax-message-timeout="3000">
@@ -49,7 +48,7 @@
 </div>
     <script>
         /**
-         * Set the Sku for the Frontend Variant
+         * Set the Sku (article number) for the Frontend Variant
          * 
          * @returns {undefined}
          */
@@ -58,22 +57,10 @@
             
             // Get Sku
             var skuString = variantSelectVal[1];
-            /*var skuStringCut = "";
-            for (var i = skuString.length - 2; i > 0; i--) {
-                var c = skuString[i];
-                if (c == "[") {
-                    break;
-                } else {
-                    skuStringCut = c + skuStringCut;
-                }
-            }*/
             
             var fevariantInput = document.getElementById("fevariantsku");
             fevariantInput.value = variantSelectVal[0];
             fevariantInput.name = variantSelectVal[1];
-            
-            /*var productSku = document.getElementById("productsku");
-            productSku.value = skuStringCut;*/
         }
     </script>    
 </html>

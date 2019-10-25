@@ -17,5 +17,8 @@ module.tx_cartproductreader_cartproductreader {
 
         # cat=module.tx_cartproductreader_cartproductreader//a; type=int; label=File upload charakter (Normal = 0, LowerCase = 1, Utf8 = 2)
         fileUploadCharakter =
+
+        # cat=module.tx_cartproductreader_cartproductreader//a; type=string; label=Corporate Colour
+        corporateColour =
     }
 }

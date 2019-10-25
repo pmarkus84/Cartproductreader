@@ -57,7 +57,6 @@
             {product.description -> f:format.html()}
         </f:format.raw>
     </div>
-
     <f:if condition="{product.productContent}">
         <f:for each="{product.productContent}" as="content" iteration="iterator">
             <div id="content-{iterator.cycle}" class="content-element">
@@ -65,9 +64,7 @@
             </div>
         </f:for>
     </f:if>
-
     <f:cObject typoscriptObjectPath="lib.cartProduct.showForm" />
-
     <f:if condition="{product.relatedProducts}">
         <ul>
         <f:for each="{product.relatedProducts}" as="relatedProduct">

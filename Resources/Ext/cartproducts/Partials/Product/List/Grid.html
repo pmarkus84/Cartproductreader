@@ -5,20 +5,25 @@
       data-namespace-typo3-fluid="true">
 
 <f:section name="GridItem">
-    <div class="col-md-4">
-        <f:if condition="{product.images}">
-            <cartproducts:link.product product="{product}" settings="{settings}">
-                <f:image src="{product.firstImage.originalResource.originalFile.uid}"
-                         title="{product.firstImage.originalResource.title}"
-                         alt="{product.firstImage.originalResource.title}"
-                         width="{settings.listAction.media.image.size.small.maxWidth}"
-                         height="{settings.listAction.media.image.size.small.maxHeight}" />
-            </cartproducts:link.product>
-        </f:if>
-        <cartproducts:link.product product="{product}" settings="{settings}">
-            {product.title}
+    <div class="col-md-4 griditem">
+        <cartproducts:link.product product="{product}" settings="{settings}" class="griditem-a">
+            <div class="cartproductreader-flex">
+                <f:if condition="{product.images}">
+                    <f:image src="{product.firstImage.originalResource.originalFile.uid}"
+                             title="{product.firstImage.originalResource.title}"
+                             alt="{product.firstImage.originalResource.title}"
+                             width="{settings.listAction.media.image.size.small.maxWidth}"
+                             height="{settings.listAction.media.image.size.small.maxHeight}" class="cartproductreader-image-center griditem-img" />
+                </f:if>        
+            </div>
+            <div class="cartproductreader-flex cartproductreader-flex-center">
+                {product.title}
+            </div>
+            <div class="cartproductreader-flex cartproductreader-flex-center">
+
+                <f:render partial="Product/Price" arguments="{product: product, settings: settings, currencyTranslationData:currencyTranslationData}"></f:render>
+            </div>
         </cartproducts:link.product>
-        <f:render partial="Product/Price" arguments="{product: product, settings: settings, currencyTranslationData:currencyTranslationData}"></f:render>
     </div>
 </f:section>
 <vh:widget.product objects="{products}" as="filteredProducts">

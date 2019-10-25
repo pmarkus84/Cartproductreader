@@ -22,6 +22,7 @@ module.tx_cartproductreader_cart_cartproductreadercartproductreader {
         storagePid = {$module.tx_cartproductreader_cartproductreader.persistence.storagePid}
         feVariantOption = {$module.tx_cartproductreader_cartproductreader.persistence.feVariantOption}
         fileUploadCharakter = {$module.tx_cartproductreader_cartproductreader.persistence.fileUploadCharakter}
+        corporateColour = {$module.tx_cartproductreader_cartproductreader.persistence.corporateColour}
     }
     view {
         templateRootPaths.0 = EXT:cartproductreader/Resources/Private/Backend/Templates/
@@ -32,6 +33,12 @@ module.tx_cartproductreader_cart_cartproductreadercartproductreader {
         layoutRootPaths.1 = {$module.tx_cartproductreader_cartproductreader.view.layoutRootPath}
     }
 }
+
+plugin.tx_cartproducts._CSS_DEFAULT_STYLE (	
+        .griditem:hover {    
+            background-color: {$module.tx_cartproductreader_cartproductreader.persistence.corporateColour};
+        }
+)
 
 page {
     # Caching
