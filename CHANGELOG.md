@@ -1,5 +1,14 @@
 # Cart Product Reader Change Log
 
+## 1.4.6
+
+Supports Typo3 8.7.0 - 9.5.99
+
+- [META] Set the EM conf and json version number to 1.4.6
+- [BUGFIX] Read supplier from page name.
+- [BUG] Read supplier from page name.
+- [RELEASE] Version 1.4.5 with fixed issues.
+
 ## 1.4.5
 
 Supports Typo3 8.7.0 - 9.5.99
