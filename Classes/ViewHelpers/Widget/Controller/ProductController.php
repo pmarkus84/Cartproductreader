@@ -58,6 +58,8 @@ class ProductController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetContr
         // Only objects with the the supplier of the site
         $supplier = $objectManager->get(\Pmwebdesign\Cartproductreader\Domain\Repository\SupplierRepository::class)->findSupplierByName($property);
 
+        \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($supplier);
+
         // Supplier exist?
         if (is_a($supplier[0], "\Pmwebdesign\Cartproductreader\Domain\Model\Supplier")) {
             // Filter products of supplier
