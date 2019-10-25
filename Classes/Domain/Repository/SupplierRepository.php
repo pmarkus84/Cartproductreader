@@ -39,14 +39,15 @@ class SupplierRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * Find a supplier by his name
      * 
      * @param string $param
-     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     * @return \Pmwebdesign\Cartproductreader\Domain\Model\Supplier
      */
     public function findSupplierByName($param)
     {
         $query = $this->createQuery();
+        $query->getQuerySettings()->setRespectStoragePage(FALSE);
         $query->matching(
                 $query->equals('name', $param)
         );
-        return $query->execute();;
+        return $query->execute();
     }
 }

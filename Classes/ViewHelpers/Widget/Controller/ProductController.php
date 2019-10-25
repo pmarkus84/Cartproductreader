@@ -32,18 +32,10 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class ProductController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetController
 {
-
     /**
      * 
      */
     protected $objects;
-    
-    /**
-     *
-     * @var \Pmwebdesign\Cartproductreader\Domain\Repository\SupplierRepository
-     * @inject 
-     */
-    protected $supplierRepository;
 
     /**
      * 
@@ -61,19 +53,15 @@ class ProductController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetContr
         $query = $this->objects->getQuery();
 
         $objectManager = GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Object\ObjectManager::class);
-//        $objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\\Extbase\\Object\\ObjectManager');
         // Page title
         $property = $GLOBALS['TSFE']->indexedDocTitle;
-        \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($property);
-        // TODO: Only objects with the the supplier of the site
-//        $supplier = $objectManager->get(\Pmwebdesign\Cartproductreader\Domain\Repository\SupplierRepository::class)->findOneByName($property);
-//        $supplier = $this->supplierRepository->findByUid(1); // Run!
-        $supplier = $this->supplierRepository->findSupplierByName("Salomon");
+        // Only objects with the the supplier of the site
+        $supplier = $objectManager->get(\Pmwebdesign\Cartproductreader\Domain\Repository\SupplierRepository::class)->findSupplierByName($property);
 
         \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($supplier);
 
         // Supplier exist?
-        if ($supplier) {
+        if (is_a($supplier[0], "\Pmwebdesign\Cartproductreader\Domain\Model\Supplier")) {
             // Filter products of supplier
             $query->matching($query->equals('supplier', $supplier));
         }
@@ -84,5 +72,4 @@ class ProductController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetContr
             $this->widgetConfiguration['as'] => $modifiedObjects
         ));
     }
-
 }
