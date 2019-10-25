@@ -16,11 +16,10 @@
                              height="{settings.listAction.media.image.size.small.maxHeight}" class="cartproductreader-image-center griditem-img" />
                 </f:if>        
             </div>
-            <div class="cartproductreader-flex cartproductreader-flex-center">
+            <div class="cartproductreader-flex cartproductreader-flex-center" {f:if(condition:'{product.images}', then:'', else:'style="margin-top: 10px"')}>
                 {product.title}
             </div>
             <div class="cartproductreader-flex cartproductreader-flex-center">
-
                 <f:render partial="Product/Price" arguments="{product: product, settings: settings, currencyTranslationData:currencyTranslationData}"></f:render>
             </div>
         </cartproducts:link.product>
