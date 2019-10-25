@@ -34,4 +34,19 @@ class SupplierRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
     protected $defaultOrderings = array(
         'name' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING
     );
+    
+    /**
+     * Find a supplier by his name
+     * 
+     * @param string $param
+     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     */
+    public function findSupplierByName($param)
+    {
+        $query = $this->createQuery();
+        $query->matching(
+                $query->equals('name', $param)
+        );
+        return $query->execute();;
+    }
 }
