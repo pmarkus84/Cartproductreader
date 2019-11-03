@@ -114,7 +114,7 @@ class CategoryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     public function updateAction(\Pmwebdesign\Cartproductreader\Domain\Model\Category $category)
     {
         $this->addFlashMessage(\TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_domain_model_category', 'Cartproductreader') . 
-                ' ' . $newCategory->getTitle() .
+                ' ' . $category->getTitle() .
                 ' ' . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_updated', 'Cartproductreader') . '!', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::OK);
         
         $this->categoryRepository->update($category);
@@ -130,7 +130,7 @@ class CategoryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     public function deleteAction(\Pmwebdesign\Cartproductreader\Domain\Model\Category $category)
     {
         $this->addFlashMessage(\TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_domain_model_category', 'Cartproductreader') . 
-                ' ' . $newCategory->getTitle() .
+                ' ' . $category->getTitle() .
                 ' ' . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_deleted', 'Cartproductreader') . '!', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
         
         $this->categoryRepository->remove($category);
