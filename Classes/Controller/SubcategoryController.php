@@ -93,7 +93,7 @@ class SubcategoryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
     {
         $this->addFlashMessage(\TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_domain_model_subcategory', 'Cartproductreader') . 
                 ' ' . $newSubcategory->getTitle() .
-                ' ' . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_created', 'Cartproductreader'), '!', \TYPO3\CMS\Core\Messaging\AbstractMessage::OK);
+                ' ' . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_created', 'Cartproductreader'). '!', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::OK);
         
         /* @var $settingsUtility \Pmwebdesign\Cartproductreader\Utility\SettingsUtility */
         $settingsUtility = GeneralUtility::makeInstance(\Pmwebdesign\Cartproductreader\Utility\SettingsUtility::class);
@@ -130,7 +130,7 @@ class SubcategoryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
     {
         $this->addFlashMessage(\TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_domain_model_subcategory', 'Cartproductreader') . 
                 ' ' . $subcategory->getTitle() .
-                ' ' . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_updated', 'Cartproductreader'), '!', \TYPO3\CMS\Core\Messaging\AbstractMessage::OK);
+                ' ' . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_updated', 'Cartproductreader'). '!', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::OK);
         
         $this->subcategoryRepository->update($subcategory);
         $this->redirect('edit', 'Category', null, ['category' => $category]);
@@ -147,7 +147,7 @@ class SubcategoryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
     {
         $this->addFlashMessage(\TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_domain_model_subcategory', 'Cartproductreader') . 
                 ' ' . $subcategory->getTitle() .
-                ' ' . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_deleted', 'Cartproductreader'), '!', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
+                ' ' . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_deleted', 'Cartproductreader'). '!', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::ERROR);
         
         $category->getSubcategories()->detach($subcategory);
         $this->categoryRepository->update($category);
