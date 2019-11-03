@@ -1,5 +1,15 @@
 # Cart Product Reader Change Log
 
+## 1.4.9
+
+Supports Typo3 8.7.0 - 9.5.99
+
+- [META] Set the EM conf and json version number to 1.4.9
+- [UPDATE] Category template titles.
+- [UPDATE] Flash Messages in subcagegories.
+- [BUGFIX] Fix category update error #1.
+- [RELEASE] Version 1.4.8 with fixed style issues for grid.
+
 ## 1.4.8
 
 Supports Typo3 8.7.0 - 9.5.99
