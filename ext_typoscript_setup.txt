@@ -19,7 +19,7 @@ config.tx_extbase {
             }
             Pmwebdesign\Cartproductreader\Domain\Model\Product {
                 mapping {
-                    tableName = tx_cartproducts_domain_model_product_product
+                    tableName = tx_cartproducts_domain_model_product_product                    
                 }
             }
             Pmwebdesign\Cartproductreader\Domain\Model\Category {

@@ -264,14 +264,16 @@ class ExcelService
                 }
 
                 // PID
-                $product->setPid($subcategory->getFolderId());
+                $product->setPid($this->checkCategory($category, $subcategory));
                 $product->setCategory($category);
-                $product->setSubcategory($subcategory);
+                if($subcategory != null) {
+                    $product->setSubcategory($subcategory);
+                }
 
                 // Product Variant?
                 if ($feVariant == "new" && $feVariantOption == true) {
                     $feVariants = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-                    $productVariant->setPid($product->getPid());
+                    $productVariant->setPid($this->checkCategory($category, $subcategory));
                     $feVariants->attach($productVariant);
                     $product->setFeVariants($feVariants);
                 }
@@ -299,7 +301,9 @@ class ExcelService
                     $beforeProduct->setImagepaths($excelProduct->getImagepaths());
                     $beforeProduct->setPid($excelProduct->getPid());
                     $beforeProduct->setCategory($excelProduct->getCategory());
-                    $beforeProduct->setSubcategory($excelProduct->getSubcategory());
+                    if($excelProduct->getSubcategory() != null) {
+                        $beforeProduct->setSubcategory($excelProduct->getSubcategory());
+                    }
                     $found = true;
 
                     // Check product variants   
@@ -355,4 +359,20 @@ class ExcelService
         return $data;
     }
 
+    /**
+     * Check Category
+     * 
+     * @param \Pmwebdesign\Cartproductreader\Domain\Model\Subcategory $subcategory
+     * @return integer 
+     */
+    private function checkCategory(\Pmwebdesign\Cartproductreader\Domain\Model\Category $category,
+            \Pmwebdesign\Cartproductreader\Domain\Model\Subcategory $subcategory = null) {
+        $pid = 0;
+        if($subcategory != null) {
+            $pid = $subcategory->getFolderId();
+        } else {
+            $pid = $category->getFolderId();
+        }
+        return $pid;
+    }
 }

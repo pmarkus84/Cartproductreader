@@ -250,7 +250,7 @@ class Product extends \Extcode\CartProducts\Domain\Model\Product\Product
      * Adds a Frontend Variant
      *
      * @param \Pmwebdesign\Cartproductreader\Domain\Model\ProductVariant $feVariant
-     */
+     */    
     public function addFeVariant(\Pmwebdesign\Cartproductreader\Domain\Model\ProductVariant $feVariant)
     {
         $this->feVariants->attach($feVariant);

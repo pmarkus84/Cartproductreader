@@ -148,10 +148,16 @@ class DataController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
      */
     public function insertExcelDataAction(\Pmwebdesign\Cartproductreader\Domain\Model\Data $data)
     {
+        $supplier = "";
+        if($data->getSupplier() != null) {
+            $supplier = ' "' . $data->getSupplier()->getName() . '" ';
+        } else {
+            
+        }
         $this->addFlashMessage('Excel ' .
                 \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_data', 'Cartproductreader') . ' (' .
                 \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_domain_model_supplier', 'Cartproductreader')
-                . ') "' . $data->getSupplier()->getName() . '" ' .
+                . ')' . $supplier .
                 \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_read', 'Cartproductreader') .
                 '!', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::OK);
 
