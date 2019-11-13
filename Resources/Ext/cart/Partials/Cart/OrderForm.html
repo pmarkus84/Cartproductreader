@@ -1,0 +1,68 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:form id="form-order" class="form"
+        name="orderItem"
+        object="{orderItem}"
+        controller="Cart\Order"
+        action="create"
+        method="post">
+    <div class="row top-buffer">
+        <div class="col-sm-12 col-md-12 col-lg-4">
+            <div class="column">
+                <f:render partial="Cart/OrderForm/Address/Billing" arguments="{cart:cart, billingAddress:billingAddress}"/>
+                <f:if condition="{settings.showCartAction.showPartials.shippingAddressForm}">
+                    <div class="form-list shipping-same-as-billing-wrapper">
+                        <div class="control">
+                            <label for="shipping-same-as-billing">
+                                <f:form.checkbox name="shipping_same_as_billing"
+                                                 id="shipping-same-as-billing"
+                                                 value="{f:if(condition:'{cart.shippingSameAsBilling}', then: 'true', else: 'false')}"
+                                                 title="{f:translate(key:'tx_cart.same_address')}"
+                                                 additionalAttributes="{f:if(condition:'{cart.shippingSameAsBilling}', then: '{checked: \'checked\'}')}"/>
+                                <span>
+                                    <f:translate key="tx_cart.same_address"/>
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+                    <f:render partial="Cart/OrderForm/Address/Shipping" arguments="{cart:cart, shippingAddress:shippingAddress}"/>
+                </f:if>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-8 col-lg-8 clear-padding">
+            <div class="row">               
+                <f:if condition="{settings.showCartAction.showPartials.shippingMethodForm} == 'true' || {settings.showCartAction.showPartials.paymentMethodForm} == 'true' || {settings.showCartAction.showPartials.couponForm} == 'true'">
+                    <div class="col-sm-12 col-md-6 col-lg-6">
+                        <f:if condition="{settings.showCartAction.showPartials.shippingMethodForm}">
+                            <f:render partial="Cart/OrderForm/ShippingMethod" arguments="{cart:cart, shippings:shippings}"/>
+                        </f:if>
+                        <f:if condition="{settings.showCartAction.showPartials.paymentMethodForm}">
+                            <f:render partial="Cart/OrderForm/PaymentMethod" arguments="{cart:cart, payments:payments}"/>
+                        </f:if>
+                        <f:if condition="{settings.showCartAction.showPartials.couponForm}">
+                            <f:render partial="Cart/OrderForm/Coupon" arguments="{cart:cart}"/>
+                        </f:if>
+                    </div>
+                </f:if>
+                <div class="col-sm-12 col-md-6 col-lg-6">
+                    <div class="column">
+                        <f:render partial="Cart/OrderForm/Cart" arguments="{cart: cart, settings: settings}"/>
+
+                        <f:if condition="{cart.isOrderable}">
+                            <f:then>
+                                <div class="form-block top-buffer">
+                                    <div class="text-right pull-right">
+                                        <f:form.submit class="btn btn-primary"
+                                                       value="{f:translate(key: 'tx_cart.submit_order', default: '[submit order]')}"/>
+                                    </div>
+                                </div>
+                            </f:then>
+                        </f:if>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</f:form>
+</html>

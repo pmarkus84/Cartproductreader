@@ -16,6 +16,32 @@ plugin.tx_cartproducts {
         }
 }
 
+plugin.tx_cart {
+#    shippings {
+#        countries {
+#            de {
+#               preset = 1
+#               options {
+#                   1 {
+#                       title = Standard
+#                       extra = 0.00
+#                       taxClassId = 1
+#                       status = open
+#                   }
+#                   2 {
+#                       title = Express
+#                       extra = 3.50
+#                       taxClassId = 1
+#                       status = closed
+#                   }
+#               }
+#            }
+#            at < .de
+#            ch < .de
+#        }
+#    }
+}
+
 # Module configuration
 module.tx_cartproductreader_cart_cartproductreadercartproductreader {
     persistence {
