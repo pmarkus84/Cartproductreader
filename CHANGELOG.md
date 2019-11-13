@@ -1,5 +1,13 @@
 # Cart Product Reader Change Log
 
+## 1.4.11
+
+Supports Typo3 8.7.0 - 9.5.99
+
+- [META] Set the EM conf and json version number to 1.4.11.
+- [UPDATE] Configurations for order.
+- [RELEASE] Version 1.4.10 with fixed issues
+
 ## 1.4.10
 
 Supports Typo3 8.7.0 - 9.5.99
