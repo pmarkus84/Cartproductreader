@@ -195,6 +195,12 @@
             <trans-unit id="tx_cartproductreader_not">
                 <source>not</source>
             </trans-unit>
+            <trans-unit id="config">
+                <source>Configuration</source>
+            </trans-unit>
+            <trans-unit id="colours">
+                <source>Colours</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

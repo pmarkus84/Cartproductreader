@@ -44,12 +44,6 @@ plugin.tx_cart {
 
 # Module configuration
 module.tx_cartproductreader_cart_cartproductreadercartproductreader {
-    persistence {
-        storagePid = {$module.tx_cartproductreader_cartproductreader.persistence.storagePid}
-        feVariantOption = {$module.tx_cartproductreader_cartproductreader.persistence.feVariantOption}
-        fileUploadCharakter = {$module.tx_cartproductreader_cartproductreader.persistence.fileUploadCharakter}
-        corporateColour = {$module.tx_cartproductreader_cartproductreader.persistence.corporateColour}
-    }
     view {
         templateRootPaths.0 = EXT:cartproductreader/Resources/Private/Backend/Templates/
         templateRootPaths.1 = {$module.tx_cartproductreader_cartproductreader.view.templateRootPath}
@@ -58,11 +52,59 @@ module.tx_cartproductreader_cart_cartproductreadercartproductreader {
         layoutRootPaths.0 = EXT:cartproductreader/Resources/Private/Backend/Layouts/
         layoutRootPaths.1 = {$module.tx_cartproductreader_cartproductreader.view.layoutRootPath}
     }
+    persistence {
+        storagePid = {$module.tx_cartproductreader_cartproductreader.persistence.storagePid}
+        feVariantOption = {$module.tx_cartproductreader_cartproductreader.persistence.feVariantOption}
+        fileUploadCharakter = {$module.tx_cartproductreader_cartproductreader.persistence.fileUploadCharakter}
+    }
+    colours {
+        corporateColour = {$module.tx_cartproductreader_cartproductreader.colours.corporateColour}
+        linkColourFontHover = {$module.tx_cartproductreader_cartproductreader.colours.linkColourFontHover}
+        defaultButtonFontColour = {$module.tx_cartproductreader_cartproductreader.colours.defaultButtonFontColour}
+        defaultButtonBackgroundColour = {$module.tx_cartproductreader_cartproductreader.colours.defaultButtonBackgroundColour}
+        defaultButtonBorderColour = {$module.tx_cartproductreader_cartproductreader.colours.defaultButtonBorderColour}
+        defaultButtonFontColourHover = {$module.tx_cartproductreader_cartproductreader.colours.defaultButtonFontColourHover}
+        defaultButtonBackgroundColourHover = {$module.tx_cartproductreader_cartproductreader.colours.defaultButtonBackgroundColourHover}
+        defaultButtonBorderColourHover = {$module.tx_cartproductreader_cartproductreader.colours.defaultButtonBorderColourHover}
+        primaryButtonFontColour = {$module.tx_cartproductreader_cartproductreader.colours.primaryButtonFontColour}
+        primaryButtonBackgroundColour = {$module.tx_cartproductreader_cartproductreader.colours.primaryButtonBackgroundColour}
+        primaryButtonBorderColour = {$module.tx_cartproductreader_cartproductreader.colours.primaryButtonBorderColour}
+        primaryButtonFontColourHover = {$module.tx_cartproductreader_cartproductreader.colours.primaryButtonFontColourHover}
+        primaryButtonBackgroundColourHover = {$module.tx_cartproductreader_cartproductreader.colours.primaryButtonBackgroundColourHover}
+        primaryButtonBorderColourHover = {$module.tx_cartproductreader_cartproductreader.colours.primaryButtonBorderColourHover}
+    }
 }
 
 plugin.tx_cartproducts._CSS_DEFAULT_STYLE (	
-        .griditem:hover {    
-            background-color: {$module.tx_cartproductreader_cartproductreader.persistence.corporateColour};
+        .tx-cart-products .griditem:hover {    
+            background-color: {$module.tx_cartproductreader_cartproductreader.colours.corporateColour};
+            color: {$module.tx_cartproductreader_cartproductreader.colours.linkColourFontHover};
+        }
+        .tx-cart-products .griditem:hover a {    
+            color: {$module.tx_cartproductreader_cartproductreader.colours.linkColourFontHover};
+        }
+        .tx-cart .btn-default, .tx-cart-products .btn-default {
+            color: {$module.tx_cartproductreader_cartproductreader.colours.defaultButtonFontColour};
+            background-color: {$module.tx_cartproductreader_cartproductreader.colours.defaultButtonBackgroundColour};
+            border-color:{$module.tx_cartproductreader_cartproductreader.colours.defaultButtonBorderColour};
+        }
+        .tx-cart .btn-default:hover, .tx-cart-products .btn-default:hover {
+            color: {$module.tx_cartproductreader_cartproductreader.colours.defaultButtonFontColourHover};
+            background-color: {$module.tx_cartproductreader_cartproductreader.colours.defaultButtonBackgroundColourHover};
+            border-color: {$module.tx_cartproductreader_cartproductreader.colours.defaultButtonBorderColourHover};
+        }
+        .tx-cart .btn-primary, .tx-cart-products .btn-primary {
+            color: {$module.tx_cartproductreader_cartproductreader.colours.primaryButtonFontColour};
+            background-color: {$module.tx_cartproductreader_cartproductreader.colours.primaryButtonBackgroundColour};
+            border-color: {$module.tx_cartproductreader_cartproductreader.colours.primaryButtonBorderColour};
+        }
+        .tx-cart .btn-primary:hover, .tx-cart-products .btn-primary:hover {
+            color: {$module.tx_cartproductreader_cartproductreader.colours.primaryButtonFontColourHover};
+            background-color: {$module.tx_cartproductreader_cartproductreader.colours.primaryButtonBackgroundColourHover};
+            border-color: {$module.tx_cartproductreader_cartproductreader.colours.primaryButtonBorderColourHover};
+        }
+        .tx-cart a:hover, .tx-cart-products a :hover {
+            color: {$module.tx_cartproductreader_cartproductreader.colours.linkColourFontHover};
         }
 )
 

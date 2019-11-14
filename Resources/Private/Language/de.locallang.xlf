@@ -259,6 +259,14 @@
                 <source>not</source>
                 <target state="translated">nicht</target>
             </trans-unit>
+            <trans-unit id="config">
+                <source>Configuration</source>
+                <target state="translated">Konfiguration</target>
+            </trans-unit>
+            <trans-unit id="colours">
+                <source>Colours</source>
+                <target state="translated">Farben</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

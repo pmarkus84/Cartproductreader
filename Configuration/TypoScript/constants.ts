@@ -1,24 +1,66 @@
-
+#customcategory=mysite=Cartproductreader
+# customsubcategory=config=LLL:EXT:cartproductreader/Resources/Private/Language/locallang.xlf:config
+# customsubcategory=colours=LLL:EXT:cartproductreader/Resources/Private/Language/locallang.xlf:colours
 module.tx_cartproductreader_cartproductreader {
     view {
-        # cat=module.tx_cartproductreader_cartproductreader/file; type=string; label=Path to template root (BE)
+        # cat=mysite/file/a; type=string; label=Path to template root (BE)
         templateRootPath = EXT:cartproductreader/Resources/Private/Backend/Templates/
-        # cat=module.tx_cartproductreader_cartproductreader/file; type=string; label=Path to template partials (BE)
+        # cat=mysite/file/b; type=string; label=Path to template partials (BE)
         partialRootPath = EXT:cartproductreader/Resources/Private/Backend/Partials/
-        # cat=module.tx_cartproductreader_cartproductreader/file; type=string; label=Path to template layouts (BE)
+        # cat=mysite/file/c; type=string; label=Path to template layouts (BE)
         layoutRootPath = EXT:cartproductreader/Resources/Private/Backend/Layouts/
     }
     persistence {
-        # cat=module.tx_cartproductreader_cartproductreader//a; type=string; label=Default storage PID
+        # cat=mysite/config/a; type=string; label=Default storage PID
         storagePid =
 
-        # cat=module.tx_cartproductreader_cartproductreader//a; type=boolean; label=FeVariant activated
+        # cat=mysite/config/b; type=boolean; label=FeVariant activated
         feVariantOption =
 
-        # cat=module.tx_cartproductreader_cartproductreader//a; type=int; label=File upload charakter (Normal = 0, LowerCase = 1, Utf8 = 2)
+        # cat=mysite/config/c; type=int[0-2]; label=File upload charakter (Normal = 0, LowerCase = 1, Utf8 = 2)
         fileUploadCharakter =
-
-        # cat=module.tx_cartproductreader_cartproductreader//a; type=string; label=Corporate Colour
+    }
+    colours {
+        # cat=mysite/colours/a; type=color; label=Corporate Colour
         corporateColour =
+
+        # cat=mysite/colours/b; type=color; label=Colour font on mouse over
+        linkColourFontHover = 
+
+        # cat=mysite/colours/c; type=color; label=Default Button Font Colour
+        defaultButtonFontColour =
+
+        # cat=mysite/colours/d; type=color; label=Default Button Background Colour
+        defaultButtonBackgroundColour =
+
+        # cat=mysite/colours/e; type=color; label=Default Button Border Colour
+        defaultButtonBorderColour =
+
+        # cat=mysite/colours/f; type=color; label=Default Button Font Colour on mouse over
+        defaultButtonFontColourHover =
+
+        # cat=mysite/colours/g; type=color; label=Default Button Background Colour on mouse over
+        defaultButtonBackgroundColourHover =
+
+        # cat=mysite/colours/h; type=color; label=Default Button Border Colour on mouse over
+        defaultButtonBorderColourHover =
+
+        # cat=mysite/colours/i; type=color; label=Primary Button Font Colour
+        primaryButtonFontColour =
+
+        # cat=mysite/colours/j; type=color; label=Primary Button Background Colour
+        primaryButtonBackgroundColour =
+
+        # cat=mysite/colours/k; type=color; label=Primary Button Border Colour
+        primaryButtonBorderColour =
+
+        # cat=mysite/colours/l; type=color; label=Primary Button Font Colour on mouse over
+        primaryButtonFontColourHover =
+
+        # cat=mysite/colours/m; type=color; label=Primary Button Background Colour on mouse over
+        primaryButtonBackgroundColourHover =
+
+        # cat=mysite/colours/n; type=color; label=Primary Button Border Colour on mouse over
+        primaryButtonBorderColourHover =
     }
 }
