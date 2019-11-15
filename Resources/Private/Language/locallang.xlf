@@ -201,6 +201,21 @@
             <trans-unit id="colours">
                 <source>Colours</source>
             </trans-unit>
+            <trans-unit id="gender">
+                <source>Gender</source>
+            </trans-unit>
+            <trans-unit id="gender">
+                <source>Gender</source>
+            </trans-unit>
+            <trans-unit id="mr">
+                <source>Mr.</source>
+            </trans-unit>
+            <trans-unit id="mrs">
+                <source>Mrs.</source>
+            </trans-unit>
+            <trans-unit id="empty">
+                <source>Empty</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

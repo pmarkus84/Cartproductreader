@@ -33,12 +33,14 @@ namespace Pmwebdesign\Cartproductreader\Domain\Model;
 class User extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser
 {
     /**
+     * Sales tax-identification number
      *
      * @var string 
      */
     protected $uidNumber;
 
     /**
+     * Gender
      *
      * @var integer
      */
@@ -70,11 +72,11 @@ class User extends \TYPO3\CMS\Extbase\Domain\Model\FrontendUser
     {
         $strGender = "";
         if ($this->gender == 0) {
-            $strGender = "Herr";
+            $strGender = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('mr', 'Cartproductreader');
         } elseif ($this->gender == 1) {
-            $strGender = "Frau";
+            $strGender = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('mrs', 'Cartproductreader');
         } else {
-            $strGender = "Keine Angabe";
+            $strGender = \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('empty', 'Cartproductreader');;
         }
         return $strGender;
     }

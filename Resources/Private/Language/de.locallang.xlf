@@ -267,6 +267,22 @@
                 <source>Colours</source>
                 <target state="translated">Farben</target>
             </trans-unit>
+            <trans-unit id="gender">
+                <source>Gender</source>
+                <target state="translated">Geschlecht</target>
+            </trans-unit>
+            <trans-unit id="mr">
+                <source>Mr.</source>
+                <target state="translated">Herr</target>
+            </trans-unit>
+            <trans-unit id="mrs">
+                <source>Mrs.</source>
+                <target state="translated">Frau</target>
+            </trans-unit>
+            <trans-unit id="empty">
+                <source>Empty</source>
+                <target state="translated">Leer</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

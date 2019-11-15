@@ -48,6 +48,17 @@ $fields = [
             ],
         ],
     ],
+    'gender' => [
+        'label' => 'LLL:EXT:cartproductreader/Resources/Private/Language/locallang.xlf:gender',
+        'config' => [
+            'type' => 'radio',
+            'items' => [
+                ['LLL:EXT:cartproductreader/Resources/Private/Language/locallang.xlf:mr', 0], 
+                ['LLL:EXT:cartproductreader/Resources/Private/Language/locallang.xlf:mrs', 1],
+                ['LLL:EXT:cartproductreader/Resources/Private/Language/locallang.xlf:empty', 99],
+            ],
+        ],
+    ],
 ];
 
 // Add new fields to fe_users
@@ -56,5 +67,5 @@ $fields = [
 // Make fields visible in the TCEforms:
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
         'fe_users', // Table name
-        'uid_number, form_art;;;;1-1-1'
+        'uid_number, form_art, gender;;;;1-1-1'
 );
