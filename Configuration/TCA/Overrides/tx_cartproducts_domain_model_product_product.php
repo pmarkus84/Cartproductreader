@@ -92,6 +92,18 @@ $fields = [
             'eval' => 'trim'
         ],
     ],
+    'maincategory' => [
+        'exclude' => true,
+        'label' => 'LLL:EXT:cartproductreader/Resources/Private/Language/locallang.xlf:tx_cartproductreader_domain_model_maincategory',
+        'config' => [
+            'type' => 'select',
+            'renderType' => 'selectSingle',
+            'foreign_table' => 'tx_cartproductreader_domain_model_maincategory',
+//            'foreign_table_where' => ' AND category=###REC_FIELD_category### ORDER BY title ASC',
+            'minitems' => 0,
+            'maxitems' => 1,
+        ],
+    ],
     'category' => [
         'exclude' => true,
         'label' => 'LLL:EXT:cartproductreader/Resources/Private/Language/locallang.xlf:tx_cartproductreader_domain_model_category',
@@ -170,7 +182,7 @@ $GLOBALS['TCA']['tx_cartproducts_domain_model_product_product']['palettes']['tx_
 
 // Add the new palette:
 $GLOBALS['TCA']['tx_cartproducts_domain_model_product_product']['palettes']['tx_addCategoryfields'] = [
-    'showitem' => 'category, subcategory'
+    'showitem' => 'maincategory, category, subcategory'
 ];
 
 // Add the new palette:

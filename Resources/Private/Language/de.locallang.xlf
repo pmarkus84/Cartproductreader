@@ -162,11 +162,19 @@
             <trans-unit id="tx_cartproductreader_newsupplier">
                 <source>Create new supplier</source>
                 <target state="translated">Erstelle neuen Lieferanten</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_maincategories">
+                <source>Maincategories</source>
+                <target state="translated">Hauptkategorien</target>
             </trans-unit> 
             <trans-unit id="tx_cartproductreader_categories">
                 <source>Categories</source>
                 <target state="translated">Kategorien</target>
             </trans-unit>
+            <trans-unit id="tx_cartproductreader_newmaincategory">
+                <source>Create new maincategory</source>
+                <target state="translated">Erstelle neue Hauptkategorie</target>
+            </trans-unit>  
             <trans-unit id="tx_cartproductreader_newcategory">
                 <source>Create new category</source>
                 <target state="translated">Erstelle neue Kategorie</target>

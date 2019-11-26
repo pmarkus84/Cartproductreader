@@ -1,0 +1,19 @@
+<html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+  <f:layout name="Default" />
+  <f:section name="content">
+    <h1><f:translate key="tx_cartproductreader_domain_model_maincategory" /> <f:translate key="tx_cartproductreader_edit" /></h1>
+
+    <f:flashMessages />
+    
+    <f:render partial="FormErrors" />
+    
+    <f:form action="update" name="maincategory" object="{maincategory}" >
+        <f:render partial="Maincategory/FormFields" arguments="{maincategory:maincategory}" /><br />
+        <div class="btn-group">
+            <f:link.action action="list" class="btn btn-default"><f:translate key="tx_cartproductreader_back" /></f:link.action>
+            <f:link.action action="new" controller="Category" arguments="{maincategory:maincategory}" class="btn btn-default"><f:translate key="tx_cartproductreader_newcategory" /></f:link.action>
+            <f:form.submit class="btn btn-success" value="{f:translate(key:'tx_cartproductreader_save')}" />
+        </div>
+    </f:form>
+  </f:section>
+</html>

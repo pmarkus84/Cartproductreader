@@ -63,22 +63,38 @@ class CategoryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
     }
 
     /**
-     * action new
+     * New category for maincategory
      * 
-     * @return void
+     * @param \Pmwebdesign\Cartproductreader\Domain\Model\Maincategory $maincategory
      */
-    public function newAction()
+    public function newCategoryForMaincategoryAction(\Pmwebdesign\Cartproductreader\Domain\Model\Maincategory $maincategory)
     {
-
+        $maincategoryRepository = $this->objectManager->get(\Pmwebdesign\Cartproductreader\Domain\Repository\MaincategoryRepository::class);
+        $maincategory->addCategory($category);
+        $maincategoryRepository->update($maincategory);
+        $this->objectManager->get(\TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager::class)->persistAll();
+        $this->redirect('edit', 'Maincategory', null, ['maincategory' => $maincategory]);
+    }
+    
+    /**
+     * New category
+     * 
+     * @param \Pmwebdesign\Cartproductreader\Domain\Model\Maincategory $maincategory
+     */
+    public function newAction(\Pmwebdesign\Cartproductreader\Domain\Model\Maincategory $maincategory = null)
+    {
+        $this->view->assign('maincategory', $maincategory);
     }
 
     /**
      * action create
      * 
      * @param \Pmwebdesign\Cartproductreader\Domain\Model\Category $newCategory
+     * @param \Pmwebdesign\Cartproductreader\Domain\Model\Maincategory $maincategory
      * @return void
      */
-    public function createAction(\Pmwebdesign\Cartproductreader\Domain\Model\Category $newCategory)
+    public function createAction(\Pmwebdesign\Cartproductreader\Domain\Model\Category $newCategory, 
+            \Pmwebdesign\Cartproductreader\Domain\Model\Maincategory $maincategory = null)
     {
         $this->addFlashMessage(\TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_domain_model_category', 'Cartproductreader') . 
                 ' ' . $newCategory->getTitle() .
@@ -87,10 +103,35 @@ class CategoryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionControl
         /* @var $settingsUtility \Pmwebdesign\Cartproductreader\Utility\SettingsUtility */
         $settingsUtility = GeneralUtility::makeInstance(\Pmwebdesign\Cartproductreader\Utility\SettingsUtility::class);
         $storagePid = $settingsUtility->getStoragePid();
+                
         $newCategory->setPid($storagePid);
         
-        $this->categoryRepository->add($newCategory);
-        $this->redirect('list');
+        if($maincategory != null) {
+            $maincategoryRepository = $this->objectManager->get(\Pmwebdesign\Cartproductreader\Domain\Repository\MaincategoryRepository::class);
+            $maincategory->addCategory($newCategory);
+            $maincategoryRepository->update($maincategory);
+            $this->objectManager->get(\TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager::class)->persistAll();
+            $this->redirect('edit', 'Maincategory', null, ['maincategory' => $maincategory]);
+        } else {        
+            $this->categoryRepository->add($newCategory);
+            $this->redirect('list');
+        }
+    }
+    
+        /**
+     * New category for maincategory
+     * 
+     * @param \Pmwebdesign\Cartproductreader\Domain\Model\Maincategory $maincategory
+     * @param \Pmwebdesign\Cartproductreader\Domain\Model\Category $category
+     */
+    public function createCategoryForMaincategoryAction(\Pmwebdesign\Cartproductreader\Domain\Model\Maincategory $maincategory, 
+            \Pmwebdesign\Cartproductreader\Domain\Model\Category $category)
+    {
+        $maincategoryRepository = $this->objectManager->get(\Pmwebdesign\Cartproductreader\Domain\Repository\MaincategoryRepository::class);
+        $maincategory->addCategory($category);
+        $maincategoryRepository->update($maincategory);
+        $this->objectManager->get(\TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager::class)->persistAll();
+        $this->redirect('edit', 'Maincategory', null, ['maincategory' => $maincategory]);
     }
 
     /**

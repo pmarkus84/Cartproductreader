@@ -1,0 +1,13 @@
+<html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+    <f:layout name="Default" />
+    <f:section name="content">
+        <h1><f:translate key="tx_cartproductreader_domain_model_maincategory" /></h1>
+
+        <f:flashMessages />
+        <f:render partial="Mainmaincategory/Properties" arguments="{maincategory:maincategory}" /><br />
+        <div class="btn-group">
+            <f:link.action action="list" class="btn btn-default"><f:translate key="tx_cartproductreader_back" /></f:link.action>
+            <f:link.action action="new" class="btn btn-default"><f:translate key="tx_cartproductreader_newmaincategory" /></f:link.action>
+        </div>
+    </f:section>
+</html>

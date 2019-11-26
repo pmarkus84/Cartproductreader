@@ -89,7 +89,8 @@ class SubcategoryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCont
      * @param \Pmwebdesign\Cartproductreader\Domain\Model\Category $category
      * @return void
      */
-    public function createAction(\Pmwebdesign\Cartproductreader\Domain\Model\Subcategory $newSubcategory, \Pmwebdesign\Cartproductreader\Domain\Model\Category $category)
+    public function createAction(\Pmwebdesign\Cartproductreader\Domain\Model\Subcategory $newSubcategory, 
+            \Pmwebdesign\Cartproductreader\Domain\Model\Category $category)
     {
         $this->addFlashMessage(\TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_domain_model_subcategory', 'Cartproductreader') . 
                 ' ' . $newSubcategory->getTitle() .

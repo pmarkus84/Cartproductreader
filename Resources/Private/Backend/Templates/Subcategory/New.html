@@ -4,7 +4,7 @@
 		<h1><f:translate key="tx_cartproductreader_newsubcategory" /> ({category.title})</h1>
 		<f:flashMessages />
 		<f:render partial="FormErrors" />
-                <f:form action="create"  name="newSubcategory" object="{newCategory}" arguments="{newSubcategory:newSubcategory,category:category}">
+                <f:form action="create"  name="newSubcategory" object="{newSubcategory}" arguments="{newSubcategory:newSubcategory,category:category}">
                     <f:render partial="Subcategory/FormFields" /><br />
                     <div class="btn-group">
                         <f:link.action action="edit" controller="Category" arguments="{category:category}" class="btn btn-default"><f:translate key="tx_cartproductreader_back" /></f:link.action>

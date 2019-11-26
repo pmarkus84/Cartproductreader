@@ -1,11 +1,11 @@
 <html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
 	<f:layout name="Default" />
 	<f:section name="content">
-		<h1><f:translate key="tx_cartproductreader_newcategory" /></h1>
+		<h1><f:translate key="tx_cartproductreader_newmaincategory" /></h1>
 		<f:flashMessages />
-		<f:render partial="FormErrors" />                               
-                <f:form action="create"  name="newCategory" object="{newCategory}" arguments="{newCategory:newCategory, maincategory:maincategory}">
-                    <f:render partial="Category/FormFields" /><br />
+		<f:render partial="FormErrors" />                
+		<f:form action="create"  name="newMaincategory" object="{newMaincategory}">
+                    <f:render partial="Maincategory/FormFields" /><br />
                     <div class="btn-group">
                         <f:link.action class="btn btn-default" action="list"><f:translate key="tx_cartproductreader_back" /></f:link.action>
 			<f:form.submit class="btn btn-success" value="{f:translate(key:'tx_cartproductreader_save')}" />

@@ -47,6 +47,11 @@ $fields = [
             'eval' => 'trim'
         ],
     ],
+    'maincategory' => [
+        'config' => [
+            'type' => 'passthrough',
+        ],
+    ],
     'subcategories' => [
         'label' => 'LLL:EXT:cartproductreader/Resources/Private/Language/locallang_db.xlf:tx_cartproductreader_domain_model_category.subcategories',
         'config' => [

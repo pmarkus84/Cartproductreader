@@ -123,9 +123,15 @@
             <trans-unit id="tx_cartproductreader_newsupplier">
                 <source>Create new supplier</source>
             </trans-unit>  
+            <trans-unit id="tx_cartproductreader_maincategories">
+                <source>Maincategories</source>
+            </trans-unit>
             <trans-unit id="tx_cartproductreader_categories">
                 <source>Categories</source>
             </trans-unit>
+            <trans-unit id="tx_cartproductreader_newmaincategory">
+                <source>Create new maincategory</source>
+            </trans-unit>  
             <trans-unit id="tx_cartproductreader_newcategory">
                 <source>Create new category</source>
             </trans-unit>  

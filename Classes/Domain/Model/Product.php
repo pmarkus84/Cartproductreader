@@ -65,6 +65,13 @@ class Product extends \Extcode\CartProducts\Domain\Model\Product\Product
     protected $imagepaths = "";
     
     /**
+     * Maincategory
+     *
+     * @var \Pmwebdesign\Cartproductreader\Domain\Model\Subcategory
+     */
+    protected $maincategory = NULL;
+    
+    /**
      * Category
      *
      * @var \Pmwebdesign\Cartproductreader\Domain\Model\Category
@@ -204,6 +211,26 @@ class Product extends \Extcode\CartProducts\Domain\Model\Product\Product
      */
     public function deleteImage(\TYPO3\CMS\Extbase\Domain\Model\FileReference $image) {
         $this->images->detach($image);
+    }
+    
+    /**
+     * Get the maincategory
+     * 
+     * @return \Pmwebdesign\Cartproductreader\Domain\Model\Maincategory
+     */
+    public function getMaincategory()
+    {
+        return $this->maincategory;
+    }
+
+    /**
+     * Set the maincategory
+     * 
+     * @param \Pmwebdesign\Cartproductreader\Domain\Model\Maincategory $maincategory
+     */
+    public function setMaincategory(\Pmwebdesign\Cartproductreader\Domain\Model\Maincategory $maincategory)
+    {
+        $this->maincategory = $maincategory;
     }
     
     /**
