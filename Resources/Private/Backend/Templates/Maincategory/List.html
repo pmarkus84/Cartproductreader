@@ -14,11 +14,10 @@
                 <th></th>
             </tr>            
             <f:for each="{maincategories}" as="maincategory">
-                <f:debug>{maincategory}</f:debug>
                 <tr>
-                    <td><f:link.action action="show" arguments="{maincategory : maincategory}"> {maincategory.title}</f:link.action></td>
-                    <td><f:link.action action="show" arguments="{maincategory : maincategory}"> {maincategory.folderId}</f:link.action></td>
-                    <td><f:link.action action="show" arguments="{maincategory : maincategory}"> {maincategory.categories -> f:count()}</f:link.action></td>
+                    <td><f:link.action action="edit" arguments="{maincategory : maincategory}"> {maincategory.title}</f:link.action></td>
+                    <td><f:link.action action="edit" arguments="{maincategory : maincategory}"> {maincategory.folderId}</f:link.action></td>
+                    <td><f:link.action action="edit" arguments="{maincategory : maincategory}"> {maincategory.categories -> f:count()}</f:link.action></td>
                     <td class="btn-group">
                         <f:link.action class="btn btn-sm btn-default" action="edit" arguments="{maincategory : maincategory}"><f:translate key="tx_cartproductreader_edit" /></f:link.action>
                         <f:link.action class="btn btn-sm btn-danger" action="delete" arguments="{maincategory : maincategory}"><f:translate key="tx_cartproductreader_delete" /></f:link.action>

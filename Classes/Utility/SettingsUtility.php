@@ -88,6 +88,25 @@ class SettingsUtility
     }
     
     /**
+     * Get option for Category types number
+     * 
+     * @return integer
+     */
+    public static function getCatTypesNumber()
+    {   
+        $objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\Extbase\\Object\\ObjectManager');
+        $configurationManager = $objectManager->get('TYPO3\\CMS\\Extbase\\Configuration\\ConfigurationManager');
+        $settings = $configurationManager->getConfiguration(
+           \TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_FULL_TYPOSCRIPT,
+             'Pmwebdesign.Cartproductreader',
+             'cartproductreader'
+           );
+        $feVariantOption = $settings['module.']['tx_cartproductreader_cart_cartproductreadercartproductreader.']['persistence.']['catTypesNumber'];
+        
+        return $catTypesNumber;
+    }
+    
+    /**
      * Get option for FileUpload charakter
      * 
      * @return int

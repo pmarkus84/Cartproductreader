@@ -21,8 +21,8 @@
                     <td>{subcategory.title}</td>
                     <td>{subcategory.folderId}</td>
                     <td class="btn-group">
-                        <f:link.action class="btn btn-sm btn-default" controller="Subcategory" action="edit" arguments="{subcategory : subcategory, category : category}"><f:translate key="tx_cartproductreader_edit" /></f:link.action>
-                        <f:link.action class="btn btn-sm btn-danger" controller="Subcategory" action="delete" arguments="{subcategory : subcategory, category : category}"><f:translate key="tx_cartproductreader_delete" /></f:link.action>
+                        <f:link.action class="btn btn-sm btn-default" controller="Subcategory" action="edit" arguments="{subcategory : subcategory, category : category, maincategory: maincategory}"><f:translate key="tx_cartproductreader_edit" /></f:link.action>
+                        <f:link.action class="btn btn-sm btn-danger" controller="Subcategory" action="delete" arguments="{subcategory : subcategory, category : category, maincategory: maincategory}"><f:translate key="tx_cartproductreader_delete" /></f:link.action>
                     </td>
                 </tr>
             </f:for>

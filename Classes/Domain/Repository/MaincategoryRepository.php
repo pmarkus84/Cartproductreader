@@ -26,7 +26,7 @@
 namespace Pmwebdesign\Cartproductreader\Domain\Repository;
 
 /**
- * The repository for Data
+ * The repository for maincategories
  */
 class MaincategoryRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {

@@ -118,7 +118,7 @@ class Maincategory extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      */
     public function getCategories()
     {
-        $this->categories;
+        return $this->categories;
     }
     
     /**

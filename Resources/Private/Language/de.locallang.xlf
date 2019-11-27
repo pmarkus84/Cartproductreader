@@ -83,6 +83,10 @@
                 <source>Images assigned</source>
                 <target state="translated">Bilder zugeordnet</target>
             </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_maincategory">
+                <source>Maincategory</source>
+                <target state="translated">Hauptkategorie</target>
+            </trans-unit>
             <trans-unit id="tx_cartproductreader_domain_model_category">
                 <source>Category</source>
                 <target state="translated">Kategorie</target>

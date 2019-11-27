@@ -63,6 +63,9 @@
             <trans-unit id="tx_cartproductreader_domain_model_data.images_assigned">
                 <source>Images assigned</source>
             </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_maincategory">
+                <source>Maincategory</source>
+            </trans-unit>
             <trans-unit id="tx_cartproductreader_domain_model_category">
                 <source>Category</source>
             </trans-unit>

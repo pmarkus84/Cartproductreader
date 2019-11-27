@@ -14,15 +14,17 @@
             <tr>
                 <th><f:translate key="tx_cartproductreader_domain_model_category.title" /></th>
                 <th><f:translate key="tx_cartproductreader_domain_model_category.folder_id" /></th>
+                <th><f:translate key="tx_cartproductreader_domain_model_category.subcategories" /></th>
                 <th></th>
             </tr>
             <f:for each="{maincategory.categories}" as="category">
                 <tr>
                     <td>{category.title}</td>
                     <td>{category.folderId}</td>
+                    <td>{category.subcategories -> f:count()}</td>
                     <td class="btn-group">
-                        <f:link.action class="btn btn-sm btn-default" controller="Category" action="edit" arguments="{category : category}"><f:translate key="tx_cartproductreader_edit" /></f:link.action>
-                        <f:link.action class="btn btn-sm btn-danger" controller="Category" action="delete" arguments="{category : category}"><f:translate key="tx_cartproductreader_delete" /></f:link.action>
+                        <f:link.action class="btn btn-sm btn-default" controller="Category" action="edit" arguments="{category : category, maincategory: maincategory}"><f:translate key="tx_cartproductreader_edit" /></f:link.action>
+                        <f:link.action class="btn btn-sm btn-danger" controller="Category" action="delete" arguments="{category : category,  maincategory: maincategory}"><f:translate key="tx_cartproductreader_delete" /></f:link.action>
                     </td>
                 </tr>
             </f:for>

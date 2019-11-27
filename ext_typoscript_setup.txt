@@ -33,6 +33,7 @@ config.tx_extbase {
             Pmwebdesign\Cartproductreader\Domain\Model\Category {
                 mapping {
                     tableName = sys_category
+                    recordType >
                 }
             }
             Pmwebdesign\Cartproductreader\Domain\Model\ProductVariant {

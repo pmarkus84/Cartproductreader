@@ -15,10 +15,10 @@
             </tr>
             <f:for each="{categories}" as="category">
                 <tr>
-                    <td><f:link.action action="show" arguments="{category : category}"> {category.title}</f:link.action></td>
-                    <td><f:link.action action="show" arguments="{category : category}"> {category.folderId}</f:link.action></td>
+                    <td><f:link.action action="edit" arguments="{category : category}">{category.title}</f:link.action></td>
+                    <td><f:link.action action="edit" arguments="{category : category}">{category.folderId}</f:link.action></td>
                     <td>
-                        <f:link.action action="show" arguments="{category : category}"> {category.subcategories -> f:count()}</f:link.action>
+                        <f:link.action action="edit" arguments="{category : category}">{category.subcategories -> f:count()}</f:link.action>
                     </td>
                     <td class="btn-group">
                         <f:link.action class="btn btn-sm btn-default" action="edit" arguments="{category : category}"><f:translate key="tx_cartproductreader_edit" /></f:link.action>
