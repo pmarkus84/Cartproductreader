@@ -90,7 +90,7 @@ class SettingsUtility
     /**
      * Get option for Category types number
      * 
-     * @return integer
+     * @return int
      */
     public static function getCatTypesNumber()
     {   
@@ -101,7 +101,7 @@ class SettingsUtility
              'Pmwebdesign.Cartproductreader',
              'cartproductreader'
            );
-        $feVariantOption = $settings['module.']['tx_cartproductreader_cart_cartproductreadercartproductreader.']['persistence.']['catTypesNumber'];
+        $catTypesNumber = $settings['module.']['tx_cartproductreader_cart_cartproductreadercartproductreader.']['persistence.']['catTypesNumber'];
         
         return $catTypesNumber;
     }

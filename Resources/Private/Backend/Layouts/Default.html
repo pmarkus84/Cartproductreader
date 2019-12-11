@@ -1,3 +1,5 @@
+{namespace vh = Pmwebdesign\Cartproductreader\ViewHelpers}
+
 <html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
 	<f:be.container pageTitle="Cart Product Reader" 
                         includeCssFiles="{0: '{f:uri.resource(path:\'Css/style.css\')}'}">
@@ -9,8 +11,14 @@
 						<f:be.menus.actionMenu>
 							<f:be.menus.actionMenuItem label="{f:translate(key='tx_cartproductreader_domain_model_data')} {f:translate(key='tx_cartproductreader_controlling')}" controller="" action="excel" />
                                                         <f:be.menus.actionMenuItem label="{f:translate(key='tx_cartproductreader_suppliers')} {f:translate(key='tx_cartproductreader_list')}" action="list" controller="Supplier" />
-                                                        <f:be.menus.actionMenuItem label="{f:translate(key='tx_cartproductreader_maincategories')} {f:translate(key='tx_cartproductreader_list')}" action="list" controller="Maincategory" />
-                                                        <f:be.menus.actionMenuItem label="{f:translate(key='tx_cartproductreader_categories')} {f:translate(key='tx_cartproductreader_list')}" action="list" controller="Category" />
+                                                        <f:if condition="{vh:settings(setting:'Categoryscala')} == 3">
+                                                            <f:then>
+                                                                <f:be.menus.actionMenuItem label="{f:translate(key='tx_cartproductreader_maincategories')} {f:translate(key='tx_cartproductreader_list')}" action="list" controller="Maincategory" />
+                                                            </f:then>
+                                                            <f:else>
+                                                                <f:be.menus.actionMenuItem label="{vh:settings(setting:'Categoryscala')} {f:translate(key='tx_cartproductreader_categories')} {f:translate(key='tx_cartproductreader_list')}" action="list" controller="Category" />
+                                                            </f:else>
+                                                        </f:if>
 						</f:be.menus.actionMenu>
 					</div>
 					<div class="right">
