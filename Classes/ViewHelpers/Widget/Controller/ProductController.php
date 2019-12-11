@@ -53,8 +53,8 @@ class ProductController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetContr
         $query = $this->objects->getQuery();
 
         $objectManager = GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Object\ObjectManager::class);
-        // Page title
-        $property = $GLOBALS['TSFE']->indexedDocTitle;
+        // Page subtitle
+        $property = $GLOBALS['TSFE']->page['subtitle'];
         // Only objects with the the supplier of the site
         $supplier = $objectManager->get(\Pmwebdesign\Cartproductreader\Domain\Repository\SupplierRepository::class)->findSupplierByName($property);
 

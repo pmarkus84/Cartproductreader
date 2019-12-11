@@ -17,6 +17,9 @@ module.tx_cartproductreader_cartproductreader {
         # cat=mysite/config/b; type=boolean; label=FeVariant activated
         feVariantOption =
 
+        # cat=mysite/config/b; type=int[2-3]; label=Category types number (2 = Category-Subcategory, 3 = Maincategory-Category-Subcategory)
+        catTypesNumber =
+
         # cat=mysite/config/c; type=int[0-2]; label=File upload charakter (Normal = 0, LowerCase = 1, Utf8 = 2)
         fileUploadCharakter =
     }

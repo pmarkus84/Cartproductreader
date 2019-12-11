@@ -55,6 +55,7 @@ module.tx_cartproductreader_cart_cartproductreadercartproductreader {
     persistence {
         storagePid = {$module.tx_cartproductreader_cartproductreader.persistence.storagePid}
         feVariantOption = {$module.tx_cartproductreader_cartproductreader.persistence.feVariantOption}
+        catTypesNumber = {$module.tx_cartproductreader_cartproductreader.persistence.catTypesNumber}
         fileUploadCharakter = {$module.tx_cartproductreader_cartproductreader.persistence.fileUploadCharakter}
     }
     colours {

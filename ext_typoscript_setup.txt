@@ -22,9 +22,18 @@ config.tx_extbase {
                     tableName = tx_cartproducts_domain_model_product_product                    
                 }
             }
+#            Pmwebdesign\Cartproductreader\Domain\Model\Maincategory.categories {
+#                mapping {
+#                        tableName = sys_category
+#                        columns {
+#                            category.mapOnProperty = uid
+#                        }
+#                }
+#            }
             Pmwebdesign\Cartproductreader\Domain\Model\Category {
                 mapping {
                     tableName = sys_category
+                    recordType >
                 }
             }
             Pmwebdesign\Cartproductreader\Domain\Model\ProductVariant {

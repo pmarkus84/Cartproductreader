@@ -63,6 +63,9 @@
             <trans-unit id="tx_cartproductreader_domain_model_data.images_assigned">
                 <source>Images assigned</source>
             </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_maincategory">
+                <source>Maincategory</source>
+            </trans-unit>
             <trans-unit id="tx_cartproductreader_domain_model_category">
                 <source>Category</source>
             </trans-unit>
@@ -123,9 +126,15 @@
             <trans-unit id="tx_cartproductreader_newsupplier">
                 <source>Create new supplier</source>
             </trans-unit>  
+            <trans-unit id="tx_cartproductreader_maincategories">
+                <source>Maincategories</source>
+            </trans-unit>
             <trans-unit id="tx_cartproductreader_categories">
                 <source>Categories</source>
             </trans-unit>
+            <trans-unit id="tx_cartproductreader_newmaincategory">
+                <source>Create new maincategory</source>
+            </trans-unit>  
             <trans-unit id="tx_cartproductreader_newcategory">
                 <source>Create new category</source>
             </trans-unit>  

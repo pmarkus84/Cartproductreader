@@ -1,0 +1,35 @@
+<html xmlns:f="https://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers" data-namespace-typo3-fluid="true">
+    <table class="tx-cartproductreader" >
+        <tr>
+            <td>
+                <b><f:translate key="tx_cartproductreader_domain_model_category.title" /></b>
+            </td>
+            <td>
+                {category.title}
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <b><f:translate key="tx_cartproductreader_domain_model_category.folder_id" /></b>
+            </td>
+            <td>
+                {category.folderId}
+            </td>
+        </tr>
+    </table>
+    <h2><f:translate key="tx_cartproductreader_domain_model_category.subcategories" /></h2>
+    <table class="tablelist">
+        <tr>
+            <th><f:translate key="tx_cartproductreader_domain_model_category.title" /></th>
+            <th><f:translate key="tx_cartproductreader_domain_model_category.folder_id" /></th>
+            <th>
+        </tr>
+        <f:for each="{category.subcategories}" as="subcategory">
+            <tr>
+                <td>{subcategory.title}</td>
+                <td>{subcategory.folderId}</td>
+                <td></td>
+            </tr>
+        </f:for>
+    </table>
+</html>

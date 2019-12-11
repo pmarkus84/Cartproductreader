@@ -53,7 +53,8 @@ call_user_func(
                 [
                     'Data' => 'excel, readExcel, uploadExcel, deleteExcel, insertExcelData, setFalPictures',
                     'Supplier' => 'list, show, new, create, edit, update, delete',
-                    'Category' => 'list, show, new, create, edit, update, delete',
+                    'Maincategory' => 'list, show, new, create, edit, update, delete',
+                    'Category' => 'list, show, new, newCategoryforMaincategory, create, edit, update, delete',
                     'Subcategory' => 'list, show, new, create, edit, update, delete'
                 ],
                 [

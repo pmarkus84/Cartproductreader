@@ -7,22 +7,24 @@
         <f:translate key="tx_cartproductreader_domain_model_category.folder_id" />
     </label><br />
     <f:form.textfield property="folderId" /><br />
-    <label for="subcategories">
-        <f:translate key="tx_cartproductreader_domain_model_category.subcategories" />
+    <label for="categories">
+        <f:translate key="tx_cartproductreader_categories" />
     </label><br />
         <table class="tablelist">
             <tr>
                 <th><f:translate key="tx_cartproductreader_domain_model_category.title" /></th>
                 <th><f:translate key="tx_cartproductreader_domain_model_category.folder_id" /></th>
+                <th><f:translate key="tx_cartproductreader_domain_model_category.subcategories" /></th>
                 <th></th>
             </tr>
-            <f:for each="{category.subcategories}" as="subcategory">
+            <f:for each="{maincategory.categories}" as="category">
                 <tr>
-                    <td>{subcategory.title}</td>
-                    <td>{subcategory.folderId}</td>
+                    <td>{category.title}</td>
+                    <td>{category.folderId}</td>
+                    <td>{category.subcategories -> f:count()}</td>
                     <td class="btn-group">
-                        <f:link.action class="btn btn-sm btn-default" controller="Subcategory" action="edit" arguments="{subcategory : subcategory, category : category, maincategory: maincategory}"><f:translate key="tx_cartproductreader_edit" /></f:link.action>
-                        <f:link.action class="btn btn-sm btn-danger" controller="Subcategory" action="delete" arguments="{subcategory : subcategory, category : category, maincategory: maincategory}"><f:translate key="tx_cartproductreader_delete" /></f:link.action>
+                        <f:link.action class="btn btn-sm btn-default" controller="Category" action="edit" arguments="{category : category, maincategory: maincategory}"><f:translate key="tx_cartproductreader_edit" /></f:link.action>
+                        <f:link.action class="btn btn-sm btn-danger" controller="Category" action="delete" arguments="{category : category,  maincategory: maincategory}"><f:translate key="tx_cartproductreader_delete" /></f:link.action>
                     </td>
                 </tr>
             </f:for>
