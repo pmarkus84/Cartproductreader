@@ -1,5 +1,18 @@
 # Cart Product Reader Change Log
 
+## 1.5.0
+
+Supports Typo3 8.7.0 - 9.5.99
+
+- [META] Set the EM conf and json version number to 1.5.0.
+- Merge pull request #2 from pmarkus84/develop
+- [UPDATE] Filter products of suppliers on subtitle from page.
+- [FEATURE] Added main categories who can be showed in settings.
+- [UPDATE] Implement maincategory.
+- [FEATURE] Add maincategory.
+- [UPDATE] Change Gender selection.
+- [RELEASE] Version 1.4.12 configurations
+
 ## 1.4.12
 
 Supports Typo3 8.7.0 - 9.5.99
