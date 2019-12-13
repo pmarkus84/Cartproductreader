@@ -295,6 +295,10 @@
                 <source>Empty</source>
                 <target state="translated">Leer</target>
             </trans-unit>
+            <trans-unit id="tx_cartproductreader_search">
+                <source>Search</source>
+                <target state="translated">Suche</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

@@ -4,6 +4,8 @@ config.tx_extbase {
             Extcode\CartProducts\Domain\Model\Product\Product.className = Pmwebdesign\Cartproductreader\Domain\Model\Product
             Extcode\CartProducts\Domain\Model\Product\Product\FeVariant.className = Pmwebdesign\Cartproductreader\Domain\Model\ProductVariant
             Extcode\CartProducts\Domain\Model\Category.className = Pmwebdesign\Cartproductreader\Domain\Model\Category
+            Extcode\CartProducts\Controller\ProductController.className = Pmwebdesign\Cartproductreader\Controller\ProductController
+            Extcode\CartProducts\Domain\Repository\ProductRepository.className = Pmwebdesign\Cartproductreader\Domain\Repository\ProductRepository
 #            TYPO3\CMS\Extbase\Domain\Model\FileReference.className = Pmwebdesign\Cartproductreader\Domain\Model\FileReference
     }
     persistence {

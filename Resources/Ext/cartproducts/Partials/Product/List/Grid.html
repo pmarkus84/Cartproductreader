@@ -25,32 +25,43 @@
         </cartproducts:link.product>
     </div>
 </f:section>
-<vh:widget.product objects="{products}" as="filteredProducts">
-    <f:for each="{filteredProducts}" as="product" iteration="iterator">
-        <f:if condition="{iterator.isFirst}">
-            <div class="row">
-        </f:if>
+    <f:form action="list" enctype="multipart/form-data" additionalAttributes="{role: 'form'}">
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <f:form.textfield name="search" id="search" placeholder="Suchwort..." class="form-control" />
+            </div>
+            <div class="input-group-append">
+                <f:form.submit value="{f:translate(extensionName:'Cartproductreader', key:'tx_cartproductreader_search')}" class="btn btn-default"/>
+            </div>
+        </div>
+        <br />
+        <vh:widget.product objects="{products}" as="filteredProducts">
+            <f:for each="{filteredProducts}" as="product" iteration="iterator">
+                <f:if condition="{iterator.isFirst}">
+                    <div class="row">
+                </f:if>
 
-        <f:if condition="{iterator.cycle} % 3">
-            <f:then>
-                <f:render section="GridItem" arguments="{_all}"/>
-            </f:then>
+                <f:if condition="{iterator.cycle} % 3">
+                    <f:then>
+                        <f:render section="GridItem" arguments="{_all}"/>
+                    </f:then>
 
-            <f:else>
-                <f:render section="GridItem" arguments="{_all}"/>
-
-                <f:if condition="{iterator.isLast}">
-                    <f:then></f:then>
                     <f:else>
-                        </div><div class="row">
+                        <f:render section="GridItem" arguments="{_all}"/>
+
+                        <f:if condition="{iterator.isLast}">
+                            <f:then></f:then>
+                            <f:else>
+                                </div><div class="row">
+                            </f:else>
+                        </f:if>
                     </f:else>
                 </f:if>
-            </f:else>
-        </f:if>
 
-        <f:if condition="{iterator.isLast}">
-            </div>
-        </f:if>
-    </f:for>
-</vh:widget.product>
+                <f:if condition="{iterator.isLast}">
+                    </div>
+                </f:if>
+            </f:for>
+        </vh:widget.product>
+    </f:form>
 </html>

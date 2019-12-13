@@ -1,3 +1,19 @@
+// Frontend-Plugins (tx, x steht für alle Plugins)
+plugin.tx_cartproductreader_cartproduct {
+	view {
+		# cat=plugin.tx_cartproductreader/file; type=string; label=Path to template root (FE)
+		templateRootPath = EXT:cartproductreader/Resources/Private/Templates/
+		# cat=plugin.tx_cartproductreader/file; type=string; label=Path to template partials (FE)
+		partialRootPath = EXT:cartproductreader/Resources/Private/Partials/
+		# cat=plugin.tx_cartproductreader/file; type=string; label=Path to template layouts (FE)
+		layoutRootPath = EXT:cartproductreader/Resources/Private/Layouts/
+	}
+	persistence {              
+		# cat=plugin.tx_staffm//a; type=string; label=Default storage PID
+		storagePid =                 
+	}
+}
+
 #customcategory=mysite=Cartproductreader
 # customsubcategory=config=LLL:EXT:cartproductreader/Resources/Private/Language/locallang.xlf:config
 # customsubcategory=colours=LLL:EXT:cartproductreader/Resources/Private/Language/locallang.xlf:colours

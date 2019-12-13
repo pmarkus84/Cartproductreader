@@ -30,5 +30,9 @@ namespace Pmwebdesign\Cartproductreader\Domain\Repository;
  */
 class DataRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
 {
-    
+    public function test()
+    {
+//        $query = $this->createQuery();
+//        $query->
+    }
 }

@@ -75,6 +75,7 @@
         </ul>
     </f:if>
     <br />
-    <f:link.external class="btn btn-default" uri="javascript:history.back();">{f:translate(key: 'tx_cartproducts.history_back')}</f:link.external>
+    <f:comment><f:link.external class="btn btn-default" uri="javascript:history.back();">{f:translate(key: 'tx_cartproducts.history_back')}</f:link.external></f:comment>
+    <f:link.action action="list" class="btn btn-default">{f:translate(key: 'tx_cartproducts.history_back')}</f:link.action>
 </f:section>
 </html>

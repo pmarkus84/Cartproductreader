@@ -30,5 +30,22 @@ namespace Pmwebdesign\Cartproductreader\Domain\Repository;
  */
 class ProductRepository extends \Extcode\CartProducts\Domain\Repository\Product\ProductRepository
 {
-    
+    /**
+     * Search in Repository
+     * 
+     * @param string $search
+     * @return \TYPO3\CMS\Extbase\Persistence\QueryResultInterface
+     */
+    public function searchForm($search)
+    {
+        $query = $this->createQuery();
+        if ($search) {
+            $query->matching(
+                    $query->like('title', '%' . $search . '%')
+            );
+        }
+        $query->setOrderings(['title' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING]);
+        return $query->execute();
+    }
+
 }

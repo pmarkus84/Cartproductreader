@@ -1,0 +1,24 @@
+<T3DataStructure>
+    <sheets>
+        <sDEF>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>Elemente Config</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <settings.search>
+                        <TCEforms>
+                            <label>Search Form</label>
+                            <config>
+                                <type>input</type>
+                                <eval>bool</eval>
+                                <default>false</default>
+                            </config>
+                        </TCEforms>
+                    </settings.search>                    
+                </el>
+            </ROOT>
+        </sDEF>
+    </sheets>
+</T3DataStructure>
