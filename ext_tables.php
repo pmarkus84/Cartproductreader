@@ -28,7 +28,12 @@ defined('TYPO3_MODE') || die('Access denied.');
 call_user_func(
     function()
     {        
-    
+        \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerPlugin(
+            'Pmwebdesign.Cartproductreader',
+            'Cartproduct',
+            'Product List'
+        );
+        
         if (TYPO3_MODE === 'BE') {
             // Add module
             if (!isset($GLOBALS['TBE_MODULES']['Cart'])) {
@@ -43,7 +48,6 @@ call_user_func(
                 }
                $GLOBALS['TBE_MODULES'] = $temp_TBE_MODULES;
             }
-            
 
             \TYPO3\CMS\Extbase\Utility\ExtensionUtility::registerModule(
                 'Pmwebdesign.Cartproductreader',
@@ -74,5 +78,11 @@ call_user_func(
 
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addLLrefForTCAdescr('tx_cartproductreader_domain_model_supplier', 'EXT:cartproductreader/Resources/Private/Language/locallang_csh_tx_cartproductreader_domain_model_supplier.xlf');
         \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::allowTableOnStandardPages('tx_cartproductreader_domain_model_supplier');
+        
+        /* Extended Flexform for Frontend Plugin Cartproduct */
+        $pluginSignature = 'cartproducts_products';
+        // Name of Flexform file without filetype ending -> _ProductsPlugin
+        $TCA['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature.'_ProductsPlugin'] = 'pi_flexform';
+        \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addPiFlexFormValue($pluginSignature, 'FILE:EXT:' .  'cartproductreader/Configuration/FlexForms/flexform_cartproductreader.xml');
     }
 );

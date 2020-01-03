@@ -42,6 +42,22 @@ plugin.tx_cart {
 #    }
 }
 
+
+plugin.tx_cartproductreader_cartproduct {
+	view {
+		templateRootPath = {$plugin.tx_cartproductreader_cartproduct.view.templateRootPath}
+		partialRootPath = {$plugin.tx_cartproductreader_cartproduct.view.partialRootPath}
+		layoutRootPath = {$plugin.tx_cartproductreader_cartproduct.view.layoutRootPath}
+	}
+	persistence {
+		storagePid = {$module.tx_cartproductreader_cartproductreader.persistence.storagePid}                
+	}        
+	features {
+		# uncomment the following line to enable the new Property Mapper.
+		# rewrittenPropertyMapper = 1
+	}
+}
+
 # Module configuration
 module.tx_cartproductreader_cart_cartproductreadercartproductreader {
     view {

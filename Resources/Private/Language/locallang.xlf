@@ -225,6 +225,15 @@
             <trans-unit id="empty">
                 <source>Empty</source>
             </trans-unit>
+            <trans-unit id="tx_cartproductreader_search">
+                <source>Search</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_showSearchForm">
+                <source>Show search form</source>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_searchword">
+                <source>Search term</source>
+            </trans-unit>
         </body>
     </file>
 </xliff>

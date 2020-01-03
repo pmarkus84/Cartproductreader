@@ -34,6 +34,12 @@ use TYPO3\CMS\Core\Utility\GeneralUtility;
  */
 class DataController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 {
+    /**
+     * Product Repository
+     * 
+     * @var \Pmwebdesign\Cartproductreader\Domain\Repository\ProductRepository
+     */
+    protected $productRepository = null;
 
     /**
      * Data Repository
@@ -50,6 +56,16 @@ class DataController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
     public function injectDataRepository(\Pmwebdesign\Cartproductreader\Domain\Repository\DataRepository $dataRepository)
     {
         $this->dataRepository = $dataRepository;
+    }
+    
+    /**
+     * Inject Product Repository
+     * 
+     * @param \Pmwebdesign\Cartproductreader\Domain\Repository\DataRepository $productRepository
+     */
+    public function injectProductRepository(\Pmwebdesign\Cartproductreader\Domain\Repository\ProductRepository $productRepository)
+    {
+        $this->productRepository = $productRepository;
     }
 
     /**
@@ -206,5 +222,4 @@ class DataController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionController
 
         $this->redirect('readExcel', 'Data', null, ['data' => $data]);
     }
-
 }
