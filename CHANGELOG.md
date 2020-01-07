@@ -1,5 +1,15 @@
 # Cart Product Reader Change Log
 
+## 1.6.0
+
+Supports Typo3 8.7.0 - 9.5.99
+
+- [META] Set the EM conf and json version number to 1.6.0.
+- Merge pull request #3 from pmarkus84/develop
+- [UPDATE] Search form for products.
+- [FEATURE] Search form for products.
+- [RELEASE] Version 1.5.0 new category features.
+
 ## 1.5.0
 
 Supports Typo3 8.7.0 - 9.5.99
