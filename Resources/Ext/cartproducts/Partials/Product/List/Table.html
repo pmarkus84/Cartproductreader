@@ -19,31 +19,44 @@
     </tr>
     </thead>
     <tbody>
-    <vh:widget.product objects="{products}" as="filteredProducts">
-        <f:for each="{filteredProducts}" as="product">
-            <tr>
-                <td>
-                    <f:if condition="{product.images}">
-                        <cartproducts:link.product product="{product}" settings="{settings}">
-                            <f:image src="{product.firstImage.originalResource.originalFile.uid}"
-                                     title="{product.firstImage.originalResource.title}"
-                                     alt="{product.firstImage.originalResource.title}"
-                                     width="{settings.listAction.media.image.size.small.maxWidth}"
-                                     height="{settings.listAction.media.image.size.small.maxHeight}" />
-                        </cartproducts:link.product>
-                    </f:if>
-                </td>
-                <td>
-                    <cartproducts:link.product product="{product}" settings="{settings}">
-                        {product.title}
-                    </cartproducts:link.product>
-                </td>
-                <td>
-                    <f:render partial="Product/Price" arguments="{product: product, settings: settings, currencyTranslationData:currencyTranslationData}"></f:render>
-                </td>
-            </tr>
-        </f:for>
-    </vh:widget.product>
+        <f:form action="list" enctype="multipart/form-data" additionalAttributes="{role: 'form'}">
+            <f:if condition="{vh:settings(setting:'SearchForm')} == 1">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <f:form.textfield name="search" id="search" placeholder="{f:translate(extensionName:'Cartproductreader', key='tx_cartproductreader_searchword')}..." class="form-control" />
+                    </div>
+                    <div class="input-group-append">
+                        <f:form.submit value="{f:translate(extensionName:'Cartproductreader', key:'tx_cartproductreader_search')}" class="btn btn-default"/>
+                    </div>
+                </div>
+                <br />
+            </f:if>
+            <vh:widget.product objects="{products}" as="filteredProducts">
+                <f:for each="{filteredProducts}" as="product">
+                    <tr>
+                        <td>
+                            <f:if condition="{product.images}">
+                                <cartproducts:link.product product="{product}" settings="{settings}">
+                                    <f:image src="{product.firstImage.originalResource.originalFile.uid}"
+                                             title="{product.firstImage.originalResource.title}"
+                                             alt="{product.firstImage.originalResource.title}"
+                                             width="{settings.listAction.media.image.size.small.maxWidth}"
+                                             height="{settings.listAction.media.image.size.small.maxHeight}" />
+                                </cartproducts:link.product>
+                            </f:if>
+                        </td>
+                        <td>
+                            <cartproducts:link.product product="{product}" settings="{settings}">
+                                {product.title}
+                            </cartproducts:link.product>
+                        </td>
+                        <td>
+                            <f:render partial="Product/Price" arguments="{product: product, settings: settings, currencyTranslationData:currencyTranslationData}"></f:render>
+                        </td>
+                    </tr>
+                </f:for>
+            </vh:widget.product>
+        </f:form>
     </tbody>
 </table>
 </html>

@@ -26,29 +26,28 @@
     </div>
 </f:section>
     <f:form action="list" enctype="multipart/form-data" additionalAttributes="{role: 'form'}">
-        <div class="input-group">
-            <div class="input-group-prepend">
-                <f:form.textfield name="search" id="search" placeholder="Suchwort..." class="form-control" />
+        <f:if condition="{vh:settings(setting:'SearchForm')} == 1">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <f:form.textfield name="search" id="search" placeholder="{f:translate(extensionName:'Cartproductreader', key='tx_cartproductreader_searchword')}..." class="form-control" />
+                </div>
+                <div class="input-group-append">
+                    <f:form.submit value="{f:translate(extensionName:'Cartproductreader', key:'tx_cartproductreader_search')}" class="btn btn-default"/>
+                </div>
             </div>
-            <div class="input-group-append">
-                <f:form.submit value="{f:translate(extensionName:'Cartproductreader', key:'tx_cartproductreader_search')}" class="btn btn-default"/>
-            </div>
-        </div>
-        <br />
+            <br />
+        </f:if>
         <vh:widget.product objects="{products}" as="filteredProducts">
             <f:for each="{filteredProducts}" as="product" iteration="iterator">
                 <f:if condition="{iterator.isFirst}">
                     <div class="row">
                 </f:if>
-
                 <f:if condition="{iterator.cycle} % 3">
                     <f:then>
                         <f:render section="GridItem" arguments="{_all}"/>
                     </f:then>
-
                     <f:else>
                         <f:render section="GridItem" arguments="{_all}"/>
-
                         <f:if condition="{iterator.isLast}">
                             <f:then></f:then>
                             <f:else>
@@ -57,7 +56,6 @@
                         </f:if>
                     </f:else>
                 </f:if>
-
                 <f:if condition="{iterator.isLast}">
                     </div>
                 </f:if>

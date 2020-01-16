@@ -303,6 +303,14 @@
                 <source>Search</source>
                 <target state="translated">Suche</target>
             </trans-unit>
+            <trans-unit id="tx_cartproductreader_showSearchForm">
+                <source>Show search form</source>
+                <target state="translated">Zeige Suchformular</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_searchword">
+                <source>Search term</source>
+                <target state="translated">Suchwort</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
