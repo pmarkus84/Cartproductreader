@@ -1,5 +1,13 @@
 # Cart Product Reader Change Log
 
+## 1.6.2
+
+Supports Typo3 8.7.0 - 9.5.99
+
+- [META] Set the EM conf and json version number to 1.6.2.
+- [BUGFIX] json file.
+- [RELEASE] Version 1.6.1 with fixed issues and small updates.
+
 ## 1.6.1
 
 Supports Typo3 8.7.0 - 9.5.99
