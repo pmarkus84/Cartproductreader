@@ -51,7 +51,7 @@ class SettingsViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHe
     {
         if($this->arguments['setting'] == "Categoryscala") {
             $number = intval(SettingsUtility::getCatTypesNumber());
-        } elseif($setting == "SearchForm") {
+        } elseif($this->arguments['setting'] == "SearchForm") {
             $number = intval(SettingsUtility::getSearchFormState());
         } else {
             $number = 0;
