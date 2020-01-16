@@ -24,6 +24,9 @@
             <trans-unit id="tx_cartproductreader_domain_model_supplier.name">
                 <source>Name</source>
             </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_supplier.number">
+                <source>Supplier number</source>
+            </trans-unit>
             <trans-unit id="tx_cartproductreader_domain_model_supplier.street">
                 <source>Street</source>
             </trans-unit>

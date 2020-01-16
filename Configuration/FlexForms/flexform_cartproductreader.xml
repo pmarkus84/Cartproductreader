@@ -16,14 +16,6 @@
                             </config>
                         </TCEforms>
                     </settings.searchform>   
-                    <settings.test>
-                        <TCEforms>
-                            <label>test</label>
-                            <config>
-                                <type>input</type>                                
-                            </config>
-                        </TCEforms>
-                    </settings.test>  
                     <!-- Copied from extended flexform from extension cart_products -->
                     <switchableControllerActions>
                         <TCEforms>

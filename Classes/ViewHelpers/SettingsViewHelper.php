@@ -35,14 +35,23 @@ use \Pmwebdesign\Cartproductreader\Utility\SettingsUtility;
 class SettingsViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHelper
 {
     /**
+     * Initialize arguments
      * @param string $setting
+     */
+    public function initializeArguments()
+    {
+        parent::initializeArguments();
+        $this->registerArgument('setting', 'string', 'setting', true);
+    }
+    
+    /**
      * @return int
      */
-    public function render($setting)
+    public function render()
     {
-        if($setting == "Categoryscala") {
+        if($this->arguments['setting'] == "Categoryscala") {
             $number = intval(SettingsUtility::getCatTypesNumber());
-        } elseif($setting == "SearchForm") {
+        } elseif($this->arguments['setting'] == "SearchForm") {
             $number = intval(SettingsUtility::getSearchFormState());
         } else {
             $number = 0;
