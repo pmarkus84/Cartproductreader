@@ -1,5 +1,17 @@
 # Cart Product Reader Change Log
 
+## 1.6.1
+
+Supports Typo3 8.7.0 - 9.5.99
+
+- [META] Set the EM conf and json version number to 1.6.1.
+- Merge pull request #4 from pmarkus84/develop
+- [UPDATE] Setting and flexform.
+- Merge origin/develop into develop
+- [UPDATE] Add supplier number.
+- [BUGFIX] Category bugfixes.
+- [RELEASE] Version 1.6.0 search form.
+
 ## 1.6.0
 
 Supports Typo3 8.7.0 - 9.5.99
