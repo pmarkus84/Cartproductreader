@@ -26,8 +26,8 @@
     ],
     "require": {
         "typo3/cms-core": ">=8.7.0,<=9.5.99",
-        "typo3-ter/cart": ">=5.5.0,<=6.5.99",
-        "typo3-ter/cart_products": ">=1.0.2,<=2.0.99"
+        "extcode/cart": ">=5.5.0,<=6.5.99",
+        "extcode/cart_products": ">=1.0.2,<=2.0.99"
     },
     "autoload": {
         "psr-4": {
