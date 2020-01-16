@@ -38,7 +38,7 @@ $EM_CONF[$_EXTKEY] = [
         'depends' => [
             'typo3' => '8.7.0-9.5.99',
             'cart' => '5.5.0-6.5.99',
-            'cart_products' => '1.0.2-2.0.99',
+            'cart_products' => '1.0.2-2.1.99',
         ],
         'conflicts' => [],
         'suggests' => [],
