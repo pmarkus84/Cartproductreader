@@ -7,6 +7,7 @@ CREATE TABLE tx_cartproductreader_domain_model_supplier (
 	pid int(11) DEFAULT '0' NOT NULL,
 
 	name varchar(255) DEFAULT '' NOT NULL,
+        supplier_number varchar(255) DEFAULT '' NOT NULL,
 	street varchar(255) DEFAULT '' NOT NULL,
 	zipcode varchar(255) DEFAULT '' NOT NULL,
 	place varchar(255) DEFAULT '' NOT NULL,

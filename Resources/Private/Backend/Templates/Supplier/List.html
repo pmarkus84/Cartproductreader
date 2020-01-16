@@ -9,6 +9,7 @@
         <table  class="tablelist" >
             <tr>
                 <th><f:translate key="tx_cartproductreader_domain_model_supplier.name" /></th>
+                <th><f:translate key="tx_cartproductreader_domain_model_supplier.number" /></th>
                 <th><f:translate key="tx_cartproductreader_domain_model_supplier.street" /></th>
                 <th><f:translate key="tx_cartproductreader_domain_model_supplier.zipcode" /></th>
                 <th><f:translate key="tx_cartproductreader_domain_model_supplier.place" /></th>
@@ -20,6 +21,7 @@
             <f:for each="{suppliers}" as="supplier">
                 <tr>
                     <td><f:link.action action="show" arguments="{supplier : supplier}"> {supplier.name}</f:link.action></td>
+                    <td><f:link.action action="show" arguments="{supplier : supplier}"> {supplier.supplierNumber}</f:link.action></td>
                     <td><f:link.action action="show" arguments="{supplier : supplier}"> {supplier.street}</f:link.action></td>
                     <td><f:link.action action="show" arguments="{supplier : supplier}"> {supplier.zipcode}</f:link.action></td>
                     <td><f:link.action action="show" arguments="{supplier : supplier}"> {supplier.place}</f:link.action></td>

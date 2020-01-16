@@ -31,6 +31,10 @@
                 <source>Name</source>
                 <target state="translated">Name</target>
             </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_supplier.number">
+                <source>Supplier number</source>
+                <target state="translated">Lieferanten Nummer</target>
+            </trans-unit>
             <trans-unit id="tx_cartproductreader_domain_model_supplier.street">
                 <source>Street</source>
                 <target state="translated">Straße</target>

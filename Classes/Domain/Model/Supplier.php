@@ -35,6 +35,13 @@ class Supplier extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @var string
      */
     protected $name = '';
+    
+    /**
+     * Supplier number
+     *
+     * @var string
+     */
+    protected $supplierNumber = '';
 
     /**
      * street
@@ -106,7 +113,28 @@ class Supplier extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     {
         $this->name = $name;
     }
+    
+    /**
+     * Get the supplier number
+     * 
+     * @return string
+     */
+    public function getSupplierNumber()
+    {
+        return $this->supplierNumber;
+    }
 
+    /**
+     * Set the supplier number
+     * 
+     * @param string $supplierNumber
+     * @return void
+     */
+    public function setSupplierNumber($supplierNumber)
+    {
+        $this->supplierNumber = $supplierNumber;
+    }
+    
     /**
      * Returns the street
      * 
