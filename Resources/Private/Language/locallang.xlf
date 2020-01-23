@@ -15,6 +15,9 @@
             <trans-unit id="tx_cartproductreader_domain_model_product.prize_brut_gp">
                 <source>Gross price GastPlus</source>
             </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_product.minNumberInOrder">
+                <source>Minimum order quantity</source>
+            </trans-unit>
             <trans-unit id="tx_cartproductreader_domain_model_product.imagepaths">
                 <source>Image names</source>
             </trans-unit>

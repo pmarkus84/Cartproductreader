@@ -39,6 +39,27 @@ use PHPOffice\PhpSpreadsheet\IOFactory;
  */
 class ExcelService
 {
+    const SUPPLIER_COL = 1;
+    const ARTICLE_NR_COL = 2;
+    const PRODUCT_NAME_COL = 3;
+    const TEASER_COL = 4;
+    const DESCRIPTION_COL = 5;
+    const COLOUR_COL = 6;
+    const EAN_COL = 7;
+    const HEIGHT_COL = 8;
+    const WEIGHT_COL = 9;
+    const PACKAGING_UNIT_COL = 10;
+    const MAXIMUM_ORDER_QUANTITY_COL = 12;
+    const MINIMUM_ORDER_QUANTITY_COL = 11;
+    const SUPPLIER_PRICE_RRP_NET_COL = 13;
+    const GP_PRICE_PURCHASE_COL = 14;
+    const GP_PRICE_GROSS_COL = 15;
+    const BEST_BEFORE_DATE_COL = 16;
+    const DELIVERY_TIME_COL = 17;
+    const IMAGES_COL = 18;
+    const MAIN_CATEGORY_COL = 19;
+    const CATEGORY_COL = 20;
+    const SUBCATEGORY_COL = 21;
 
     /**
      * Import excel data        
@@ -67,7 +88,7 @@ class ExcelService
         $highestColumnIndex = \PhpOffice\PhpSpreadsheet\Cell\Coordinate::columnIndexFromString($highestColumn);
 
         // Get supplier name
-        $supplierName = $_oPHPExcel->getActiveSheet()->getCellByColumnAndRow(1, 2)->getValue();
+        $supplierName = $_oPHPExcel->getActiveSheet()->getCellByColumnAndRow(self::SUPPLIER_COL, 2)->getValue();
         $objectManager = GeneralUtility::makeInstance('TYPO3\\CMS\Extbase\\Object\\ObjectManager');
 
         // Get supplier
@@ -106,6 +127,9 @@ class ExcelService
 
         // FeVariant Option
         $feVariantOption = SettingsUtility::getFeVariantOption();
+        
+        // Get maincategory repository
+        $maincategoryRepository = $objectManager->get(\Pmwebdesign\Cartproductreader\Domain\Repository\MaincategoryRepository::class);
 
         // Get category repository
         $categoryRepository = $objectManager->get(\Pmwebdesign\Cartproductreader\Domain\Repository\CategoryRepository::class);
@@ -117,66 +141,68 @@ class ExcelService
 
         // For all Excel data
         for ($row = 2; $row <= $highestRow; ++$row) {
-            $col = 2;
             $feVariant = "none";
 
             // Article number
-            $articleNumber = $worksheet->getCellByColumnAndRow($col, $row)->getValue();
+            $articleNumber = $worksheet->getCellByColumnAndRow(self::ARTICLE_NR_COL, $row)->getValue();
 
             // Product name
-            $title = $worksheet->getCellByColumnAndRow(++$col, $row)->getValue();
+            $title = $worksheet->getCellByColumnAndRow(self::PRODUCT_NAME_COL, $row)->getValue();
 
             // Teaser
-            $teaser = "<p>" . $worksheet->getCellByColumnAndRow(++$col, $row)->getValue() . "</p>";
+            $teaser = "<p>" . $worksheet->getCellByColumnAndRow(self::TEASER_COL, $row)->getValue() . "</p>";
 
             // Description
-            $description = "<p>" . $worksheet->getCellByColumnAndRow(++$col, $row)->getValue() . "</p>";
+            $description = "<p>" . $worksheet->getCellByColumnAndRow(self::DESCRIPTION_COL, $row)->getValue() . "</p>";
             // Colour
-            $colour = $worksheet->getCellByColumnAndRow(++$col, $row)->getValue();
+            $colour = $worksheet->getCellByColumnAndRow(self::COLOUR_COL, $row)->getValue();
             // EAN
-            $ean = $worksheet->getCellByColumnAndRow(++$col, $row)->getValue();
+            $ean = $worksheet->getCellByColumnAndRow(self::EAN_COL, $row)->getValue();
             // Size
-            $size = $worksheet->getCellByColumnAndRow(++$col, $row)->getValue();
+            $size = $worksheet->getCellByColumnAndRow(self::HEIGHT_COL, $row)->getValue();
             // Weight
-            $weight = $worksheet->getCellByColumnAndRow(++$col, $row)->getValue();
+            $weight = $worksheet->getCellByColumnAndRow(self::WEIGHT_COL, $row)->getValue();
             // Packaging Unit     
-            $pU = $worksheet->getCellByColumnAndRow(++$col, $row)->getValue();
+            $pU = $worksheet->getCellByColumnAndRow(self::PACKAGING_UNIT_COL, $row)->getValue();
+            // Maximum order quantity
+            $maximumOrderQuantity = $worksheet->getCellByColumnAndRow(self::MAXIMUM_ORDER_QUANTITY_COL, $row)->getValue();
+            // Minimum order quantity
+            $minimumOrderQuantity = $worksheet->getCellByColumnAndRow(self::MINIMUM_ORDER_QUANTITY_COL, $row)->getValue();
             // Supplier Price RRP net
-            $prizeRrp = $worksheet->getCellByColumnAndRow(++$col, $row)->getValue();
+            $prizeRrp = $worksheet->getCellByColumnAndRow(self::SUPPLIER_PRICE_RRP_NET_COL, $row)->getValue();
             // GastPlus Price purchase
-            $prizePurchaseNetGp = $worksheet->getCellByColumnAndRow(++$col, $row)->getValue();
+            $prizePurchaseNetGp = $worksheet->getCellByColumnAndRow(self::GP_PRICE_PURCHASE_COL, $row)->getValue();
             // GastPlus Price gross            
-            $prizeBrutGp = $worksheet->getCellByColumnAndRow(++$col, $row)->getValue();
+            $prizeBrutGp = $worksheet->getCellByColumnAndRow(self::GP_PRICE_GROSS_COL, $row)->getValue();
             // $product->setPrizeBrutGp($prizeBrutGp);
             // Best before date              
-            $unixDate = $worksheet->getCellByColumnAndRow(++$col, $row)->getValue();
+            $unixDate = $worksheet->getCellByColumnAndRow(self::BEST_BEFORE_DATE_COL, $row)->getValue();
             $bestBeforeDate = \PHPOffice\PhpSpreadsheet\Style\NumberFormat::toFormattedString($unixDate, 'dd.MM.YYYY');
             // Delivery time
-            $deliveryTime = $worksheet->getCellByColumnAndRow(++$col, $row)->getValue();
+            $deliveryTime = $worksheet->getCellByColumnAndRow(self::DELIVERY_TIME_COL, $row)->getValue();
             // Images
-            $imagepaths = StringUtility::setCharakter($worksheet->getCellByColumnAndRow(++$col, $row)->getValue());
+            $imagepaths = StringUtility::setCharakter($worksheet->getCellByColumnAndRow(self::IMAGES_COL, $row)->getValue());
             // Main Category
-            // Not needed 
-            $col++;
-
+            $maincategoryString = $worksheet->getCellByColumnAndRow(self::MAIN_CATEGORY_COL, $row)->getValue();
+            $maincategory = $maincategoryRepository->findOneByTitle($maincategoryString);
             // Category
-            $categoryString = $worksheet->getCellByColumnAndRow( ++$col, $row)->getValue();
+            $categoryString = $worksheet->getCellByColumnAndRow(self::CATEGORY_COL, $row)->getValue();
             $category = $categoryRepository->findOneByTitle($categoryString);
 
             // Subcategory
-            $subcategoryString = $worksheet->getCellByColumnAndRow( ++$col, $row)->getValue();
+            $subcategoryString = $worksheet->getCellByColumnAndRow(self::SUBCATEGORY_COL, $row)->getValue();
             /* @var $subcategory \Pmwebdesign\Cartproductreader\Domain\Model\Subcategory */
             $subcategory = $subcategoryRepository->findOneByTitle($subcategoryString);
 
             // Previous product name the same?
-            if ($row > 2 && $worksheet->getCellByColumnAndRow(3, $row - 1)->getValue() == $title &&
-                    $worksheet->getCellByColumnAndRow($col, $row - 1)->getValue() != $colour &&
+            if ($row > 2 && $worksheet->getCellByColumnAndRow(self::PRODUCT_NAME_COL, $row - 1)->getValue() == $title &&
+                    $worksheet->getCellByColumnAndRow(self::COLOUR_COL, $row - 1)->getValue() != $colour &&
                     $feVariantOption == true) {
                 // Yes, create FeVariantProduct
                 $productVariant = new \Pmwebdesign\Cartproductreader\Domain\Model\ProductVariant();
                 $productVariant->setSku($articleNumber);
                 $productVariant->setTitle($colour);
-                $productVariant->setPid($subcategory->getFolderId());
+                $productVariant->setPid($this->checkCategory($category, $subcategory));
                 // Images
                 $imagepaths = StringUtility::setCharakter($worksheet->getCellByColumnAndRow(16, $row)->getValue());
 
@@ -241,6 +267,28 @@ class ExcelService
                 if ($pU != "") {
                     $product->setDescription($product->getDescription() . "<br /><br /><b>" . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_packagingUnit', 'Cartproductreader') . ":</b><br />" . $pU);
                 }
+                // Maximum order quantity   
+                if (intval($maximumOrderQuantity) > 0) {
+                    $product->setMaxNumberInOrder(intval($maximumOrderQuantity));
+                }
+                // Minimum order quantity   
+                $setMinOrderQuantity = false;
+                if (intval($minimumOrderQuantity) > 0) {
+                    if($product->getMaxNumberInOrder() != null) {
+                        if(intval($minimumOrderQuantity) < $product->getMaxNumberInOrder()) {
+                            $setMinOrderQuantity = true;
+                        }
+                    } else {
+                        $product->setMaxNumberInOrder(1000);
+                        if(inval($minimumOrderQuantity) < 1000) {
+                            $setMinOrderQuantity = true;
+                        }
+                    }
+                    if($setMinOrderQuantity == true) {
+                        \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($minimumOrderQuantity);
+                        $product->setMinNumberInOrder(intval($minimumOrderQuantity));
+                    }
+                }
                 // Supplier Price RRP net
                 $product->setPrizeRrp($prizeRrp);
                 // GastPlus Price purchase
@@ -265,8 +313,13 @@ class ExcelService
 
                 // PID
                 $product->setPid($this->checkCategory($category, $subcategory));
+                // Set maincategory
+                $product->setMaincategory($maincategory);
+                // Set category
                 $product->setCategory($category);
+                // Subcategory?
                 if($subcategory != null) {
+                    // Yes, set subcategory
                     $product->setSubcategory($subcategory);
                 }
 
@@ -288,6 +341,7 @@ class ExcelService
         // Check products of supplier
         $found = false;
         foreach ($excelProducts as $excelProduct) {
+            /* @var $beforeProduct \Pmwebdesign\Cartproductreader\Domain\Model\Product */
             foreach ($beforeProducts as $beforeProduct) {
                 // Product article number exist?
                 if ($beforeProduct->getSku() == $excelProduct->getSku()) {
@@ -295,11 +349,14 @@ class ExcelService
                     $beforeProduct->setTitle($excelProduct->getTitle());
                     $beforeProduct->setTeaser($excelProduct->getTeaser());
                     $beforeProduct->setDescription($excelProduct->getDescription());
+                    $beforeProduct->setMaxNumberInOrder($excelProduct->getMaxNumberInOrder());
+                    $beforeProduct->setMinNumberInOrder($excelProduct->getMinNumberInOrder());
                     $beforeProduct->setPrizeRrp($excelProduct->getPrizeRrp());
                     $beforeProduct->setPrizePurchaseNetGp($excelProduct->getPrizePurchaseNetGp());
                     $beforeProduct->setPrice($excelProduct->getPrice());
                     $beforeProduct->setImagepaths($excelProduct->getImagepaths());
                     $beforeProduct->setPid($excelProduct->getPid());
+                    $beforeProduct->setMaincategory($excelProduct->getMaincategory());
                     $beforeProduct->setCategory($excelProduct->getCategory());
                     if($excelProduct->getSubcategory() != null) {
                         $beforeProduct->setSubcategory($excelProduct->getSubcategory());

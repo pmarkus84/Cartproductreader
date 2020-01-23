@@ -19,6 +19,10 @@
                 <source>Gross price GastPlus</source>
                 <target state="translated">Brutto-Preis Gastplus</target>
             </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_product.minNumberInOrder">
+                <source>Minimum order quantity</source>
+                <target state="translated">Mindestbestellanzahl</target>
+            </trans-unit>
             <trans-unit id="tx_cartproductreader_domain_model_product.imagepaths">
                 <source>Image names</source>
                 <target state="translated">Bilder Dateinamen</target>

@@ -64,6 +64,10 @@
             </div>
         </f:for>
     </f:if>
+    <f:if condition="{product.minNumberInOrder}">
+        (<f:translate extensionName="Cartproductreader" key="tx_cartproductreader_domain_model_product.minNumberInOrder" />: {product.minNumberInOrder})
+    </f:if>
+    <f:comment><!-- Number in the shopping cart --></f:comment>
     <f:cObject typoscriptObjectPath="lib.cartProduct.showForm" />
     <f:if condition="{product.relatedProducts}">
         <ul>
@@ -75,7 +79,8 @@
         </ul>
     </f:if>
     <br />
-    <f:comment><f:link.external class="btn btn-default" uri="javascript:history.back();">{f:translate(key: 'tx_cartproducts.history_back')}</f:link.external></f:comment>
-    <f:link.action action="list" class="btn btn-default">{f:translate(key: 'tx_cartproducts.history_back')}</f:link.action>
+    <f:link.external class="btn btn-default" uri="javascript:history.back();">{f:translate(key: 'tx_cartproducts.history_back')}</f:link.external>
+    <f:comment><!-- TODO: Back Button Product Show --></f:comment>
+    <f:comment><f:link.action extensionName="cart_products" action="list" class="btn btn-default">{f:translate(key: 'tx_cartproducts.history_back')}</f:link.action></f:comment>
 </f:section>
 </html>
