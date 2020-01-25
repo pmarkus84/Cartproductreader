@@ -51,6 +51,8 @@ class ImageService
         $products = $data->getSupplier()->getProducts();
 
         $feVariantOption = SettingsUtility::getFeVariantOption();
+        
+        $countImages = 0;
 
         /* @var $product \Pmwebdesign\Cartproductreader\Domain\Model\Product */
         foreach ($products as $product) {
@@ -112,6 +114,7 @@ class ImageService
                             $newFileReference = $objectManager->get(\Pmwebdesign\Cartproductreader\Domain\Model\FileReference::class);
                             $newFileReference->setFile($movedNewFile);
                             $product->addImage($newFileReference);
+                            $countImages++;
                             $productRepository->update($product);
                             $objectManager->get(\TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager::class)->persistAll();
                         }
@@ -161,7 +164,7 @@ class ImageService
         }
 
         // Pictures assigned?
-        if ($product->getImages()->count() > 0) {
+        if ($countImages > 0) {
             $data->setImagesAssigned(true);
         } else {
             $data->setImagesAssigned(false);
