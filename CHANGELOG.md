@@ -1,5 +1,15 @@
 # Cart Product Reader Change Log
 
+## 1.7.1
+
+Supports Typo3 8.7.0 - 9.5.99
+
+- [META] Set the EM conf and json version number to 1.7.1.
+- [FEATURE] Images with external url.
+- [BUGFIX] Insertion of Excel product categories.
+- [BUGFIX] Image assign message.
+- [RELEASE] Version 1.7.0 with new small feature and fixed issues.
+
 ## 1.7.0
 
 Supports Typo3 8.7.0 - 9.5.99
