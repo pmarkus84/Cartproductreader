@@ -9,11 +9,18 @@
         <cartproducts:link.product product="{product}" settings="{settings}" class="griditem-a">
             <div class="cartproductreader-flex">
                 <f:if condition="{product.images}">
-                    <f:image src="{product.firstImage.originalResource.originalFile.uid}"
-                             title="{product.firstImage.originalResource.title}"
-                             alt="{product.firstImage.originalResource.title}"
-                             width="{settings.listAction.media.image.size.small.maxWidth}"
-                             height="{settings.listAction.media.image.size.small.maxHeight}" class="cartproductreader-image-center griditem-img" />
+                    <f:then>
+                        <f:image src="{product.firstImage.originalResource.originalFile.uid}"
+                                 title="{product.firstImage.originalResource.title}"
+                                 alt="{product.firstImage.originalResource.title}"
+                                 width="{settings.listAction.media.image.size.small.maxWidth}"
+                                 height="{settings.listAction.media.image.size.small.maxHeight}" class="cartproductreader-image-center griditem-img" />
+                    </f:then>
+                    <f:else>
+                        <f:if condition="{product.imagepaths}">
+                            <img src="{product.imagepaths}" class="cartproductreader-image-center griditem-img" style="height:88px" />
+                        </f:if>
+                    </f:else>
                 </f:if>        
             </div>
             <div class="cartproductreader-flex cartproductreader-flex-center" {f:if(condition:'{product.images}', then:'', else:'style="margin-top: 10px"')}>
