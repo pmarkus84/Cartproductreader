@@ -39,27 +39,28 @@ use PHPOffice\PhpSpreadsheet\IOFactory;
  */
 class ExcelService
 {
-    const SUPPLIER_COL = 1;
-    const ARTICLE_NR_COL = 2;
-    const PRODUCT_NAME_COL = 3;
-    const TEASER_COL = 4;
-    const DESCRIPTION_COL = 5;
-    const COLOUR_COL = 6;
-    const EAN_COL = 7;
-    const HEIGHT_COL = 8;
-    const WEIGHT_COL = 9;
-    const PACKAGING_UNIT_COL = 10;
-    const MAXIMUM_ORDER_QUANTITY_COL = 12;
-    const MINIMUM_ORDER_QUANTITY_COL = 11;
-    const SUPPLIER_PRICE_RRP_NET_COL = 13;
-    const GP_PRICE_PURCHASE_COL = 14;
-    const GP_PRICE_GROSS_COL = 15;
-    const BEST_BEFORE_DATE_COL = 16;
-    const DELIVERY_TIME_COL = 17;
-    const IMAGES_COL = 18;
-    const MAIN_CATEGORY_COL = 19;
-    const CATEGORY_COL = 20;
-    const SUBCATEGORY_COL = 21;
+
+    const SUPPLIER_COL = 1; // A
+    const ARTICLE_NR_COL = 2; // B
+    const PRODUCT_NAME_COL = 3; // C
+    const TEASER_COL = 4; // D
+    const DESCRIPTION_COL = 5; // E
+    const COLOUR_COL = 6; // F
+    const EAN_COL = 7; // G
+    const HEIGHT_COL = 8; // H
+    const WEIGHT_COL = 9; // I
+    const PACKAGING_UNIT_COL = 10; // J
+    const MINIMUM_ORDER_QUANTITY_COL = 11; // K
+    const MAXIMUM_ORDER_QUANTITY_COL = 12; // L
+    const SUPPLIER_PRICE_RRP_NET_COL = 13; // M
+    const GP_PRICE_PURCHASE_COL = 14; // N
+    const GP_PRICE_GROSS_COL = 15; // O
+    const BEST_BEFORE_DATE_COL = 16; // P
+    const DELIVERY_TIME_COL = 17; // Q
+    const IMAGES_COL = 18; // R
+    const MAIN_CATEGORY_COL = 19; // S
+    const CATEGORY_COL = 20; // T
+    const SUBCATEGORY_COL = 21; // U
 
     /**
      * Import excel data        
@@ -127,7 +128,7 @@ class ExcelService
 
         // FeVariant Option
         $feVariantOption = SettingsUtility::getFeVariantOption();
-        
+
         // Get maincategory repository
         $maincategoryRepository = $objectManager->get(\Pmwebdesign\Cartproductreader\Domain\Repository\MaincategoryRepository::class);
 
@@ -202,7 +203,7 @@ class ExcelService
                 $productVariant = new \Pmwebdesign\Cartproductreader\Domain\Model\ProductVariant();
                 $productVariant->setSku($articleNumber);
                 $productVariant->setTitle($colour);
-                $productVariant->setPid($this->checkCategory($category, $subcategory));
+                $productVariant->setPid($this->checkCategory($maincategory, $category, $subcategory));
                 // Images
                 $imagepaths = StringUtility::setCharakter($worksheet->getCellByColumnAndRow(16, $row)->getValue());
 
@@ -274,18 +275,17 @@ class ExcelService
                 // Minimum order quantity   
                 $setMinOrderQuantity = false;
                 if (intval($minimumOrderQuantity) > 0) {
-                    if($product->getMaxNumberInOrder() != null) {
-                        if(intval($minimumOrderQuantity) < $product->getMaxNumberInOrder()) {
+                    if ($product->getMaxNumberInOrder() != null) {
+                        if (intval($minimumOrderQuantity) < $product->getMaxNumberInOrder()) {
                             $setMinOrderQuantity = true;
                         }
                     } else {
                         $product->setMaxNumberInOrder(1000);
-                        if(inval($minimumOrderQuantity) < 1000) {
+                        if (intval($minimumOrderQuantity) < 1000) {
                             $setMinOrderQuantity = true;
                         }
                     }
-                    if($setMinOrderQuantity == true) {
-                        \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($minimumOrderQuantity);
+                    if ($setMinOrderQuantity == true) {
                         $product->setMinNumberInOrder(intval($minimumOrderQuantity));
                     }
                 }
@@ -312,13 +312,18 @@ class ExcelService
                 }
 
                 // PID
-                $product->setPid($this->checkCategory($category, $subcategory));
-                // Set maincategory
-                $product->setMaincategory($maincategory);
+                $product->setPid($this->checkCategory($maincategory, $category, $subcategory));
+                // TODO-Error: Set maincategory
+                //\TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($maincategory);
+                if ($maincategory != null) {
+                    $product->setMaincategory($maincategory);
+                }
                 // Set category
-                $product->setCategory($category);
+                if ($category != null) {
+                    $product->setCategory($category);
+                }
                 // Subcategory?
-                if($subcategory != null) {
+                if ($subcategory != null) {
                     // Yes, set subcategory
                     $product->setSubcategory($subcategory);
                 }
@@ -326,7 +331,7 @@ class ExcelService
                 // Product Variant?
                 if ($feVariant == "new" && $feVariantOption == true) {
                     $feVariants = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-                    $productVariant->setPid($this->checkCategory($category, $subcategory));
+                    $productVariant->setPid($this->checkCategory($maincategory, $category, $subcategory));
                     $feVariants->attach($productVariant);
                     $product->setFeVariants($feVariants);
                 }
@@ -356,9 +361,14 @@ class ExcelService
                     $beforeProduct->setPrice($excelProduct->getPrice());
                     $beforeProduct->setImagepaths($excelProduct->getImagepaths());
                     $beforeProduct->setPid($excelProduct->getPid());
-                    $beforeProduct->setMaincategory($excelProduct->getMaincategory());
-                    $beforeProduct->setCategory($excelProduct->getCategory());
-                    if($excelProduct->getSubcategory() != null) {
+                    // TODO-Error: Set Maincategory
+                    if ($excelProduct->getMaincategory() != null) {
+                        $beforeProduct->setMaincategory($excelProduct->getMaincategory());
+                    }
+                    if ($excelProduct->getCategory() != null) {
+                        $beforeProduct->setCategory($excelProduct->getCategory());
+                    }
+                    if ($excelProduct->getSubcategory() != null) {
                         $beforeProduct->setSubcategory($excelProduct->getSubcategory());
                     }
                     $found = true;
@@ -419,17 +429,24 @@ class ExcelService
     /**
      * Check Category
      * 
+     * @param \Pmwebdesign\Cartproductreader\Domain\Model\Maincategory $maincategory
+     * @param \Pmwebdesign\Cartproductreader\Domain\Model\Category $category
      * @param \Pmwebdesign\Cartproductreader\Domain\Model\Subcategory $subcategory
      * @return integer 
      */
-    private function checkCategory(\Pmwebdesign\Cartproductreader\Domain\Model\Category $category,
-            \Pmwebdesign\Cartproductreader\Domain\Model\Subcategory $subcategory = null) {
+    private function checkCategory(\Pmwebdesign\Cartproductreader\Domain\Model\Maincategory $maincategory = null,
+            \Pmwebdesign\Cartproductreader\Domain\Model\Category $category = null,
+            \Pmwebdesign\Cartproductreader\Domain\Model\Subcategory $subcategory = null)
+    {
         $pid = 0;
-        if($subcategory != null) {
+        if ($subcategory != null) {
             $pid = $subcategory->getFolderId();
-        } else {
+        } elseif ($category != null) {
             $pid = $category->getFolderId();
+        } elseif ($maincategory != null) {
+            $pid = $maincategory->getFolderId();
         }
         return $pid;
     }
+
 }

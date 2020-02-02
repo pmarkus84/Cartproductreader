@@ -5,7 +5,8 @@
 <f:section name="withoutVariant">
     <tr class="{f:if(condition: product.quantityIsInRange, then: '', else: 'danger')}">
         <td colspan="2" style="padding: 5px 10px; margin: 0; font-family: Arial, Helvetica, sans-serif; font-size: 12px;">
-            <div class="product-name">{product.title} - {product.feVariant.value}</div>
+        <f:comment><!-- TODO: Product supplier? --></f:comment>
+            <div class="product-name">{product.title} {f:if(condition:'{product.feVariant.value}',then:'- {product.feVariant.value} ')}{product.supplier.name}</div>
             <p style="font-family: Arial, Helvetica, sans-serif; font-size: 12px;">
                 <f:translate key="tx_cart_domain_model_order_product.sku.short"/>
                 : <f:if condition="{product.feVariant}"><f:then>{product.feVariant.sku}</f:then><f:else>{product.sku}</f:else></f:if>

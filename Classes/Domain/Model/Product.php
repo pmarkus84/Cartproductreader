@@ -35,6 +35,13 @@ class Product extends \Extcode\CartProducts\Domain\Model\Product\Product
      * @var integer
      */
     protected $pid = 0;
+    
+    /**
+     * Supplier
+     *
+     * @var \Pmwebdesign\Cartproductreader\Domain\Model\Supplier
+     */
+    protected $supplier = null;
 
     /**
      * Prize RRP (UVP)
@@ -67,7 +74,7 @@ class Product extends \Extcode\CartProducts\Domain\Model\Product\Product
     /**
      * Maincategory
      *
-     * @var \Pmwebdesign\Cartproductreader\Domain\Model\Subcategory
+     * @var \Pmwebdesign\Cartproductreader\Domain\Model\Maincategory
      */
     protected $maincategory = NULL;
     
@@ -110,7 +117,28 @@ class Product extends \Extcode\CartProducts\Domain\Model\Product\Product
     {
         $this->pid = $pid;
     }
-        
+    
+    /**
+     * Get the supplier
+     * 
+     * @return \Pmwebdesign\Cartproductreader\Domain\Model\Supplier
+     */
+    public function getSupplier()
+    {
+        return $this->supplier;
+    }
+
+    /**
+     * Set the supplier
+     * 
+     * @param \Pmwebdesign\Cartproductreader\Domain\Model\Supplier $supplier
+     * @return void
+     */
+    public function setSupplier(\Pmwebdesign\Cartproductreader\Domain\Model\Supplier $supplier)
+    {
+        $this->supplier = $supplier;
+    }
+
     /**
      * Return prize RRP
      * 

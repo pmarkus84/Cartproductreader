@@ -2,6 +2,8 @@
 config.tx_extbase {
     objects {
             Extcode\CartProducts\Domain\Model\Product\Product.className = Pmwebdesign\Cartproductreader\Domain\Model\Product
+            # TODO:
+            #Extcode\Cart\Domain\Model\Cart\Product = Pmwebdesign\Cartproductreader\Domain\Model\Product
             Extcode\CartProducts\Domain\Model\Product\Product\FeVariant.className = Pmwebdesign\Cartproductreader\Domain\Model\ProductVariant
             Extcode\CartProducts\Domain\Model\Category.className = Pmwebdesign\Cartproductreader\Domain\Model\Category
             Extcode\CartProducts\Controller\ProductController.className = Pmwebdesign\Cartproductreader\Controller\ProductController
