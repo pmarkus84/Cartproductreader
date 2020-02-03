@@ -76,7 +76,7 @@ class ImageService
                     $strArrayPictures = explode("|", $product->getImagepaths());
                 }
                 $images = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-
+                
                 /* @var $storageRepository \TYPO3\CMS\Core\Resource\StorageRepository */
                 $storageRepository = $objectManager->get('TYPO3\\CMS\\Core\\Resource\\StorageRepository');
                 $storage = $storageRepository->findByUid('1');
@@ -116,7 +116,6 @@ class ImageService
                             $product->addImage($newFileReference);
                             $countImages++;
                             $productRepository->update($product);
-                            $objectManager->get(\TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager::class)->persistAll();
                         }
                     }
                 }
@@ -162,6 +161,7 @@ class ImageService
                 }
             }
         }
+        $objectManager->get(\TYPO3\CMS\Extbase\Persistence\Generic\PersistenceManager::class)->persistAll(); // Needed!
 
         // Pictures assigned?
         if ($countImages > 0) {
