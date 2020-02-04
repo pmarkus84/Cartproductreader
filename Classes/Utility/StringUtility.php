@@ -35,8 +35,16 @@ class StringUtility extends \TYPO3\CMS\Core\Utility\StringUtility
             $modifiedString = $param;
         } else {
             // Normally, without umlauts
-            $modifiedString = StringUtility::changeUmlauts($param);
+            $modifiedString = self::changeUmlauts($param);
         }        
+        
+        // Remove blanks
+        if($modifiedString == null) {
+            $modifiedString = "";
+        } else {
+            $modifiedString = self::removeBlanks($modifiedString);
+        }        
+        
         return $modifiedString;
     }
 
@@ -50,5 +58,19 @@ class StringUtility extends \TYPO3\CMS\Core\Utility\StringUtility
     {
         $tempstr = ["Ä" => "AE", "Ö" => "OE", "Ü" => "UE", "ä" => "ae", "ö" => "oe", "ü" => "ue"];
         return strtr($param, $tempstr);
+    }
+    
+    /**
+     * Remove blanks
+     * 
+     * @param string $param
+     * @return string
+     */
+    public static function removeBlanks($param): string
+    {
+        if($param != "") {
+            $param = str_replace(" ", "_", $param);
+        }
+        return $param;
     }
 }
