@@ -399,9 +399,13 @@ class ExcelService
                     $beforeProduct->setPrizePurchaseNetGp($excelProduct->getPrizePurchaseNetGp());
                     $beforeProduct->setPrice($excelProduct->getPrice());
                     $beforeProduct->setImagepaths($excelProduct->getImagepaths());
-                    $beforeProduct->setPid($excelProduct->getPid());                    
-                    $beforeProduct->setBeVariantAttribute1($excelProduct->getBeVariantAttribute1());
-                    $beforeProduct->setBeVariants($excelProduct->getBeVariants());
+                    $beforeProduct->setPid($excelProduct->getPid());    
+                    if($excelProduct->getBeVariantAttribute1() != null) {
+                        $beforeProduct->setBeVariantAttribute1($excelProduct->getBeVariantAttribute1());
+                        if($excelProduct->getBeVariants()) {
+                            $beforeProduct->setBeVariants($excelProduct->getBeVariants());
+                        }
+                    }
                     
                     // Check categories
                     if ($excelProduct->getMaincategory() != null) {
