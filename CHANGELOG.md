@@ -1,5 +1,15 @@
 # Cart Product Reader Change Log
 
+## 1.8.0
+
+Supports Typo3 8.7.0 - 9.5.99
+
+- [META] Set the version number to 1.8.0.
+- [FEATURE] Add Size selection of products from Excel upload.
+- [UPDATE] Add supplier number.
+- [BUGFIX] Fix blank rows in Excel and replace blanks in picture names.
+- [RELEASE] Version 1.7.2 with fixed issues.
+
 ## 1.7.2
 
 Supports Typo3 8.7.0 - 9.5.99
