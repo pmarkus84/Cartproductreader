@@ -1,5 +1,13 @@
 # Cart Product Reader Change Log
 
+## 1.8.3
+
+Supports Typo3 8.7.0 - 9.5.99
+
+- [META] Set the EM conf and json version number to 1.8.3.
+- [TEST] Remove debugging output.
+- [RELEASE] Version 1.8.2 fixed issues.
+
 ## 1.8.2
 
 Supports Typo3 8.7.0 - 9.5.99
