@@ -1,5 +1,16 @@
 # Cart Product Reader Change Log
 
+## 1.8.1
+
+Supports Typo3 8.7.0 - 9.5.99
+
+- [META] Set the version number to 1.8.1.
+- [UPDATE] Add configuration for image size in list and grids.
+- [COMMENT] Change comments in Excel Service.
+- [UPDATE] Set best before date to count of days.
+- [UPDATE] Delete required attribute of field category.
+- [RELEASE] Version 1.8.0 Size selection integration and fixes issues.
+
 ## 1.8.0
 
 Supports Typo3 8.7.0 - 9.5.99
