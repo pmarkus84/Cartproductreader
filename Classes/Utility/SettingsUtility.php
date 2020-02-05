@@ -139,5 +139,32 @@ class SettingsUtility
         \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(SettingsUtility::class);        
         return SettingsUtility::$SETTINGS['searchform'];
     }
+    
+    /**
+     * Get the option for the List Picture Width size
+     * 
+     * @return int
+     */
+    public static function getListPictureWidthSize()
+    {
+        $objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\Extbase\\Object\\ObjectManager');
+        $configurationManager = $objectManager->get('TYPO3\\CMS\\Extbase\\Configuration\\ConfigurationManager');
+        $settings = $configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS);
+        \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(SettingsUtility::class);        
+        return SettingsUtility::$SETTINGS['listPictureWidthSize'];
+    }
 
+    /**
+     * Get the option for the List Picture Height size
+     * 
+     * @return int
+     */
+    public static function getListPictureHeightSize()
+    {
+        $objectManager = \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance('TYPO3\\CMS\Extbase\\Object\\ObjectManager');
+        $configurationManager = $objectManager->get('TYPO3\\CMS\\Extbase\\Configuration\\ConfigurationManager');
+        $settings = $configurationManager->getConfiguration(\TYPO3\CMS\Extbase\Configuration\ConfigurationManagerInterface::CONFIGURATION_TYPE_SETTINGS);
+        \TYPO3\CMS\Core\Utility\GeneralUtility::makeInstance(SettingsUtility::class);        
+        return SettingsUtility::$SETTINGS['listPictureHeightSize'];
+    }
 }

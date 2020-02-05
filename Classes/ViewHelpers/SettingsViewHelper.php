@@ -45,7 +45,7 @@ class SettingsViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHe
     }
     
     /**
-     * @return int
+     * @return
      */
     public function render()
     {
@@ -53,10 +53,30 @@ class SettingsViewHelper extends \TYPO3\CMS\Fluid\Core\ViewHelper\AbstractViewHe
             $number = intval(SettingsUtility::getCatTypesNumber());
         } elseif($this->arguments['setting'] == "SearchForm") {
             $number = intval(SettingsUtility::getSearchFormState());
+        } elseif($this->arguments['setting'] == "ListPictureWidthSize") {
+            $number = $this->checkSize(SettingsUtility::getListPictureWidthSize());            
+        } elseif($this->arguments['setting'] == "ListPictureHeightSize") {
+            $number = $this->checkSize(SettingsUtility::getListPictureHeightSize());
         } else {
             $number = 0;
         }
         return $number;
     }
 
+    /**
+     * @param string $size
+     * @return string
+     */
+    private function checkSize($size)
+    {
+        $modifiedSize = "Nothing";
+        if($size == "auto") {
+            $modifiedSize = "auto";
+        } elseif(intval($size) > 0) {
+            $modifiedSize = $size . "px";
+        } else {
+            $modifiedSize = "Nothing";;
+        }
+        return $modifiedSize;
+    }
 }

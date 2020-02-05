@@ -36,13 +36,20 @@
                     <tr>
                         <td>
                             <f:if condition="{product.images}">
-                                <cartproducts:link.product product="{product}" settings="{settings}">
-                                    <f:image src="{product.firstImage.originalResource.originalFile.uid}"
-                                             title="{product.firstImage.originalResource.title}"
-                                             alt="{product.firstImage.originalResource.title}"
-                                             width="{settings.listAction.media.image.size.small.maxWidth}"
-                                             height="{settings.listAction.media.image.size.small.maxHeight}" />
-                                </cartproducts:link.product>
+                                <f:then>
+                                    <cartproducts:link.product product="{product}" settings="{settings}">                                    
+                                        <f:image src="{product.firstImage.originalResource.originalFile.uid}"
+                                                 title="{product.firstImage.originalResource.title}"
+                                                 alt="{product.firstImage.originalResource.title}"
+                                                 width="{settings.listAction.media.image.size.small.maxWidth}"
+                                                 height="{settings.listAction.media.image.size.small.maxHeight}" style="{f:if(condition:'{vh:settings(setting:\'ListPictureWidthSize\')} == \'Nothing\'', then:'',else:'width:{vh:settings(setting:\'ListPictureWidthSize\')};')}{f:if(condition:'{vh:settings(setting:\'ListPictureHeightSize\')} == \'Nothing\'', then:'',else:'height:{vh:settings(setting:\'ListPictureHeightSize\')}')}" />
+                                    </cartproducts:link.product>
+                                </f:then>
+                                <f:else>
+                                    <f:if condition="{product.imagepaths}">
+                                        <img src="{product.imagepaths}" class="cartproductreader-image-center griditem-img" width="{settings.listAction.media.image.size.small.maxWidth}" height="{settings.listAction.media.image.size.small.maxHeight}" style="{f:if(condition:'{vh:settings(setting:\'ListPictureWidthSize\')} == \'Nothing\'', then:'',else:'width:{vh:settings(setting:\'ListPictureWidthSize\')};')}{f:if(condition:'{vh:settings(setting:\'ListPictureHeightSize\')} == \'Nothing\'', then:'',else:'height:{vh:settings(setting:\'ListPictureHeightSize\')}')}" />
+                                    </f:if>
+                                </f:else>
                             </f:if>
                         </td>
                         <td>

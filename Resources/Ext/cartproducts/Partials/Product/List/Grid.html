@@ -8,17 +8,18 @@
     <div class="col-md-4 griditem">
         <cartproducts:link.product product="{product}" settings="{settings}" class="griditem-a">
             <div class="cartproductreader-flex">
-                <f:if condition="{product.images}">
+                <f:debug>{vh:settings(setting:'ListPictureWidthSize')}</f:debug>
+                <f:if condition="{product.images}">                    
                     <f:then>
                         <f:image src="{product.firstImage.originalResource.originalFile.uid}"
                                  title="{product.firstImage.originalResource.title}"
                                  alt="{product.firstImage.originalResource.title}"
                                  width="{settings.listAction.media.image.size.small.maxWidth}"
-                                 height="{settings.listAction.media.image.size.small.maxHeight}" class="cartproductreader-image-center griditem-img" />
+                                 height="{settings.listAction.media.image.size.small.maxHeight}" style="{f:if(condition:'{vh:settings(setting:\'ListPictureWidthSize\')} == \'Nothing\'', then:'',else:'width:{vh:settings(setting:\'ListPictureWidthSize\')};')}{f:if(condition:'{vh:settings(setting:\'ListPictureHeightSize\')} == \'Nothing\'', then:'',else:'height:{vh:settings(setting:\'ListPictureHeightSize\')}')}" class="cartproductreader-image-center griditem-img" />
                     </f:then>
                     <f:else>
                         <f:if condition="{product.imagepaths}">
-                            <img src="{product.imagepaths}" class="cartproductreader-image-center griditem-img" style="height:88px" />
+                            <img src="{product.imagepaths}" class="cartproductreader-image-center griditem-img" width="{settings.listAction.media.image.size.small.maxWidth}" height="{settings.listAction.media.image.size.small.maxHeight}" style="{f:if(condition:'{vh:settings(setting:\'ListPictureWidthSize\')} == \'Nothing\'', then:'',else:'width:{vh:settings(setting:\'ListPictureWidthSize\')};')}{f:if(condition:'{vh:settings(setting:\'ListPictureHeightSize\')} == \'Nothing\'', then:'',else:'height:{vh:settings(setting:\'ListPictureHeightSize\')}')}" />
                         </f:if>
                     </f:else>
                 </f:if>        

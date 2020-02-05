@@ -53,7 +53,7 @@ This copyright notice MUST APPEAR in all copies of the script!
 
 .width400 {
     width: auto;
-    height: 250px;
+    /*height: 250px;*/
 }
 
 .black50 {
@@ -99,6 +99,6 @@ div.griditem {
 @media (min-width: 576px) {
     .width400 {
         width: 400px;
-        height: 300px;
+        /*height: 300px;*/
     }
 }

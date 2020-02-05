@@ -315,6 +315,14 @@
                 <source>Search term</source>
                 <target state="translated">Suchwort</target>
             </trans-unit>
+            <trans-unit id="tx_cartproductreader_list_picture_width_size">
+                <source>List Picture width size</source>
+                <target state="translated">Listen-Bilder Breite (Größe)</target>
+            </trans-unit>
+            <trans-unit id="tx_cartproductreader_list_picture_height_size">
+                <source>List Picture height size</source>
+                <target state="translated">Listen-Bilder Höhe (Größe)</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

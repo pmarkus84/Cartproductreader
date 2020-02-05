@@ -16,6 +16,22 @@
                             </config>
                         </TCEforms>
                     </settings.searchform>   
+                    <settings.listPictureWidthSize>
+                        <TCEforms>
+                            <label>LLL:EXT:cartproductreader/Resources/Private/Language/locallang.xlsf:tx_cartproductreader_list_picture_width_size</label>
+                            <config>
+                                <type>input</type>                                
+                            </config>
+                        </TCEforms>
+                    </settings.listPictureWidthSize>   
+                    <settings.listPictureHeightSize>
+                        <TCEforms>
+                            <label>LLL:EXT:cartproductreader/Resources/Private/Language/locallang.xlsf:tx_cartproductreader_list_picture_height_size</label>
+                            <config>
+                                <type>input</type>                                
+                            </config>
+                        </TCEforms>
+                    </settings.listPictureHeightSize>   
                     <!-- Copied from extended flexform from extension cart_products -->
                     <switchableControllerActions>
                         <TCEforms>
