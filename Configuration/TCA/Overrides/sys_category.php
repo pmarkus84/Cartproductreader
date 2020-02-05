@@ -61,6 +61,18 @@ $fields = [
             'foreign_sortby' => 'title',
         ],
     ],
+    'be_variant_attributes' => [
+        'exclude' => true,
+        'label' => 'LLL:EXT:cart_products/Resources/Private/Language/locallang.xlf:tx_cartproducts_domain_model_product_productbe_variant_attributes',
+        'config' => [
+            'type' => 'inline',
+            'foreign_table' => 'tx_cartproducts_domain_model_product_bevariantattribute',
+            'foreign_field' => 'product',
+            'foreign_match_fields' => [
+                'pid' => '###REC_FIELD_folder_id###',
+            ],
+        ],
+    ],
 ];
 
 // Add new fields to fe_users
@@ -69,5 +81,5 @@ $fields = [
 // Make fields visible in the TCEforms:
 \TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addToAllTCAtypes(
         'sys_category', // Table name
-        'products, folder_id, subcategories;;;;1-1-1'
+        'products, folder_id, subcategories, be_variant_attributes;;;;1-1-1'
 );

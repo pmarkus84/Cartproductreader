@@ -102,6 +102,7 @@ CREATE TABLE tx_cartproductreader_domain_model_category (
         folder_id int(11) DEFAULT '0' NOT NULL,
         products int(11) unsigned DEFAULT '0' NOT NULL,
         subcategories int(11) unsigned DEFAULT '0' NOT NULL,
+        be_variant_attributes int(11) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -145,6 +146,7 @@ CREATE TABLE tx_cartproductreader_domain_model_subcategory (
         folder_id int(11) DEFAULT '0' NOT NULL,        
         products int(11) unsigned DEFAULT '0' NOT NULL,
         category int(11) unsigned DEFAULT '0' NOT NULL,
+        be_variant_attributes int(11) unsigned DEFAULT '0' NOT NULL,
 
 	tstamp int(11) unsigned DEFAULT '0' NOT NULL,
 	crdate int(11) unsigned DEFAULT '0' NOT NULL,
@@ -259,5 +261,6 @@ CREATE TABLE sys_category (
         folder_id int(11) DEFAULT '0' NOT NULL,
         products int(11) unsigned DEFAULT '0' NOT NULL,
         maincategory int(11) unsigned DEFAULT '0' NOT NULL,
-        subcategories int(11) unsigned DEFAULT '0' NOT NULL,
+        subcategories int(11) unsigned DEFAULT '0' NOT NULL,        
+        be_variant_attributes int(11) unsigned DEFAULT '0' NOT NULL,
 );

@@ -44,10 +44,10 @@ return [
         'iconfile' => 'EXT:cartproductreader/Resources/Public/Icons/tx_cartproductreader_domain_model_category.ico'
     ],
     'interface' => [
-        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, folder_id',
+        'showRecordFieldList' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, folder_id, be_variant_attributes',
     ],
     'types' => [
-        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, folder_id, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
+        '1' => ['showitem' => 'sys_language_uid, l10n_parent, l10n_diffsource, hidden, title, folder_id, be_variant_attributes, --div--;LLL:EXT:frontend/Resources/Private/Language/locallang_ttc.xlf:tabs.access, starttime, endtime'],
     ],
     'columns' => [
         'sys_language_uid' => [
@@ -162,6 +162,20 @@ return [
                 'type' => 'input',
                 'size' => 10,
                 'eval' => 'trim'
+            ],
+        ],
+        'be_variant_attributes' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:cart_products/Resources/Private/Language/locallang.xlf:tx_cartproducts_domain_model_product_productbe_variant_attributes',
+            'config' => [
+                'type' => 'inline',
+                'foreign_table' => 'tx_cartproducts_domain_model_product_bevariantattribute',
+                'foreign_field' => 'product',
+                'foreign_match_fields' => [
+                    'pid' => '###THIS_UID###', // Manual set runs (example: 85)
+                ],
+//                'foreign_table_field' => 'folder_id',
+//                'foreign_table_where' => ' AND tx_cartproducts_domain_model_product_bevariantattribute.pid=###REC_FIELD_folder_id### '
             ],
         ],
     ],

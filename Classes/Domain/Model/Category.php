@@ -54,7 +54,24 @@ class Category extends \Extcode\CartProducts\Domain\Model\Category
      * @cascade remove
      */
     protected $subcategories = NULL;
-
+    
+    /**
+     * Backend variants
+     *
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\CartProducts\Domain\Model\Product\BeVariantAttribute> 
+       @lazy
+     * @cascade remove
+     */
+    protected $beVariantAttributes = null;
+    
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->subcategories = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+        $this->beVariantAttributes = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+    }
 
     /**
      * Get the category title
@@ -123,7 +140,51 @@ class Category extends \Extcode\CartProducts\Domain\Model\Category
      * @param \Pmwebdesign\Cartproductreader\Domain\Model\Subcategory $subcategory
      */
     public function addSubcategory(\Pmwebdesign\Cartproductreader\Domain\Model\Subcategory $subcategory)
-    {
+    {        
         $this->subcategories->attach($subcategory);
+    }
+    
+    /**
+     * Get the Backend Variant Attributes
+     * 
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\CartProducts\Domain\Model\Product\BeVariantAttribute>
+     */
+    public function getBeVariantAttributes()
+    {
+        return $this->beVariantAttributes;
+    }
+
+    /**
+     * Set the Backend Variant Attributes
+     * 
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Extcode\CartProducts\Domain\Model\Product\BeVariantAttribute> $beVariantAttributes
+     */
+    public function setBeVariantAttributes(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $beVariantAttributes)
+    {
+        foreach ($beVariantAttributes as $beVariantAttribute) {
+            $beVariantAttribute->setPid(intval($this->folderId));
+        }
+        $this->beVariantAttributes = $beVariantAttributes;
+    }
+    
+    /**
+     * Add a Backend Variant Attribute
+     * 
+     * @param \Extcode\CartProducts\Domain\Model\Product\BeVariantAttribute $beVariantAttribute
+     */
+    public function addBeVariantAttribute(\Extcode\CartProducts\Domain\Model\Product\BeVariantAttribute $beVariantAttribute)
+    {
+        $beVariantAttribute->setPid(intval($this->folderId));
+        $this->beVariantAttributes->attach($beVariantAttribute);
+    }
+    
+    /**
+     * Remove a Backend Variant Attribute
+     * 
+     * @param \Extcode\CartProducts\Domain\Model\Product\BeVariantAttribute $beVariantAttribute
+     */
+    public function removeBeVariantAttribute(\Extcode\CartProducts\Domain\Model\Product\BeVariantAttribute $beVariantAttribute)
+    {
+        $this->beVariantAttributes->detach($beVariantAttribute);
     }
 }

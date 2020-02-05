@@ -113,12 +113,14 @@ class ExcelService
 
         // Create FAL Images Folders
         $pathsuppliers = $_SERVER['DOCUMENT_ROOT'] . "/fileadmin/user_upload/" . strtolower(\TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_suppliers', 'Cartproductreader')) . "/";
+        // Exist a folder for suppliers?
         if (is_dir($pathsuppliers)) {
             // Folder exist
         } else {
             mkdir($pathsuppliers);
         }
         $pathsupplier = $pathsuppliers . strtolower($supplier->getName());
+        // Exist the supplier folder?
         if (is_dir($pathsupplier)) {
             // Folder exist
         } else {
@@ -169,6 +171,12 @@ class ExcelService
                 $ean = $worksheet->getCellByColumnAndRow(self::EAN_COL, $row)->getValue();
                 // Size
                 $size = $worksheet->getCellByColumnAndRow(self::HEIGHT_COL, $row)->getValue();
+                
+                // Size art
+                $sizeArt = $worksheet->getCellByColumnAndRow(self::HEIGHT_ART_COL, $row)->getValue();
+                // Size area
+                $sizeArea = $worksheet->getCellByColumnAndRow(self::HEIGHT_AREA_COL, $row)->getValue();
+                
                 // Weight
                 $weight = $worksheet->getCellByColumnAndRow(self::WEIGHT_COL, $row)->getValue();
                 // Packaging Unit     
@@ -268,6 +276,7 @@ class ExcelService
                     if ($size != "") {
                         $product->setDescription($product->getDescription() . "<br /><br /><b>" . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_size', 'Cartproductreader') . ":</b><br />" . $size);
                     }
+                    
                     // Weight
                     if ($weight != "") {
                         $product->setDescription($product->getDescription() . "<br /><br /><b>" . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_weight', 'Cartproductreader') . ":</b><br />" . $weight);
@@ -342,7 +351,26 @@ class ExcelService
                         $feVariants->attach($productVariant);
                         $product->setFeVariants($feVariants);
                     }
-
+                    
+                    // Backend Variant: Size art and Size area
+                    // Get existing Backend Variant (For clothe or shoes)
+                    $beVariantAttribute = $objectManager->get(\Pmwebdesign\Cartproductreader\Domain\Repository\BeVariantAttributeRepository::class)->findOneByPidAndArt($product->getPid(), $sizeArt);
+                    // Size area
+                    $arraySizes = explode(";", $sizeArea);
+                    $beVariants = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+                    foreach ($arraySizes as $size) {
+                        $beVariantAttributeOption = $objectManager->get(\Pmwebdesign\Cartproductreader\Domain\Repository\BeVariantAttributeOptionRepository::class)->findByBeVariantAttribute($product->getPid(), $size, $beVariantAttribute);
+                        // Option exist?
+                        if($beVariantAttributeOption != null) {
+                            $beVariant = new \Pmwebdesign\Cartproductreader\Domain\Model\BeVariant();
+                            $beVariant->setPid($product->getPid());
+                            $beVariant->setBeVariantAttributeOption1($beVariantAttributeOption);
+                            $beVariants->attach($beVariant);
+                        }
+                    }
+                    $product->setBeVariantAttribute1($beVariantAttribute);
+                    $product->setBeVariants($beVariants);
+                    
                     $excelProducts->attach($product);
                 }
             }
@@ -369,6 +397,8 @@ class ExcelService
                     $beforeProduct->setPrice($excelProduct->getPrice());
                     $beforeProduct->setImagepaths($excelProduct->getImagepaths());
                     $beforeProduct->setPid($excelProduct->getPid());
+                    $beforeProduct->setBeVariantAttribute1($excelProduct->getBeVariantAttribute1());
+                    $beforeProduct->setBeVariants($excelProduct->getBeVariants());
                     
                     // Check categories
                     if ($excelProduct->getMaincategory() != null) {

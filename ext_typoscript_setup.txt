@@ -9,6 +9,7 @@ config.tx_extbase {
             Extcode\CartProducts\Controller\ProductController.className = Pmwebdesign\Cartproductreader\Controller\ProductController
             Extcode\CartProducts\Domain\Repository\ProductRepository.className = Pmwebdesign\Cartproductreader\Domain\Repository\ProductRepository
 #            TYPO3\CMS\Extbase\Domain\Model\FileReference.className = Pmwebdesign\Cartproductreader\Domain\Model\FileReference
+            #Pmwebdesign\Cartproductreader\Domain\Model\BeVariantAttribute.className = Extcode\CartProducts\Domain\Model\Product\BeVariantAttribute
     }
     persistence {
         updateReferenceIndex = 1
@@ -43,6 +44,24 @@ config.tx_extbase {
             Pmwebdesign\Cartproductreader\Domain\Model\ProductVariant {
                 mapping {
                     tableName = tx_cartproducts_domain_model_product_fevariant
+                    recordType >
+                }
+            }
+            Pmwebdesign\Cartproductreader\Domain\Model\BeVariantAttribute {
+                mapping {
+                    tableName = tx_cartproducts_domain_model_product_bevariantattribute
+                    recordType >
+                }
+            }
+            Pmwebdesign\Cartproductreader\Domain\Model\BeVariantAttributeOption {
+                mapping {
+                    tableName = tx_cartproducts_domain_model_product_bevariantattributeoption
+                    recordType >
+                }
+            }
+            Pmwebdesign\Cartproductreader\Domain\Model\BeVariant {
+                mapping {
+                    tableName = tx_cartproducts_domain_model_product_bevariant
                     recordType >
                 }
             }
