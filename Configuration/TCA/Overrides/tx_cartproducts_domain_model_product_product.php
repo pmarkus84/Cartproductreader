@@ -115,7 +115,7 @@ $fields = [
             'foreign_table_where' => ' AND PID=(SELECT pid FROM sys_category where subcategories > 0 LIMIT 1) ORDER BY title ASC',
             'minitems' => 1,
             'maxitems' => 1,
-            'eval' => 'required',
+//            'eval' => 'required',
         ],
     ],
     'subcategory' => [
