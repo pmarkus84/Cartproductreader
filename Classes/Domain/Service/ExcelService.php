@@ -356,22 +356,24 @@ class ExcelService
                     // Backend Variant: Size art and Size area
                     // Get existing Backend Variant (For clothe or shoes)
                     $beVariantAttribute = $objectManager->get(\Pmwebdesign\Cartproductreader\Domain\Repository\BeVariantAttributeRepository::class)->findOneByPidAndArt($product->getPid(), $sizeArt);
-                    // Size area
-                    $arraySizes = explode(";", $sizeArea);
-                    $beVariants = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
-                    foreach ($arraySizes as $size) {
-                        $beVariantAttributeOption = $objectManager->get(\Pmwebdesign\Cartproductreader\Domain\Repository\BeVariantAttributeOptionRepository::class)->findByBeVariantAttribute($product->getPid(), $size, $beVariantAttribute);
-                        // Option exist?
-                        if($beVariantAttributeOption != null) {
-                            $beVariant = new \Pmwebdesign\Cartproductreader\Domain\Model\BeVariant();
-                            $beVariant->setPid($product->getPid());
-                            $beVariant->setBeVariantAttributeOption1($beVariantAttributeOption);
-                            $beVariants->attach($beVariant);
+                    // Backend Variant Attribute exist?
+                    if($beVariantAttribute != null) {
+                        // Yes, get Size area
+                        $arraySizes = explode(";", $sizeArea);
+                        $beVariants = new \TYPO3\CMS\Extbase\Persistence\ObjectStorage();
+                        foreach ($arraySizes as $size) {
+                            $beVariantAttributeOption = $objectManager->get(\Pmwebdesign\Cartproductreader\Domain\Repository\BeVariantAttributeOptionRepository::class)->findByBeVariantAttribute($product->getPid(), $size, $beVariantAttribute);
+                            // Option exist?
+                            if($beVariantAttributeOption != null) {
+                                $beVariant = new \Pmwebdesign\Cartproductreader\Domain\Model\BeVariant();
+                                $beVariant->setPid($product->getPid());
+                                $beVariant->setBeVariantAttributeOption1($beVariantAttributeOption);
+                                $beVariants->attach($beVariant);
+                            }
                         }
+                        $product->setBeVariantAttribute1($beVariantAttribute);
+                        $product->setBeVariants($beVariants);
                     }
-                    $product->setBeVariantAttribute1($beVariantAttribute);
-                    $product->setBeVariants($beVariants);
-                    
                     $excelProducts->attach($product);
                 }
             }
@@ -397,7 +399,7 @@ class ExcelService
                     $beforeProduct->setPrizePurchaseNetGp($excelProduct->getPrizePurchaseNetGp());
                     $beforeProduct->setPrice($excelProduct->getPrice());
                     $beforeProduct->setImagepaths($excelProduct->getImagepaths());
-                    $beforeProduct->setPid($excelProduct->getPid());
+                    $beforeProduct->setPid($excelProduct->getPid());                    
                     $beforeProduct->setBeVariantAttribute1($excelProduct->getBeVariantAttribute1());
                     $beforeProduct->setBeVariants($excelProduct->getBeVariants());
                     
