@@ -1,5 +1,13 @@
 # Cart Product Reader Change Log
 
+## 1.8.2
+
+Supports Typo3 8.7.0 - 9.5.99
+
+- [META] Set the version number to 1.8.2.
+- [BUGFIX] Backend Variant Attribute assign.
+- [RELEASE] Version 1.8.1 Image size configuration in list and grid view.
+
 ## 1.8.1
 
 Supports Typo3 8.7.0 - 9.5.99
