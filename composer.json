@@ -8,7 +8,7 @@
     "name": "pmwebdesign/cartproductreader",
     "type": "typo3-cms-extension",
     "description": "Extend the cart product extension with upload data in Excel file and supplier management.",
-    "version": "1.7.2",
+    "version": "1.8.0",
     "keywords": [
         "TYPO3",
         "extension"
