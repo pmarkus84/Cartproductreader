@@ -192,9 +192,10 @@ class ExcelService
                 // GastPlus Price gross            
                 $prizeBrutGp = $worksheet->getCellByColumnAndRow(self::GP_PRICE_GROSS_COL, $row)->getValue();
                 // $product->setPrizeBrutGp($prizeBrutGp);
-                // Best before date              
+                // TODO: Best before date              
                 $unixDate = $worksheet->getCellByColumnAndRow(self::BEST_BEFORE_DATE_COL, $row)->getValue();
-                $bestBeforeDate = \PHPOffice\PhpSpreadsheet\Style\NumberFormat::toFormattedString($unixDate, 'dd.MM.YYYY');
+                $bestBeforeDate = $unixDate;
+                //$bestBeforeDate = \PHPOffice\PhpSpreadsheet\Style\NumberFormat::toFormattedString($unixDate, 'dd.MM.YYYY');
                 // Delivery time
                 $deliveryTime = $worksheet->getCellByColumnAndRow(self::DELIVERY_TIME_COL, $row)->getValue();
                 // Images
