@@ -41,26 +41,29 @@ class ExcelService
 {
 
     const SUPPLIER_COL = 1; // A
-    const ARTICLE_NR_COL = 2; // B
-    const PRODUCT_NAME_COL = 3; // C
-    const TEASER_COL = 4; // D
-    const DESCRIPTION_COL = 5; // E
-    const COLOUR_COL = 6; // F
-    const EAN_COL = 7; // G
-    const HEIGHT_COL = 8; // H
-    const WEIGHT_COL = 9; // I
-    const PACKAGING_UNIT_COL = 10; // J
-    const MINIMUM_ORDER_QUANTITY_COL = 11; // K
-    const MAXIMUM_ORDER_QUANTITY_COL = 12; // L
-    const SUPPLIER_PRICE_RRP_NET_COL = 13; // M
-    const GP_PRICE_PURCHASE_COL = 14; // N
-    const GP_PRICE_GROSS_COL = 15; // O
-    const BEST_BEFORE_DATE_COL = 16; // P
-    const DELIVERY_TIME_COL = 17; // Q
-    const IMAGES_COL = 18; // R
-    const MAIN_CATEGORY_COL = 19; // S
-    const CATEGORY_COL = 20; // T
-    const SUBCATEGORY_COL = 21; // U
+    const SUPPLIER_NR_COL = 2; // B
+    const ARTICLE_NR_COL = 3; // C
+    const PRODUCT_NAME_COL = 4; // D
+    const TEASER_COL = 5; // E
+    const DESCRIPTION_COL = 6; // F
+    const COLOUR_COL = 7; // G
+    const EAN_COL = 8; // H
+    const HEIGHT_COL = 9; // I
+    const HEIGHT_ART_COL = 10; // J
+    const HEIGHT_AREA_COL = 11; // K
+    const WEIGHT_COL = 12; // L
+    const PACKAGING_UNIT_COL = 13; // M
+    const MINIMUM_ORDER_QUANTITY_COL = 14; // N
+    const MAXIMUM_ORDER_QUANTITY_COL = 15; // O
+    const SUPPLIER_PRICE_RRP_NET_COL = 16; // P
+    const GP_PRICE_PURCHASE_COL = 17; // Q
+    const GP_PRICE_GROSS_COL = 18; // R
+    const BEST_BEFORE_DATE_COL = 19; // S
+    const DELIVERY_TIME_COL = 20; // T
+    const IMAGES_COL = 21; // U
+    const MAIN_CATEGORY_COL = 22; // V
+    const CATEGORY_COL = 23; // W
+    const SUBCATEGORY_COL = 24; // X
 
     /**
      * Import excel data        
@@ -90,6 +93,7 @@ class ExcelService
 
         // Get supplier name
         $supplierName = $_oPHPExcel->getActiveSheet()->getCellByColumnAndRow(self::SUPPLIER_COL, 2)->getValue();
+        $supplierNr = $_oPHPExcel->getActiveSheet()->getCellByColumnAndRow(self::SUPPLIER_NR_COL, 2)->getValue();
         $objectManager = GeneralUtility::makeInstance('TYPO3\\CMS\Extbase\\Object\\ObjectManager');
 
         // Get supplier
@@ -101,6 +105,7 @@ class ExcelService
             // Create Supplier
             $supplier = new \Pmwebdesign\Cartproductreader\Domain\Model\Supplier();
             $supplier->setName($supplierName);
+            $supplier->setSupplierNumber($supplierNr);
             $supplierRepository->add($supplier);
             $objectManager->get('TYPO3\\CMS\\Extbase\\Persistence\\Generic\\PersistenceManager')->persistAll();
             $supplier = $supplierRepository->findOneByName($supplierName);
