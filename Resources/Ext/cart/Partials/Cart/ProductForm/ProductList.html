@@ -6,7 +6,6 @@
     <tr class="{f:if(condition: product.quantityIsInRange, then: '', else: 'danger')}">
         <td colspan="2" class="col-md-6">
             <div class="product-name">
-                <f:debug>{product}</f:debug>
                 {product.title} {f:if(condition:'{product.feVariant.value}',then:'- {product.feVariant.value}')}
             </div>
             <p>

@@ -117,7 +117,6 @@ class MaincategoryController extends \TYPO3\CMS\Extbase\Mvc\Controller\ActionCon
         $this->addFlashMessage(\TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_domain_model_maincategory', 'Cartproductreader') . 
                 ' ' . $maincategory->getTitle() .
                 ' ' . \TYPO3\CMS\Extbase\Utility\LocalizationUtility::translate('tx_cartproductreader_updated', 'Cartproductreader'). '!', '', \TYPO3\CMS\Core\Messaging\AbstractMessage::OK);
-        \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($maincategory);
         $this->maincategoryRepository->update($maincategory);
         $this->redirect('edit', 'Maincategory', null, ['maincategory' => $maincategory]);
     }

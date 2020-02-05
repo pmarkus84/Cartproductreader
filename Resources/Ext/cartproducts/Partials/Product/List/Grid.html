@@ -8,7 +8,6 @@
     <div class="col-md-4 griditem">
         <cartproducts:link.product product="{product}" settings="{settings}" class="griditem-a">
             <div class="cartproductreader-flex">
-                <f:debug>{vh:settings(setting:'ListPictureWidthSize')}</f:debug>
                 <f:if condition="{product.images}">                    
                     <f:then>
                         <f:image src="{product.firstImage.originalResource.originalFile.uid}"
