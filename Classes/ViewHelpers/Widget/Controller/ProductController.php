@@ -59,7 +59,6 @@ class ProductController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetContr
     public function indexAction()
     {
         $query = $this->objects->getQuery();
-        \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($this->search);
         $objectManager = GeneralUtility::makeInstance(\TYPO3\CMS\Extbase\Object\ObjectManager::class);
         // Page subtitle
         $property = $GLOBALS['TSFE']->page['subtitle'];
@@ -78,7 +77,6 @@ class ProductController extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetContr
         }
 
         $modifiedObjects = $query->execute();
-        \TYPO3\CMS\Extbase\Utility\DebuggerUtility::var_dump($modifiedObjects->count());
 
         $this->view->assign('contentArguments', array(
             $this->widgetConfiguration['as'] => $modifiedObjects
