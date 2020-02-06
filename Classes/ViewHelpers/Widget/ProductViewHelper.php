@@ -43,12 +43,14 @@ class ProductViewHelper extends \TYPO3\CMS\Fluid\Core\Widget\AbstractWidgetViewH
     /**
      * Initialize arguments
      * @param \TYPO3\CMS\Extbase\Persistence\Generic\QueryResult $objects
+     * @param string $search
      * @param string $as
      */
     public function initializeArguments()
     {
         parent::initializeArguments();
         $this->registerArgument('objects', 'TYPO3\\CMS\\Extbase\\Persistence\\Generic\\QueryResult', 'objects', true);
+        $this->registerArgument('search', 'string', 'search', true);
         $this->registerArgument('as', 'string', 'as', true);
     }
 

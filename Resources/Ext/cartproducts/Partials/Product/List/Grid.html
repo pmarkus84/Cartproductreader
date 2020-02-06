@@ -44,7 +44,7 @@
             </div>
             <br />
         </f:if>
-        <vh:widget.product objects="{products}" as="filteredProducts">
+        <vh:widget.product objects="{products}" search="{search}" as="filteredProducts">
             <f:for each="{filteredProducts}" as="product" iteration="iterator">
                 <f:if condition="{iterator.isFirst}">
                     <div class="row">

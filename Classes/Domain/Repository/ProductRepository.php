@@ -38,6 +38,10 @@ class ProductRepository extends \Extcode\CartProducts\Domain\Repository\Product\
      */
     public function searchForm($search)
     {
+        // Query Settings
+        $querySettings = $this->objectManager->get(\TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings::class); 
+        $querySettings->setRespectStoragePage(false);        
+        $this->setDefaultQuerySettings($querySettings);
         $query = $this->createQuery();
         if ($search) {
             $query->matching(

@@ -30,15 +30,16 @@ namespace Pmwebdesign\Cartproductreader\Controller;
  *
  * @author Markus Puffer <m.puffer@pm-webdesign.eu>
  */
-class ProductController extends \Extcode\CartProducts\Controller\ProductController //\TYPO3\CMS\Extbase\Mvc\Controller\ActionController //\Extcode\CartProducts\Controller\ProductController
+class ProductController extends \Extcode\CartProducts\Controller\ProductController
 {
+
     /**
      * Product Repository
      * 
      * @var \Pmwebdesign\Cartproductreader\Domain\Repository\ProductRepository
      */
     protected $productRepository = null;
-    
+
     /**
      * Inject Product Repository
      * 
@@ -48,17 +49,22 @@ class ProductController extends \Extcode\CartProducts\Controller\ProductControll
     {
         $this->productRepository = $productRepository;
     }
-    
+
     /**
      * 
      * @param string
      */
     public function listAction()
     {
-        if($this->request->hasArgument('search')) {
+        if ($this->request->hasArgument('search')) {
             $search = $this->request->getArgument('search');
+            if ($search != "") {
+                $this->view->assign('search', $search);
+            }
         }
         $products = $this->productRepository->searchForm($search);
+        $this->view->assign('search', $search);
         $this->view->assign('products', $products);
     }
+
 }
