@@ -1,5 +1,14 @@
 # Cart Product Reader Change Log
 
+## 1.8.6
+
+Supports Typo3 8.7.0 - 9.5.99
+
+- [META] Set the version number to 1.8.6.
+- [UPDATE] Update description for minimum order quantity.
+- [UPDATE] Add description for minimum order quantity.
+- [RELEASE] Version 1.8.5 with fixed issues.
+
 ## 1.8.5
 
 Supports Typo3 8.7.0 - 9.5.99
