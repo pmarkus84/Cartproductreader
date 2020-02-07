@@ -55,6 +55,16 @@ $fields = [
             'maxitems' => 1,
         ],
     ],
+    'desc_minimum_order_quantity' => [
+        'exclude' => true,
+        'label' => 'LLL:EXT:cartproductreader/Resources/Private/Language/locallang.xlf:tx_cartproductreader_domain_model_product.desc_minimum_order_quantity',
+        'config' => [
+            'type' => 'text',
+            'cols' => 40,
+            'rows' => 15,
+            'eval' => 'trim'
+        ],
+    ],
     'prize_rrp' => [
         'exclude' => true,
         'label' => 'LLL:EXT:cartproductreader/Resources/Private/Language/locallang.xlf:tx_cartproductreader_domain_model_product.prize_rrp',
@@ -177,7 +187,7 @@ $GLOBALS['TCA']['tx_cartproducts_domain_model_product_product']['palettes']['tx_
 
 // Add the new palette:
 $GLOBALS['TCA']['tx_cartproducts_domain_model_product_product']['palettes']['tx_addPricefields'] = [
-    'showitem' => 'prize_rrp, prize_purchase_net_gp, price'
+    'showitem' => 'prize_rrp, prize_purchase_net_gp, price, desc_minimum_order_quantity'
 ];
 
 // Add the new palette:

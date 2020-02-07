@@ -39,7 +39,6 @@ use PHPOffice\PhpSpreadsheet\IOFactory;
  */
 class ExcelService
 {
-
     const SUPPLIER_COL = 1; // A
     const SUPPLIER_NR_COL = 2; // B
     const ARTICLE_NR_COL = 3; // C
@@ -54,16 +53,17 @@ class ExcelService
     const WEIGHT_COL = 12; // L
     const PACKAGING_UNIT_COL = 13; // M
     const MINIMUM_ORDER_QUANTITY_COL = 14; // N
-    const MAXIMUM_ORDER_QUANTITY_COL = 15; // O
-    const SUPPLIER_PRICE_RRP_NET_COL = 16; // P
-    const GP_PRICE_PURCHASE_COL = 17; // Q
-    const GP_PRICE_GROSS_COL = 18; // R
-    const BEST_BEFORE_DATE_COL = 19; // S
-    const DELIVERY_TIME_COL = 20; // T
-    const IMAGES_COL = 21; // U
-    const MAIN_CATEGORY_COL = 22; // V
-    const CATEGORY_COL = 23; // W
-    const SUBCATEGORY_COL = 24; // X
+    const DESC_MINIMUM_ORDER_QUANTITY_COL = 15; // O
+    const MAXIMUM_ORDER_QUANTITY_COL = 16; // P
+    const SUPPLIER_PRICE_RRP_NET_COL = 17; // Q
+    const GP_PRICE_PURCHASE_COL = 18; // R
+    const GP_PRICE_GROSS_COL = 19; // S
+    const BEST_BEFORE_DATE_COL = 20; // T
+    const DELIVERY_TIME_COL = 21; // U
+    const IMAGES_COL = 22; // V
+    const MAIN_CATEGORY_COL = 23; // W
+    const CATEGORY_COL = 24; // X
+    const SUBCATEGORY_COL = 25; // Y
 
     /**
      * Import excel data        
@@ -181,10 +181,14 @@ class ExcelService
                 $weight = $worksheet->getCellByColumnAndRow(self::WEIGHT_COL, $row)->getValue();
                 // Packaging Unit     
                 $pU = $worksheet->getCellByColumnAndRow(self::PACKAGING_UNIT_COL, $row)->getValue();
-                // Maximum order quantity
-                $maximumOrderQuantity = $worksheet->getCellByColumnAndRow(self::MAXIMUM_ORDER_QUANTITY_COL, $row)->getValue();
+                
                 // Minimum order quantity
                 $minimumOrderQuantity = $worksheet->getCellByColumnAndRow(self::MINIMUM_ORDER_QUANTITY_COL, $row)->getValue();
+                // Description of minimum order quantity
+                $descMinimumOrderQuantity = $worksheet->getCellByColumnAndRow(self::DESC_MINIMUM_ORDER_QUANTITY_COL, $row)->getValue();
+                // Maximum order quantity
+                $maximumOrderQuantity = $worksheet->getCellByColumnAndRow(self::MAXIMUM_ORDER_QUANTITY_COL, $row)->getValue();
+                
                 // Supplier Price RRP net
                 $prizeRrp = $worksheet->getCellByColumnAndRow(self::SUPPLIER_PRICE_RRP_NET_COL, $row)->getValue();
                 // GastPlus Price purchase
@@ -307,6 +311,9 @@ class ExcelService
                             $product->setMinNumberInOrder(intval($minimumOrderQuantity));
                         }
                     }
+                    // Description of minimum order quantity
+                    $product->setDescMinimumOrderQuantity($descMinimumOrderQuantity);
+                    
                     // Supplier Price RRP net
                     $product->setPrizeRrp($prizeRrp);
                     // GastPlus Price purchase
@@ -395,6 +402,7 @@ class ExcelService
                     $beforeProduct->setDescription($excelProduct->getDescription());
                     $beforeProduct->setMaxNumberInOrder($excelProduct->getMaxNumberInOrder());
                     $beforeProduct->setMinNumberInOrder($excelProduct->getMinNumberInOrder());
+                    $beforeProduct->setDescMinimumOrderQuantity($excelProduct->getDescMinimumOrderQuantity());
                     $beforeProduct->setPrizeRrp($excelProduct->getPrizeRrp());
                     $beforeProduct->setPrizePurchaseNetGp($excelProduct->getPrizePurchaseNetGp());
                     $beforeProduct->setPrice($excelProduct->getPrice());

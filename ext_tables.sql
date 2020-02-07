@@ -227,6 +227,7 @@ CREATE TABLE tx_cartproductreader_domain_model_maincategory (
 CREATE TABLE tx_cartproducts_domain_model_product_product (
 	
     supplier int(11) unsigned DEFAULT '0' NOT NULL,
+    desc_minimum_order_quantity text NOT NULL,
     prize_rrp double(11,2) DEFAULT '0.00' NOT NULL,
     prize_purchase_net_gp double(11,2) DEFAULT '0.00' NOT NULL,
     prize_brut_gp double(11,2) DEFAULT '0.00' NOT NULL,

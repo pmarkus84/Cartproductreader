@@ -18,6 +18,9 @@
             <trans-unit id="tx_cartproductreader_domain_model_product.minNumberInOrder">
                 <source>Minimum order quantity</source>
             </trans-unit>
+            <trans-unit id="tx_cartproductreader_domain_model_product.desc_minimum_order_quantity">
+                <source>Description of minimum order quantity</source>
+            </trans-unit>
             <trans-unit id="tx_cartproductreader_domain_model_product.imagepaths">
                 <source>Image names</source>
             </trans-unit>

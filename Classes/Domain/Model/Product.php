@@ -42,6 +42,13 @@ class Product extends \Extcode\CartProducts\Domain\Model\Product\Product
      * @var \Pmwebdesign\Cartproductreader\Domain\Model\Supplier
      */
     protected $supplier = null;
+    
+    /**
+     * Description minimum order quantity
+     *
+     * @var string
+     */
+    protected $descMinimumOrderQuantity = "";
 
     /**
      * Prize RRP (UVP)
@@ -119,6 +126,27 @@ class Product extends \Extcode\CartProducts\Domain\Model\Product\Product
         $this->pid = $pid;
     }
     
+    /**
+     * Get description of minimum order quantity
+     * 
+     * @return string
+     */
+    public function getDescMinimumOrderQuantity()
+    {
+        return $this->descMinimumOrderQuantity;
+    }
+
+    /**
+     * Set description of minimum order quantity
+     * 
+     * @param string $descMinimumOrderQuantity
+     * @return void
+     */
+    public function setDescMinimumOrderQuantity($descMinimumOrderQuantity)
+    {
+        $this->descMinimumOrderQuantity = $descMinimumOrderQuantity;
+    }
+        
     /**
      * Get the supplier
      * 
