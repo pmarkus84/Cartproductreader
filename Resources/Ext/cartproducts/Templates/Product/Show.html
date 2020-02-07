@@ -72,8 +72,10 @@
         </f:for>
     </f:if>
     <f:if condition="{product.minNumberInOrder}">
-        <f:translate extensionName="Cartproductreader" key="tx_cartproductreader_domain_model_product.minNumberInOrder" />: {product.minNumberInOrder}<br />
-        ({product.descMinimumOrderQuantity})
+        <f:translate extensionName="Cartproductreader" key="tx_cartproductreader_domain_model_product.minNumberInOrder" />: {product.minNumberInOrder}
+        <f:if condition="{product.descMinimumOrderQuantity}">
+        <br />({product.descMinimumOrderQuantity})
+        </f:if>
     </f:if>
     <f:comment><!-- Number in the shopping cart --></f:comment>
     <f:cObject typoscriptObjectPath="lib.cartProduct.showForm" />
