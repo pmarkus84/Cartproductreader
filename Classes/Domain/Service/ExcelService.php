@@ -382,13 +382,13 @@ class ExcelService
         // Get product repository
         $productRepository = $objectManager->get(\Pmwebdesign\Cartproductreader\Domain\Repository\ProductRepository::class);
 
-        // Check products of supplier
-        $found = false;
+        // Check products of supplier        
         foreach ($excelProducts as $excelProduct) {
+            $found = false;
             /* @var $beforeProduct \Pmwebdesign\Cartproductreader\Domain\Model\Product */
             foreach ($beforeProducts as $beforeProduct) {
                 // Product article number exist?
-                if ($beforeProduct->getSku() == $excelProduct->getSku()) {
+                if ($beforeProduct->getSku() == $excelProduct->getSku()) {   
                     // Yes, update product
                     $beforeProduct->setTitle($excelProduct->getTitle());
                     $beforeProduct->setTeaser($excelProduct->getTeaser());
