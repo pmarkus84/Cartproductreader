@@ -39,13 +39,16 @@ class ProductRepository extends \Extcode\CartProducts\Domain\Repository\Product\
     public function searchForm($search)
     {
         // Query Settings
-        $querySettings = $this->objectManager->get(\TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings::class); 
-        $querySettings->setRespectStoragePage(false);        
+        $querySettings = $this->objectManager->get(\TYPO3\CMS\Extbase\Persistence\Generic\Typo3QuerySettings::class);
+        $querySettings->setRespectStoragePage(false);
         $this->setDefaultQuerySettings($querySettings);
         $query = $this->createQuery();
         if ($search) {
             $query->matching(
-                    $query->like('title', '%' . $search . '%')
+                    $query->logicalAnd(
+                            $query->like('title', '%' . $search . '%'),
+                            $query->equals('deleted', 0)
+                    )
             );
         }
         $query->setOrderings(['title' => \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_ASCENDING]);
