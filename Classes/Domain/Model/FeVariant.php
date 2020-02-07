@@ -28,7 +28,7 @@ namespace Pmwebdesign\Cartproductreader\Domain\Model;
 /**
  * ProductVariant
  */
-class ProductVariant extends \Extcode\CartProducts\Domain\Model\Product\FeVariant
+class FeVariant extends \Extcode\CartProducts\Domain\Model\Product\FeVariant
 {
     /**
      * Image paths

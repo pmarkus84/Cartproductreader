@@ -95,7 +95,7 @@ class Product extends \Extcode\CartProducts\Domain\Model\Product\Product
     /**
      * Frontend Variants
      *
-     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Pmwebdesign\Cartproductreader\Domain\Model\ProductVariant>
+     * @var \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Pmwebdesign\Cartproductreader\Domain\Model\FeVariant>
      * @cascade remove
      */
     protected $feVariants = null;
@@ -112,6 +112,7 @@ class Product extends \Extcode\CartProducts\Domain\Model\Product\Product
     /**
      * 
      * @param type $pid
+     * @return void
      */
     public function setPid($pid)
     {
@@ -195,6 +196,7 @@ class Product extends \Extcode\CartProducts\Domain\Model\Product\Product
      * Set prize brut GastPlus
      * 
      * @param double $prizeBrutGp
+     * @return void
      */
     public function setPrizeBrutGp($prizeBrutGp)
     {
@@ -215,6 +217,7 @@ class Product extends \Extcode\CartProducts\Domain\Model\Product\Product
      * Set the image paths
      * 
      * @param string $imagepaths
+     * @return void
      */
     public function setImagepaths($imagepaths)
     {
@@ -255,6 +258,7 @@ class Product extends \Extcode\CartProducts\Domain\Model\Product\Product
      * Set the maincategory
      * 
      * @param \Pmwebdesign\Cartproductreader\Domain\Model\Maincategory $maincategory
+     * @return void
      */
     public function setMaincategory(\Pmwebdesign\Cartproductreader\Domain\Model\Maincategory $maincategory)
     {
@@ -275,10 +279,12 @@ class Product extends \Extcode\CartProducts\Domain\Model\Product\Product
      * Set the category
      * 
      * @param \Pmwebdesign\Cartproductreader\Domain\Model\Category $category
+     * @return void
      */
-    public function setCategory(\Pmwebdesign\Cartproductreader\Domain\Model\Category $category)
+    public function setCategory($category)
     {
-        $this->category = $category;
+        parent::setCategory($category);
+        //$this->category = $category;
     }
     
     /**
@@ -295,6 +301,7 @@ class Product extends \Extcode\CartProducts\Domain\Model\Product\Product
      * Set the subcategory
      * 
      * @param \Pmwebdesign\Cartproductreader\Domain\Model\Subcategory $subcategory
+     * @return void
      */
     public function setSubcategory(\Pmwebdesign\Cartproductreader\Domain\Model\Subcategory $subcategory)
     {
@@ -304,9 +311,10 @@ class Product extends \Extcode\CartProducts\Domain\Model\Product\Product
     /**
      * Adds a Frontend Variant
      *
-     * @param \Pmwebdesign\Cartproductreader\Domain\Model\ProductVariant $feVariant
+     * @param \Pmwebdesign\Cartproductreader\Domain\Model\FeVariant $feVariant
+     * @return void
      */    
-    public function addFeVariant(\Pmwebdesign\Cartproductreader\Domain\Model\ProductVariant $feVariant)
+    public function addFeVariant(\Pmwebdesign\Cartproductreader\Domain\Model\FeVariant $feVariant)
     {
         $this->feVariants->attach($feVariant);
     }
@@ -315,8 +323,9 @@ class Product extends \Extcode\CartProducts\Domain\Model\Product\Product
      * Removes a Frontend Variant
      *
      * @param \Pmwebdesign\Cartproductreader\Domain\Model\ProductVariant $feVariantToRemove
+     * @return void
      */
-    public function removeFeVariant(\Pmwebdesign\Cartproductreader\Domain\Model\ProductVariant $feVariantToRemove)
+    public function removeFeVariant(\Pmwebdesign\Cartproductreader\Domain\Model\FeVariant $feVariantToRemove)
     {
         $this->feVariants->detach($feVariantToRemove);
     }
@@ -324,7 +333,7 @@ class Product extends \Extcode\CartProducts\Domain\Model\Product\Product
     /**
      * Returns the Frontend Variants
      *
-     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Pmwebdesign\Cartproductreader\Domain\Model\ProductVariant> $variant
+     * @return \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Pmwebdesign\Cartproductreader\Domain\Model\FeVariant> $variant
      */
     public function getFeVariants()
     {
@@ -334,7 +343,8 @@ class Product extends \Extcode\CartProducts\Domain\Model\Product\Product
     /**
      * Sets the Frontend Variants
      *
-     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $feVariants
+     * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\Pmwebdesign\Cartproductreader\Domain\Model\FeVariant> $feVariants
+     * @return void
      */
     public function setFeVariants(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $feVariants)
     {
