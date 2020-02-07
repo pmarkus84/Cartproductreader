@@ -33,12 +33,10 @@ if (!defined('TYPO3_MODE')) {
         // cachable actions
 	array(
 //		'Data' => 'listProducts',
-                'Product' => 'searchList',
 	),
 	// non-cacheable actions
 	array(
 //		'Data' => 'listProducts',
-                'Product' => 'searchList',
 	)
 );
 ## EXTENSION BUILDER DEFAULTS END TOKEN - Everything BEFORE this line is overwritten with the defaults of the extension builder

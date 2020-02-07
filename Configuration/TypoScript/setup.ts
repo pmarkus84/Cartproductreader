@@ -127,8 +127,7 @@ plugin.tx_cartproducts._CSS_DEFAULT_STYLE (
 
 page {
     # Caching
-#    noCache = 0 
-
+#    config.no_cache = 1
     #config.cache.16 = tx_staffm_domain_model_mitarbeiter:42,tx_staffm_domain_model_kostenstelle:53
 
     includeCSS {        

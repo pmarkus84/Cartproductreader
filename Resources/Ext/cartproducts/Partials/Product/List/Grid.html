@@ -32,14 +32,14 @@
         </cartproducts:link.product>
     </div>
 </f:section>
-    <f:form action="searchList" enctype="multipart/form-data" additionalAttributes="{role: 'form'}">
+    <f:form id="searchProductForm" action="list" noCache="1" enctype="multipart/form-data" additionalAttributes="{role: 'form'}">
         <f:if condition="{vh:settings(setting:'SearchForm')} == 1">
             <div class="input-group">
                 <div class="input-group-prepend">
                     <f:form.textfield name="search" id="search" placeholder="{f:translate(extensionName:'Cartproductreader', key='tx_cartproductreader_searchword')}..." class="form-control" />
                 </div>
                 <div class="input-group-append">
-                    <f:form.submit value="{f:translate(extensionName:'Cartproductreader', key:'tx_cartproductreader_search')}" class="btn btn-default"/>
+                    <f:form.submit value="{f:translate(extensionName:'Cartproductreader', key:'tx_cartproductreader_search')}" class="btn btn-default" />
                 </div>
             </div>
             <br />
@@ -68,5 +68,5 @@
                 </f:if>
             </f:for>
         </vh:widget.product>
-    </f:form>
+    </f:form>    
 </html>

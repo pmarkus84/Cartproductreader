@@ -51,6 +51,7 @@ class ProductController extends \Extcode\CartProducts\Controller\ProductControll
     }
 
     /**
+     * List Products
      * 
      * @param string
      */
@@ -65,23 +66,5 @@ class ProductController extends \Extcode\CartProducts\Controller\ProductControll
         $products = $this->productRepository->searchForm($search);
         $this->view->assign('search', $search);
         $this->view->assign('products', $products);
-    }
-
-    /**
-     * 
-     * @param string
-     */
-    public function searchListAction()
-    {
-        if ($this->request->hasArgument('search')) {
-            $search = $this->request->getArgument('search');
-            if ($search != "") {
-                $this->view->assign('search', $search);
-            }
-        }
-        $products = $this->productRepository->searchForm($search);
-        $this->view->assign('search', $search);
-        $this->view->assign('products', $products);
-        $this->redirect('list', null, null, ['products' => $products, 'search' => $search]);
     }
 }
