@@ -1,5 +1,20 @@
 # Cart Product Reader Change Log
 
+## 1.8.5
+
+Supports Typo3 8.7.0 - 9.5.99
+
+- [META] Set the version number to 1.8.5.
+- [CODESTYLE] Reorder entries in mappings.
+- [UPDATE] Product model with FeVariant.
+- [UPDATE] Product repository query.
+- [UPDATE] Carousel image size in product detail.
+- [BUGFIX] Fix Excel insert products.
+- [BUGFIX] Fix search form cache in product list.
+- [BUGFIX] Fix search form in product list.
+- Merge origin/master
+- [RELEASE] Version 1.8.4 with fixed issues.
+
 ## 1.8.4
 
 Supports Typo3 8.7.0 - 9.5.99
