@@ -1,5 +1,13 @@
 # Cart Product Reader Change Log
 
+## 1.8.7
+
+Supports Typo3 8.7.0 - 9.5.99
+
+- [META] Set the EM conf and json version number to 1.8.7.
+- [Feature] Set price for presentation site.
+- [RELEASE] Version 1.8.6.
+
 ## 1.8.6
 
 Supports Typo3 8.7.0 - 9.5.99
