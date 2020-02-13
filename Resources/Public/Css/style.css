@@ -98,6 +98,18 @@ div.griditem {
     margin-top: 10px;
 }    
 
+/** CartProducts */
+/* Config price for presentation site */
+.hide-price .price {
+    display: none;
+}
+.set-price0 .price {
+    display: none;
+}
+.set-price0 .regular_price:after {
+    content: "0,00 €";
+}
+
 @media (min-width: 576px) {
     .width400 {
         width: 400px;
